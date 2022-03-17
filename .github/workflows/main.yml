@@ -1,4 +1,4 @@
-name: A workflow for DevOps Coursework
+name: A_workflow_for_DevOps_Coursework
 on: push
 
 jobs:
