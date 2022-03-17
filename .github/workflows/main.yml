@@ -1,9 +1,9 @@
-name: A workflow for DevOp Coursework
+name: A workflow for DevOps Coursework
 on: push
 
 jobs:
   build:
-    name: DevOp Coursework
+    name: DevOps Coursework
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
