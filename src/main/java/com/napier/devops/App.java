@@ -101,4 +101,34 @@ public class App
         }
     }
 
+    //Get countries in the world organised by largest population to smallest.
+    public ArrayList<City> getCityWorld() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Name, CountryCode, District, Population "
+                            + "FROM city "
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            // Extract Country information
+            ArrayList<City> citylist = new ArrayList<City>();
+            while (rest.next()) {
+                City city = new City();
+                city.name = rest.getString("Name");
+                city.countryCode = rest.getString("CountryCode");
+                city.district = rest.getString("District");
+                city.population = rest.getInt("Population");
+                citylist.add(city);
+            }
+            return citylist;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest");
+            return null;
+        }
+    }
+
 }
