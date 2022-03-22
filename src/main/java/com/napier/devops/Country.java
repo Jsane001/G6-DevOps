@@ -4,7 +4,7 @@ public class Country {
     /**
      * Country Code
      */
-    public int code;
+    public String code;
 
     /**
      * Country Name
@@ -29,6 +29,6 @@ public class Country {
     /**
      * Country Capital
      */
-    public String capital;
+    public int capital;
 
 }
