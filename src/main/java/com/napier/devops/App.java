@@ -13,6 +13,11 @@ public class App
         // Connect to database
         a.connect();
 
+        ArrayList<City> cityworld = a.getCityWorld();
+        //Cities in the world organised by largest population to smallest
+        System.out.println(" \n ++++++++++++++++ 7.  Cities in the world organised by largest population to smallest ++++++++++++++++ \n ");
+        a.printCityWorld(cityworld);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -128,6 +133,21 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get City by largest population to smallest");
             return null;
+        }
+    }
+
+    //Get countries in the world organised by largest population to smallest.
+    public void printCityWorld(ArrayList<City> citylist) {
+        // Print header
+        System.out.println(String.format("%-10s %-25s %-25s %-10s", "Name", "CountryCode", "District", "Population"));
+        // Loop over all city in the list
+        for (City city : citylist) {
+            if (city == null)
+                continue;
+            String cty_string =
+                    String.format("%-20s %-10s %-20s %10s",
+                            city.name, city.countryCode, city.district, city.population);
+            System.out.println(cty_string);
         }
     }
 
