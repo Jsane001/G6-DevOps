@@ -200,7 +200,6 @@ public class App
     //Print list of top 10 populated countries in region by largest to smallest population
     public void printTopTenCountryList(ArrayList<Country> toptencountrylist) {
         // Print header
-        System.out.println(" ---------- Top 10 Populated Countries in Region List by largest to smallest population ---------- ");
         System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all countries in the list
         for (Country country : toptencountrylist) {
@@ -250,7 +249,6 @@ public class App
     //Print list of top 10 populated countries in continent by largest to smallest population
     public void printTopTenCountryInContinent(ArrayList<Country> toptencountryincontinent) {
         // Print header
-        System.out.println(" ---------- Top 10 Populated Countries in Continent List by largest to smallest population ---------- ");
         System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all countries in the list
         for (Country country : toptencountryincontinent) {
