@@ -167,7 +167,7 @@ public class App
             String strSelect =
                     "SELECT Code, Name, Continent, Region, Population, Capital "
                             + "FROM country "
-                            + "WHERE Region = 'Eastern Asia' "
+                            + "WHERE Region = 'Western Africa' "
                             + "ORDER BY Population DESC "
                             + "LIMIT 10";
             // Execute SQL statement
@@ -207,5 +207,4 @@ public class App
             System.out.println(cty_string);
         }
     }
-
 }
