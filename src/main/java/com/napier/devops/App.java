@@ -18,6 +18,11 @@ public class App
         //Print list of Countries by largest population to smallest
         a.printCountryList(countrylist);
 
+        ArrayList<Country> topTenCountryList = a.getTopTenCountryList();
+        System.out.println(" ---------- Top 10 Populated Country List in Region ---------- ");
+        //Print Top 10 Populated Country List in Region
+        a.printTopTenCountryList(topTenCountryList);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -144,6 +149,56 @@ public class App
         System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
         // Loop over all countries in the list
         for (Country country : countrylist) {
+            if (country == null)
+                continue;
+            String cty_string =
+                    String.format("%-10s %-25s %-25s %-35s %-25s %10s",
+                            country.code, country.name, country.continent, country.region, country.population, country.capital);
+            System.out.println(cty_string);
+        }
+    }
+
+    //Top 10 populated countries in region list by largest to smallest population.
+    public ArrayList<Country> getTopTenCountryList() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country "
+                            + "WHERE Region = 'Eastern Asia' "
+                            + "ORDER BY Population DESC "
+                            + "LIMIT 10";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            // Extract Country information
+            ArrayList<Country> toptencountrylist = new ArrayList<Country>();
+            while (rest.next()) {
+                Country country = new Country();
+                country.code = rest.getString("Code");
+                country.name = rest.getString("Name");
+                country.continent = rest.getString("Continent");
+                country.region = rest.getString("Region");
+                country.population = rest.getInt("Population");
+                country.capital = rest.getInt("Capital");
+                toptencountrylist.add(country);
+            }
+            return toptencountrylist;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get top 10 populated countries in region by largest population to smallest");
+            return null;
+        }
+    }
+
+    //Print list of top 10 populated countries in region by largest to smallest population
+    public void printTopTenCountryList(ArrayList<Country> toptencountrylist) {
+        // Print header
+        System.out.println(" ---------- Top 10 Populated Countries in Region List by largest to smallest population ---------- ");
+        System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        // Loop over all countries in the list
+        for (Country country : toptencountrylist) {
             if (country == null)
                 continue;
             String cty_string =
