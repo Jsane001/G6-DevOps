@@ -314,7 +314,7 @@ public class App
                 continue;
             String cty_string =
                     String.format("%-10s %-25s %-25s %-35s %-25s %10s",
-                            country.code, country.name, country.continent, country.region, country.population, country.capital);
+                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
             System.out.println(cty_string);
         }
     }

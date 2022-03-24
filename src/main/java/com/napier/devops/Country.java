@@ -4,32 +4,32 @@ public class Country {
     /**
      * Country Code
      */
-    public String code;
+    private String code;
 
     /**
      * Country Name
      */
-    public String name;
+    private String name;
 
     /**
      * Country Continent
      */
-    public String continent;
+    private String continent;
 
     /**
      * Country Region
      */
-    public String region;
+    private String region;
 
     /**
      * Country Population
      */
-    public int population;
+    private int population;
 
     /**
      * Country Capital
      */
-    public int capital;
+    private int capital;
 
     //getter method for code
     public String getCode(){
