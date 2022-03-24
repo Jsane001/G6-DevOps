@@ -1,4 +1,4 @@
-# USE CASE: 27 Produce a Report on the population of a region
+# USE CASE: 28 Produce a Report on the population of a region
 ## CHARACTERISTIC INFORMATION
 
 ### Goal in Context
