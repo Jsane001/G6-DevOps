@@ -17,7 +17,7 @@ public class App
         //Cities in the world organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 7.  Cities in the world organised by largest population to smallest ++++++++++++++++ \n ");
         a.printCityWorld(cityworld);
-        
+
         ArrayList<City> cityregion = a.getCityRegion();
         //Cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ Cities in the region organised by largest population to smallest ++++++++++++++++ \n ");
@@ -60,7 +60,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "", "example");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "root", "example");
                 System.out.println("Type 1:Successfully connected");
                 break;
             }
