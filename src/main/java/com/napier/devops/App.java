@@ -13,20 +13,20 @@ public class App
         // Connect to database
         a.connect();
 
-        ArrayList<City> cityworld = a.getCityWorld();
+        ArrayList<City> cityWorld = a.getCityWorld();
         //Cities in the world organised by largest population to smallest
-        System.out.println(" \n ++++++++++++++++ 7.  Cities in the world organised by largest population to smallest ++++++++++++++++ \n ");
-        a.printCityWorld(cityworld);
+        System.out.println(" \n ++++++++++++++++ 7.  List of cities in the world organised by largest population to smallest  ++++++++++++++++ \n ");
+        a.printCityWorld(cityWorld);
 
-        ArrayList<City> cityregion = a.getCityRegion();
+        ArrayList<City> cityRegion = a.getCityRegion();
         //Cities in the region organised by largest population to smallest
-        System.out.println(" \n ++++++++++++++++ Cities in the region organised by largest population to smallest ++++++++++++++++ \n ");
-        a.printCityRegion(cityregion);
+        System.out.println(" \n ++++++++++++++++ 8.  List of cities in the region organised by largest population to smallest  ++++++++++++++++ \n ");
+        a.printCityRegion(cityRegion);
 
-        ArrayList<City> citycontinent = a.getCityContinent();
+        ArrayList<City> cityContinent = a.getCityContinent();
         //Cities in the continent organised by largest population to smallest
-        System.out.println(" \n ++++++++++++++++  Cities in the continent organised by largest population to smallest ++++++++++++++++ \n ");
-        a.printCityRegion(citycontinent);
+        System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
+        a.printCityContinent(cityContinent);
         // Disconnect from database
         a.disconnect();
     }
@@ -115,7 +115,7 @@ public class App
         }
     }
 
-    //Get countries in the world organised by largest population to smallest.
+    //Get list of cities in the world organised by largest population to smallest
     public ArrayList<City> getCityWorld() {
         try {
             // Create an SQL statement
@@ -127,39 +127,40 @@ public class App
                             + "ORDER BY Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<City> cityList = new ArrayList<>();
             // Extract Country information
-            ArrayList<City> citylist = new ArrayList<City>();
             while (rest.next()) {
                 City city = new City();
-                city.name = rest.getString("Name");
-                city.countryCode = rest.getString("CountryCode");
-                city.district = rest.getString("District");
-                city.population = rest.getInt("Population");
-                citylist.add(city);
+                city.setName(rest.getString("Name"));
+                city.setCountryCode(rest.getString("CountryCode"));
+                city.setDistrict(rest.getString("District"));
+                city.setPopulation(rest.getInt("Population"));
+                cityList.add(city);
             }
-            return citylist;
+            return cityList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get City by largest population to smallest");
+            System.out.println("Failed to get City by largest population to smallest in World");
             return null;
         }
     }
 
-    //Get countries in the world organised by largest population to smallest.
-    public void printCityWorld(ArrayList<City> citylist) {
+    //Show list of cities in the world organised by largest population to smallest
+    public void printCityWorld(ArrayList<City> cityList) {
         // Print header
-        System.out.println(String.format("%-10s %-25s %-25s %-10s", "Name", "CountryCode", "District", "Population"));
+        System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "CountryCode", "District", "Population");
         // Loop over all city in the list
-        for (City city : citylist) {
+        for (City city : cityList) {
             if (city == null)
                 continue;
             String cty_string =
-                    String.format("%-20s %-10s %-20s %10s",
-                            city.name, city.countryCode, city.district, city.population);
+                    String.format("%-30s %-10s %-20s %10s",
+                            city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation());
             System.out.println(cty_string);
         }
     }
-    //Get city in the Region organised by largest population to smallest.
+
+    //Get list of cities in the region organised by largest population to smallest
     public ArrayList<City> getCityRegion() {
         try {
             // Create an SQL statement
@@ -171,38 +172,40 @@ public class App
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<City> cityList = new ArrayList<>();
             // Extract Country information
-            ArrayList<City> citylist = new ArrayList<City>();
             while (rest.next()) {
                 City city = new City();
-                city.name = rest.getString("Name");
-                city.countryCode = rest.getString("CountryCode");
-                city.district = rest.getString("District");
-                city.population = rest.getInt("Population");
-                citylist.add(city);
+                city.setName(rest.getString("Name"));
+                city.setCountryCode(rest.getString("CountryCode"));
+                city.setDistrict(rest.getString("District"));
+                city.setPopulation(rest.getInt("Population"));
+                cityList.add(city);
             }
-            return citylist;
+            return cityList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get City by largest population to smallest");
+            System.out.println("Failed to get City by largest population to smallest in region");
             return null;
         }
     }
-    //Get city in the Region organised by largest population to smallest.
-    public void printCityRegion(ArrayList<City> citylist) {
+
+    //Show list of cities in the region organised by largest population to smallest
+    public void printCityRegion(ArrayList<City> cityList) {
         // Print header
-        System.out.println(String.format("%-15s %-10s %-20s %-10s", "Name", "CountryCode", "District", "Population"));
+        System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "CountryCode", "District", "Population");
         // Loop over all city in the list
-        for (City city : citylist) {
+        for (City city : cityList) {
             if (city == null)
                 continue;
             String cty_string =
-                    String.format("%-15s %-10s %-20s %-10s",
-                            city.name, city.countryCode, city.district, city.population);
+                    String.format("%-30s %-10s %-20s %10s",
+                            city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation());
             System.out.println(cty_string);
         }
     }
-    //Get city in the Continent organised by largest population to smallest.
+
+    //Get list of cities in the continent organised by largest population to smallest
     public ArrayList<City> getCityContinent() {
         try {
             // Create an SQL statement
@@ -214,35 +217,35 @@ public class App
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<City> cityList = new ArrayList<>();
             // Extract Country information
-            ArrayList<City> citylist = new ArrayList<City>();
             while (rest.next()) {
                 City city = new City();
-                city.name = rest.getString("Name");
-                city.countryCode = rest.getString("CountryCode");
-                city.district = rest.getString("District");
-                city.population = rest.getInt("Population");
-                citylist.add(city);
+                city.setName(rest.getString("Name"));
+                city.setCountryCode(rest.getString("CountryCode"));
+                city.setDistrict(rest.getString("District"));
+                city.setPopulation(rest.getInt("Population"));
+                cityList.add(city);
             }
-            return citylist;
+            return cityList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get City by largest population to smallest");
+            System.out.println("Failed to get City by largest population to smallest in continent");
             return null;
         }
     }
 
-    //Get city in the Continent organised by largest population to smallest.
-    public void printCityContinent(ArrayList<City> citylist) {
+    //Get list of city in the continent organised by largest population to smallest
+    public void printCityContinent(ArrayList<City> cityList) {
         // Print header
-        System.out.println(String.format("%-15s %-10s %-20s %-10s", "Name", "CountryCode", "District", "Population"));
+        System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "CountryCode", "District", "Population");
         // Loop over all city in the list
-        for (City city : citylist) {
+        for (City city : cityList) {
             if (city == null)
                 continue;
             String cty_string =
-                    String.format("%-15s %-10s %-20s %-10s",
-                            city.name, city.countryCode, city.district, city.population);
+                    String.format("%-30s %-10s %-20s %10s",
+                            city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation());
             System.out.println(cty_string);
         }
     }
