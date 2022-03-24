@@ -18,6 +18,11 @@ public class App
         //Print list of Countries by largest population to smallest
         a.printCountryList(countrylist);
 
+        ArrayList<Country> countryregion = a.getCountryRegion();
+        System.out.println(" ---------- Countries organized by largest to smallest population ---------- ");
+        //Print list of Countries by largest population to smallest in region
+        a.printCountryRegion(countryregion);
+
         // Disconnect from database
         a.disconnect();
     }
