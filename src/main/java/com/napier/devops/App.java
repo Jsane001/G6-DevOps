@@ -13,35 +13,35 @@ public class App
         // Connect to database
         a.connect();
 
-        ArrayList<Country> countrylist = a.getCountryList();
-        System.out.println(" ---------- Countries organized by largest to smallest population ---------- ");
+        ArrayList<Country> countryWorld = a.getCountryWorld();
+        System.out.println(" \n ++++++++++++++++ 1. Countries organized by largest to smallest population in World  ++++++++++++++++ \n ");
         //Print list of Countries by largest population to smallest
-        a.printCountryList(countrylist);
+        a.printCountryWorld(countryWorld);
 
-        ArrayList<Country> countryregion = a.getCountryRegion();
-        System.out.println(" ---------- Countries organized by largest to smallest population ---------- ");
-        //Print list of Countries by largest population to smallest in region
-        a.printCountryRegion(countryregion);
-
-        ArrayList<Country> topTenCountryList = a.getTopTenCountryList();
-        System.out.println(" ---------- Top 10 Populated Country List in Region ---------- ");
-        //Print Top 10 Populated Country List in Region
-        a.printTopTenCountryList(topTenCountryList);
-
-        ArrayList<Country> topTenCountryInContinent = a.getTopTenCountryInContinent();
-        System.out.println(" ---------- Top 10 Populated Country List in Continent ---------- ");
-        //Print Top 10 Populated Country List in Continent
-        a.printTopTenCountryInContinent(topTenCountryInContinent);
-
-        ArrayList<Country> topcountrylistworld = a.getTopCountryWorld();
-        System.out.println(" ---------- Top 10 countries organized by largest to smallest population ---------- ");
-        //Print list of Countries by largest population to smallest
-        a.printTopCountryWorld(topcountrylistworld);
-
-        ArrayList<Country> countrycontinent = a.getCountryContinent();
-        System.out.println(" ---------- Countries organized by largest to smallest population ---------- ");
+        ArrayList<Country> countryContinent = a.getCountryContinent();
+        System.out.println(" \n ++++++++++++++++ 2. Countries organized by largest to smallest population in Continent  ++++++++++++++++ \n ");
         //Print list of Countries by largest population to smallest in continent
-        a.printCountryContinent(countrycontinent);
+        a.printCountryContinent(countryContinent);
+
+        ArrayList<Country> countryRegion = a.getCountryRegion();
+        System.out.println(" \n ++++++++++++++++ 3. Countries organized by largest to smallest population in Region  ++++++++++++++++ \n ");
+        //Print list of Countries by largest population to smallest in region
+        a.printCountryRegion(countryRegion);
+
+        ArrayList<Country> topCountryWorld = a.getTopCountryWorld();
+        System.out.println(" \n ++++++++++++++++ 4. Top 10 Populated Countries in World  ++++++++++++++++ \n ");
+        //Print list of Countries by largest population to smallest
+        a.printTopCountryWorld(topCountryWorld);
+
+        ArrayList<Country> topCountryContinent = a.getTopCountryContinent();
+        System.out.println(" \n ++++++++++++++++ 5. Top 10 Populated Countries in Continent  ++++++++++++++++ \n ");
+        //Print Top 10 Populated Country List in Continent
+        a.printTopCountryContinent(topCountryContinent);
+
+        ArrayList<Country> topCountryRegion = a.getTopCountryRegion();
+        System.out.println(" \n ++++++++++++++++ 6. Top 10 Populated Countries in Region  ++++++++++++++++ \n ");
+        //Print Top 10 Populated Country List in Region
+        a.printTopCountryRegion(topCountryRegion);
 
         // Disconnect from database
         a.disconnect();
@@ -131,8 +131,8 @@ public class App
         }
     }
 
-    //Countries in the world organised by largest population to smallest.
-    public ArrayList<Country> getCountryList() {
+    //Get list of Countries in the world organised by largest population to smallest
+    public ArrayList<Country> getCountryWorld() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -144,41 +144,88 @@ public class App
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
-            ArrayList<Country> countrylist = new ArrayList<Country>();
+            ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.code = rest.getString("Code");
-                country.name = rest.getString("Name");
-                country.continent = rest.getString("Continent");
-                country.region = rest.getString("Region");
-                country.population = rest.getInt("Population");
-                country.capital = rest.getInt("Capital");
-                countrylist.add(country);
+                country.setCode(rest.getString("Code"));
+                country.setName(rest.getString("Name"));
+                country.setContinent(rest.getString("Continent"));
+                country.setRegion(rest.getString("Region"));
+                country.setPopulation(rest.getInt("Population"));
+                country.setCapital(rest.getInt("Capital"));
+                countryList.add(country);
             }
-            return countrylist;
+            return countryList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Countries by largest population to smallest");
+            System.out.println("Failed to get Countries by largest population to smallest in World");
             return null;
         }
     }
 
-    //Print list of Countries by largest population to smallest
-    public void printCountryList(ArrayList<Country> countrylist) {
+    //Print list of Countries in world organised by largest population to smallest
+    public void printCountryWorld(ArrayList<Country> countryList) {
         // Print header
-        System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
-        for (Country country : countrylist) {
+        for (Country country : countryList) {
             if (country == null)
                 continue;
             String cty_string =
                     String.format("%-10s %-25s %-25s %-35s %-25s %10s",
-                            country.code, country.name, country.continent, country.region, country.population, country.capital);
+                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
             System.out.println(cty_string);
         }
     }
 
-    //Countries in the world organised by largest population to smallest in region.
+    //Get list of countries in the continent organised by largest population to smallest
+    public ArrayList<Country> getCountryContinent() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT Code, Name, Continent, Region, Population, Capital "
+                            + "FROM country WHERE Continent = 'Asia'"
+                            + "ORDER BY Population DESC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            // Extract Country information
+            ArrayList<Country> countryList = new ArrayList<>();
+            while (rest.next()) {
+                Country country = new Country();
+                country.setCode(rest.getString("Code"));
+                country.setName(rest.getString("Name"));
+                country.setContinent(rest.getString("Continent"));
+                country.setRegion(rest.getString("Region"));
+                country.setPopulation(rest.getInt("Population"));
+                country.setCapital(rest.getInt("Capital"));
+                countryList.add(country);
+            }
+            return countryList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Countries by largest population to smallest in Continent");
+            return null;
+        }
+    }
+
+    //Print list of Countries in continent by largest population to smallest
+    public void printCountryContinent(ArrayList<Country> countryList) {
+        // Print header
+        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        // Loop over all countries in the list
+        for (Country country : countryList) {
+            if (country == null)
+                continue;
+            String cty_string =
+                    String.format("%-10s %-25s %-25s %-35s %-25s %10s",
+                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
+            System.out.println(cty_string);
+        }
+    }
+
+    //Get list of countries in region organised by largest population to smallest in region
     public ArrayList<Country> getCountryRegion() {
         try {
             // Create an SQL statement
@@ -191,41 +238,39 @@ public class App
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
-            ArrayList<Country> countrylist = new ArrayList<Country>();
+            ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.code = rest.getString("Code");
-                country.name = rest.getString("Name");
-                country.continent = rest.getString("Continent");
-                country.region = rest.getString("Region");
-                country.population = rest.getInt("Population");
-                country.capital = rest.getInt("Capital");
-                countrylist.add(country);
+                country.setCode(rest.getString("Code"));
+                country.setName(rest.getString("Name"));
+                country.setContinent(rest.getString("Continent"));
+                country.setRegion(rest.getString("Region"));
+                country.setPopulation(rest.getInt("Population"));
+                country.setCapital(rest.getInt("Capital"));
+                countryList.add(country);
             }
-            return countrylist;
+            return countryList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Countries by largest population to smallest");
+            System.out.println("Failed to get Countries by largest population to smallest in Region");
             return null;
         }
     }
 
-    //Print list of Countries by largest population to smallest
-    public void printCountryRegion(ArrayList<Country> countrylist) {
+    //Print list of Countries in region by largest population to smallest
+    public void printCountryRegion(ArrayList<Country> countryList) {
         // Print header
-        System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
-        for (Country country : countrylist) {
+        for (Country country : countryList) {
             if (country == null)
                 continue;
             String cty_string =
                     String.format("%-10s %-25s %-25s %-35s %-25s %10s",
-                            country.code, country.name, country.continent, country.region, country.population, country.capital);
+                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
             System.out.println(cty_string);
         }
     }
-
-
 
     //Get top 10 countries in the world organised by largest population to smallest.
     public ArrayList<Country> getTopCountryWorld() {
@@ -240,31 +285,31 @@ public class App
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
-            ArrayList<Country> countrylist = new ArrayList<Country>();
+            ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.code = rest.getString("Code");
-                country.name = rest.getString("Name");
-                country.continent = rest.getString("Continent");
-                country.region = rest.getString("Region");
-                country.population = rest.getInt("Population");
-                country.capital = rest.getInt("Capital");
-                countrylist.add(country);
+                country.setCode(rest.getString("Code"));
+                country.setName(rest.getString("Name"));
+                country.setContinent(rest.getString("Continent"));
+                country.setRegion(rest.getString("Region"));
+                country.setPopulation(rest.getInt("Population"));
+                country.setCapital(rest.getInt("Capital"));
+                countryList.add(country);
             }
-            return countrylist;
+            return countryList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Countries by largest population to smallest");
+            System.out.println("Failed to get Top 10 Countries by largest population to smallest in World");
             return null;
         }
     }
 
-    //Print top 10 countries in the world Countries by largest population to smallest
-    public void printTopCountryWorld(ArrayList<Country> countrylist) {
+    //Print top 10 countries in the world organised by largest population to smallest
+    public void printTopCountryWorld(ArrayList<Country> countryList) {
         // Print header
-        System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
-        for (Country country : countrylist) {
+        for (Country country : countryList) {
             if (country == null)
                 continue;
             String cty_string =
@@ -274,57 +319,8 @@ public class App
         }
     }
 
-    //Top 10 populated countries in region list by largest to smallest population.
-    public ArrayList<Country> getTopTenCountryList() {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
-                            + "WHERE Region = 'Western Africa' "
-                            + "ORDER BY Population DESC "
-                            + "LIMIT 10";
-            // Execute SQL statement
-            ResultSet rest = stmt.executeQuery(strSelect);
-            // Extract Country information
-            ArrayList<Country> toptencountrylist = new ArrayList<Country>();
-            while (rest.next()) {
-                Country country = new Country();
-                country.code = rest.getString("Code");
-                country.name = rest.getString("Name");
-                country.continent = rest.getString("Continent");
-                country.region = rest.getString("Region");
-                country.population = rest.getInt("Population");
-                country.capital = rest.getInt("Capital");
-                toptencountrylist.add(country);
-            }
-            return toptencountrylist;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get top 10 populated countries in region by largest population to smallest");
-            return null;
-        }
-    }
-
-    //Print list of top 10 populated countries in region by largest to smallest population
-    public void printTopTenCountryList(ArrayList<Country> toptencountrylist) {
-        // Print header
-        System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
-        // Loop over all countries in the list
-        for (Country country : toptencountrylist) {
-            if (country == null)
-                continue;
-            String cty_string =
-                    String.format("%-10s %-25s %-25s %-35s %-25s %10s",
-                            country.code, country.name, country.continent, country.region, country.population, country.capital);
-            System.out.println(cty_string);
-        }
-    }
-
-    //Top 10 populated countries in continent list by largest to smallest population.
-    public ArrayList<Country> getTopTenCountryInContinent() {
+    //Top 10 populated countries in continent list by largest population to smallest
+    public ArrayList<Country> getTopCountryContinent() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -338,83 +334,85 @@ public class App
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
-            ArrayList<Country> toptencountryincontinent = new ArrayList<Country>();
+            ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.code = rest.getString("Code");
-                country.name = rest.getString("Name");
-                country.continent = rest.getString("Continent");
-                country.region = rest.getString("Region");
-                country.population = rest.getInt("Population");
-                country.capital = rest.getInt("Capital");
-                toptencountryincontinent.add(country);
+                country.setCode(rest.getString("Code"));
+                country.setName(rest.getString("Name"));
+                country.setContinent(rest.getString("Continent"));
+                country.setRegion(rest.getString("Region"));
+                country.setPopulation(rest.getInt("Population"));
+                country.setCapital(rest.getInt("Capital"));
+                countryList.add(country);
             }
-            return toptencountryincontinent;
+            return countryList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get top 10 populated countries in continent by largest population to smallest");
+            System.out.println("Failed to get Top 10 Countries by largest population to smallest in Continent");
             return null;
         }
     }
 
-    //Print list of top 10 populated countries in continent by largest to smallest population
-    public void printTopTenCountryInContinent(ArrayList<Country> toptencountryincontinent) {
+    //Print list of top 10 populated countries in continent by largest population to smallest
+    public void printTopCountryContinent(ArrayList<Country> countryList) {
         // Print header
-        System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
-        for (Country country : toptencountryincontinent) {
+        for (Country country : countryList) {
             if (country == null)
                 continue;
             String cty_string =
                     String.format("%-10s %-25s %-25s %-35s %-25s %10s",
-                            country.code, country.name, country.continent, country.region, country.population, country.capital);
+                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
             System.out.println(cty_string);
         }
     }
 
-    //Countries in the world organised by largest population to smallest.
-    public ArrayList<Country> getCountryContinent() {
+    //Get top 10 populated countries in region list by largest population to smallest
+    public ArrayList<Country> getTopCountryRegion() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
                     "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country WHERE Continent = 'Asia'"
-                            + "ORDER BY Population DESC";
+                            + "FROM country "
+                            + "WHERE Region = 'Western Africa' "
+                            + "ORDER BY Population DESC "
+                            + "LIMIT 10";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
-            ArrayList<Country> countrylist = new ArrayList<Country>();
+            ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.code = rest.getString("Code");
-                country.name = rest.getString("Name");
-                country.continent = rest.getString("Continent");
-                country.region = rest.getString("Region");
-                country.population = rest.getInt("Population");
-                country.capital = rest.getInt("Capital");
-                countrylist.add(country);
+                country.setCode(rest.getString("Code"));
+                country.setName(rest.getString("Name"));
+                country.setContinent(rest.getString("Continent"));
+                country.setRegion(rest.getString("Region"));
+                country.setPopulation(rest.getInt("Population"));
+                country.setCapital(rest.getInt("Capital"));
+                countryList.add(country);
             }
-            return countrylist;
+            return countryList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Countries by largest population to smallest");
+            System.out.println("Failed to get Top 10 Countries by largest population to smallest in Region");
             return null;
         }
     }
 
-    //Print list of Countries by largest population to smallest
-    public void printCountryContinent(ArrayList<Country> countrylist) {
+    //Print list of top 10 populated countries in region by largest population to smallest
+    public void printTopCountryRegion(ArrayList<Country> countryList) {
         // Print header
-        System.out.println(String.format("%-10s %-25s %-25s %-35s %-25s %10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
-        for (Country country : countrylist) {
+        for (Country country : countryList) {
             if (country == null)
                 continue;
             String cty_string =
                     String.format("%-10s %-25s %-25s %-35s %-25s %10s",
-                            country.code, country.name, country.continent, country.region, country.population, country.capital);
+                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
             System.out.println(cty_string);
         }
     }
