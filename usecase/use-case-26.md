@@ -13,7 +13,7 @@ Company.
 
 Primary task.
 
-### PreconditionsThe total population of the continent/region/country not living in cities (including a %).
+### PreconditionsThe total population of the continent/region/country's name, population and living or not (including a %) in cities.
 
 We know the role.  Database contains current the population of countries data.
 
