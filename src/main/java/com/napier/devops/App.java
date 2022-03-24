@@ -26,7 +26,7 @@ public class App
         ArrayList<Country> topTenCountryInContinent = a.getTopTenCountryInContinent();
         System.out.println(" ---------- Top 10 Populated Country List in Continent ---------- ");
         //Print Top 10 Populated Country List in Continent
-        a.printTopTenCountryList(topTenCountryInContinent);
+        a.printTopTenCountryInContinent(topTenCountryInContinent);
 
         ArrayList<Country> topcountrylistworld = a.getTopCountryWorld();
         System.out.println(" ---------- Top 10 countries organized by largest to smallest population ---------- ");
@@ -167,6 +167,8 @@ public class App
             System.out.println(cty_string);
         }
     }
+
+
 
     //Get top 10 countries in the world organised by largest population to smallest.
     public ArrayList<Country> getTopCountryWorld() {
