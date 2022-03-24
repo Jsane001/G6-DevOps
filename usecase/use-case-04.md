@@ -1,4 +1,4 @@
-# USE CASE: 4 Produce a Report on the top 10 populated countries in the world where 10 is provided by the user
+# USE CASE: 4 Produce a report on the top 10 populated countries in the world where 10 is provided by the user
 
 ## CHARACTERISTIC INFORMATION
 
