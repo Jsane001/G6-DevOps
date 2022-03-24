@@ -51,7 +51,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(30000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "root", "example");
+                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "", "example");
                 System.out.println("Type 1:Successfully connected");
                 break;
             }
@@ -150,5 +150,33 @@ public class App
             System.out.println(cty_string);
         }
     }
-
+    //Get city in the Region organised by largest population to smallest.
+    public ArrayList<City> getCityRegion() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Code, country.Region  "
+                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Region = 'Asia'"
+                            + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            // Extract Country information
+            ArrayList<City> citylist = new ArrayList<City>();
+            while (rest.next()) {
+                City city = new City();
+                city.name = rest.getString("Name");
+                city.countryCode = rest.getString("CountryCode");
+                city.district = rest.getString("District");
+                city.population = rest.getInt("Population");
+                citylist.add(city);
+            }
+            return citylist;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest");
+            return null;
+        }
+    }
 }
