@@ -16,7 +16,7 @@ Primary task.
 
 ### Preconditions
 
-We know the role.  Database contains current the population of cities data.
+We know the role.  Database contains current the population of world data.
 
 ### Success End Condition
 
@@ -32,7 +32,7 @@ Organization Employee.
 
 ### Trigger
 
-A request for the population of cities information is sent to Organization Employee.
+A request for the population of world information is sent to Organization Employee.
 
 ## MAIN SUCCESS SCENARIO
 
