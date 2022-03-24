@@ -37,8 +37,8 @@ A request for the population of countries information is sent to Organization Em
 ## MAIN SUCCESS SCENARIO
 
 1. Get Connection from database.
-2. Get countries in a continent organised by largest population to smallest.
-3. Show countries in a continent organised by largest population to smallest.
+2. Get countries in a continent organized by largest population to smallest.
+3. Show countries in a continent organized by largest population to smallest.
 4. Close database connection.
 
 ## EXTENSIONS
