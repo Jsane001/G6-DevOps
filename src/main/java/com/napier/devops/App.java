@@ -63,10 +63,15 @@ public class App
         System.out.println(" \n ++++++++++++++++ 18.  List of capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCapitalContinent(capitalContinent);
 
+        ArrayList<Capital_City> capitalTopWorld = a.getTopCapitalWorld();
+        //Top 10 Capital cities in the world organised by largest population to smallest
+        System.out.println(" \n ++++++++++++++++ 20.  Top 10 capital city in the world organised by largest population to smallest  ++++++++++++++++ \n ");
+        a.printTopCapitalWorld(capitalTopWorld);
+
         ArrayList<Capital_City> capitalTopRegion = a.getTopCapitalRegion();
-        //Capital cities in the continent organised by largest population to smallest
+        //Top 10 Capital cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 22.  Top 10 capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printTopCapitalRegion(capitalTopRegion);
+        a.printTopCapitalWorld(capitalTopRegion);
 
 
         // Disconnect from database
@@ -655,7 +660,7 @@ public class App
             return capitalList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Countries by largest population to smallest in Continent");
+            System.out.println("Failed to get capital city by largest population to smallest in Continent");
             return null;
         }
     }
@@ -665,6 +670,56 @@ public class App
      * Print list of capital city in continent by largest population to smallest
      */
     public void printCapitalContinent(ArrayList<Capital_City> capitalList) {
+        // Print header
+        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
+        // Loop over all countries in the list
+        for (Capital_City capital : capitalList) {
+            if (capital == null)
+                continue;
+            String cty_string =
+                    String.format("%-30s %-25s %-10s",
+                            capital.getName(), capital.getCountry(), capital.getPopulation());
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * Get top 10 capital city in the world organised by largest population to smallest
+     * @return countryList
+     */
+    public ArrayList<Capital_City> getTopCapitalWorld() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name, country.Population "
+                            +"FROM country, city "
+                            +"WHERE country.Capital = city.ID ORDER BY country.Population DESC LIMIT 10";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            // Extract Country information
+            ArrayList<Capital_City> capitalList = new ArrayList<>();
+            while (rest.next()) {
+                Capital_City capital = new Capital_City();
+                capital.setName(rest.getString(1));
+                capital.setCountry(rest.getString(2));
+                capital.setPopulation(rest.getInt(3));
+                capitalList.add(capital);
+            }
+            return capitalList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get top 10 capital city by largest population to smallest in world");
+            return null;
+        }
+    }
+
+    /**
+     * @param capitalList
+     * Print top 10 capital city in world by largest population to smallest
+     */
+    public void printTopCapitalWorld(ArrayList<Capital_City> capitalList) {
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -705,7 +760,7 @@ public class App
             return capitalList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Countries by largest population to smallest in Continent");
+            System.out.println("Failed to get top 10 capital city by largest population to smallest in region");
             return null;
         }
     }
