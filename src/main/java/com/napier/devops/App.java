@@ -146,7 +146,10 @@ public class App
         }
     }
 
-    //Get list of Countries in the world organised by largest population to smallest
+    /**
+     * Get list of Countries in the world organised by largest population to smallest
+     * @return countryList
+     */
     public ArrayList<Country> getCountryWorld() {
         try {
             // Create an SQL statement
@@ -178,7 +181,10 @@ public class App
         }
     }
 
-    //Print list of Countries in world organised by largest population to smallest
+    /**
+     * @param countryList
+     * Print list of Countries in world organised by largest population to smallest
+     */
     public void printCountryWorld(ArrayList<Country> countryList) {
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
@@ -193,7 +199,10 @@ public class App
         }
     }
 
-    //Get list of countries in the continent organised by largest population to smallest
+    /**
+     * Get list of countries in the continent organised by largest population to smallest
+     * @return countryList
+     */
     public ArrayList<Country> getCountryContinent() {
         try {
             // Create an SQL statement
@@ -225,7 +234,10 @@ public class App
         }
     }
 
-    //Print list of Countries in continent by largest population to smallest
+    /**
+     * @param countryList
+     * Print list of Countries in continent by largest population to smallest
+     */
     public void printCountryContinent(ArrayList<Country> countryList) {
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
@@ -240,7 +252,10 @@ public class App
         }
     }
 
-    //Get list of countries in region organised by largest population to smallest in region
+    /**
+     * Get list of countries in region organised by largest population to smallest in region
+     * @return countryList
+     */
     public ArrayList<Country> getCountryRegion() {
         try {
             // Create an SQL statement
@@ -272,7 +287,10 @@ public class App
         }
     }
 
-    //Print list of Countries in region by largest population to smallest
+    /**
+     * @param countryList
+     * Print list of Countries in region by largest population to smallest
+     */
     public void printCountryRegion(ArrayList<Country> countryList) {
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
@@ -287,7 +305,10 @@ public class App
         }
     }
 
-    //Get top 10 countries in the world organised by largest population to smallest.
+    /**
+     * Get top 10 countries in the world organised by largest population to smallest.
+     * @return countryList
+     */
     public ArrayList<Country> getTopCountryWorld() {
         try {
             // Create an SQL statement
@@ -319,7 +340,10 @@ public class App
         }
     }
 
-    //Print top 10 countries in the world organised by largest population to smallest
+    /**
+     * @param countryList
+     * Print top 10 countries in the world organised by largest population to smallest
+     */
     public void printTopCountryWorld(ArrayList<Country> countryList) {
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
@@ -334,7 +358,10 @@ public class App
         }
     }
 
-    //Top 10 populated countries in continent list by largest population to smallest
+    /**
+     * Get Top 10 populated countries in continent list by largest population to smallest
+     * @return countryList
+     */
     public ArrayList<Country> getTopCountryContinent() {
         try {
             // Create an SQL statement
@@ -368,7 +395,10 @@ public class App
         }
     }
 
-    //Print list of top 10 populated countries in continent by largest population to smallest
+    /**
+     * @param countryList
+     * Print list of top 10 populated countries in continent by largest population to smallest
+     */
     public void printTopCountryContinent(ArrayList<Country> countryList) {
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
@@ -383,7 +413,10 @@ public class App
         }
     }
 
-    //Get top 10 populated countries in region list by largest population to smallest
+    /**
+     * Get top 10 populated countries in region list by largest population to smallest
+     * @return countryList
+     */
     public ArrayList<Country> getTopCountryRegion() {
         try {
             // Create an SQL statement
@@ -417,7 +450,10 @@ public class App
         }
     }
 
-    //Print list of top 10 populated countries in region by largest population to smallest
+    /**
+     * @param countryList
+     * Print list of top 10 populated countries in region by largest population to smallest
+     */
     public void printTopCountryRegion(ArrayList<Country> countryList) {
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
@@ -432,7 +468,10 @@ public class App
         }
     }
 
-    //Get list of cities in the world organised by largest population to smallest
+    /**
+     * Get list of cities in the world organised by largest population to smallest
+     * @return cityList
+     */
     public ArrayList<City> getCityWorld() {
         try {
             // Create an SQL statement
@@ -462,7 +501,10 @@ public class App
         }
     }
 
-    //Show list of cities in the world organised by largest population to smallest
+    /**
+     * @param cityList
+     * Show list of cities in the world organised by largest population to smallest
+     */
     public void printCityWorld(ArrayList<City> cityList) {
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "CountryCode", "District", "Population");
@@ -477,7 +519,10 @@ public class App
         }
     }
 
-    //Get list of cities in the region organised by largest population to smallest
+    /**
+     * Get list of cities in the region organised by largest population to smallest
+     * @return cityList
+     */
     public ArrayList<City> getCityRegion() {
         try {
             // Create an SQL statement
@@ -485,7 +530,7 @@ public class App
             // Create string for SQL statement
             String strSelect =
                     "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Code, country.Region  "
-                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Region = 'Asia'"
+                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Region = 'Antarctica'"
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
@@ -507,7 +552,10 @@ public class App
         }
     }
 
-    //Show list of cities in the region organised by largest population to smallest
+    /**
+     * @param cityList
+     * Show list of cities in the region organised by largest population to smallest
+     */
     public void printCityRegion(ArrayList<City> cityList) {
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "CountryCode", "District", "Population");
@@ -522,7 +570,10 @@ public class App
         }
     }
 
-    //Get list of cities in the continent organised by largest population to smallest
+    /**
+     * Get list of cities in the continent organised by largest population to smallest
+     * @return cityList
+     */
     public ArrayList<City> getCityContinent() {
         try {
             // Create an SQL statement
@@ -552,7 +603,10 @@ public class App
         }
     }
 
-    //Get list of city in the continent organised by largest population to smallest
+    /**
+     * @param cityList
+     * Get list of city in the continent organised by largest population to smallest
+     */
     public void printCityContinent(ArrayList<City> cityList) {
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "CountryCode", "District", "Population");
