@@ -29,7 +29,7 @@ public class Country {
     /**
      * Country Capital
      */
-    private int capital;
+    private String capital;
 
     //getter method for code
     public String getCode(){
@@ -77,11 +77,11 @@ public class Country {
     }
 
     //getter method for capital
-    public int getCapital(){
+    public String getCapital(){
         return capital;
     }
     //setter method for capital
-    public void setCapital(int capital){
+    public void setCapital(String capital){
         this.capital=capital;
     }
 
