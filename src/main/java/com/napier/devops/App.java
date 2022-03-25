@@ -71,8 +71,7 @@ public class App
         ArrayList<Capital_City> capitalTopRegion = a.getTopCapitalRegion();
         //Top 10 Capital cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 22.  Top 10 capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printTopCapitalWorld(capitalTopRegion);
-
+        a.printTopCapitalRegion(capitalTopRegion);
 
         // Disconnect from database
         a.disconnect();
