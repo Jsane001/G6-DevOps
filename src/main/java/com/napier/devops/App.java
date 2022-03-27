@@ -80,7 +80,7 @@ public class App
 
         ArrayList<Capital_City> capitalTopContinent = a.getTopCapitalContinent();
         //Top 10 Capital cities in the continent organised by largest population to smallest
-        System.out.println(" \n ++++++++++++++++ 20.  Top 10 capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
+        System.out.println(" \n ++++++++++++++++ 21.  Top 10 capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printTopCapitalContinent(capitalTopContinent);
 
         ArrayList<Capital_City> capitalTopRegion = a.getTopCapitalRegion();
@@ -556,7 +556,7 @@ public class App
             // Create string for SQL statement
             String strSelect =
                     "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Code, country.Region  "
-                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Region = 'Antarctica'"
+                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Region = 'Caribbean'"
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
