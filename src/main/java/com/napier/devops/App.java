@@ -58,6 +58,11 @@ public class App
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
 
+        ArrayList<City> cityCountry = a.getCityCountry();
+        //Cities in the country organised by largest population to smallest
+        System.out.println(" \n ++++++++++++++++ 10.  List of cities in the country organised by largest population to smallest  ++++++++++++++++ \n ");
+        a.printCityCountry(cityCountry);
+
         ArrayList<City> cityDistrict = a.getCityDistrict();
         //Cities in the district organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 11.  List of cities in the district organised by largest population to smallest  ++++++++++++++++ \n ");
@@ -629,6 +634,56 @@ public class App
      * Show list of city in the continent organised by largest population to smallest
      */
     public void printCityContinent(ArrayList<City> cityList) {
+        // Print header
+        System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
+        // Loop over all city in the list
+        for (City city : cityList) {
+            if (city == null)
+                continue;
+            String cty_string =
+                    String.format("%-30s %-10s %-20s %10s",
+                            city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation());
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * Get list of cities in the country organised by largest population to smallest
+     * @return cityList
+     */
+    public ArrayList<City> getCityCountry() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Name = 'Myanmar' "
+                            + "ORDER BY city.Population DESC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<City> cityList = new ArrayList<>();
+            // Extract Country information
+            while (rest.next()) {
+                City city = new City();
+                city.setName(rest.getString(1));
+                city.setCountryCode(rest.getString(2));
+                city.setDistrict(rest.getString(3));
+                city.setPopulation(rest.getInt(4));
+                cityList.add(city);
+            }
+            return cityList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest in country");
+            return null;
+        }
+    }
+
+    /**
+     * Show list of city in the country organised by largest population to smallest
+     */
+    public void printCityCountry(ArrayList<City> cityList) {
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
