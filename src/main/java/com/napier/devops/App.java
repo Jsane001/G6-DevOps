@@ -68,7 +68,10 @@ public class App
         System.out.println(" \n ++++++++++++++++ 18.  List of capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCapitalContinent(capitalContinent);
 
-
+        ArrayList<Capital_City> capitalRegion = a.getCapitalRegion();
+        //Capital cities in the region organised by largest population to smallest
+        System.out.println(" \n ++++++++++++++++ 19.  List of capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
+        a.printCapitalRegion(capitalRegion);
 
         ArrayList<Capital_City> capitalTopWorld = a.getTopCapitalWorld();
         //Top 10 Capital cities in the world organised by largest population to smallest
