@@ -78,6 +78,11 @@ public class App
         System.out.println(" \n ++++++++++++++++ 20.  Top 10 capital city in the world organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printTopCapitalWorld(capitalTopWorld);
 
+        ArrayList<Capital_City> capitalTopContinent = a.getTopCapitalContinent();
+        //Top 10 Capital cities in the continent organised by largest population to smallest
+        System.out.println(" \n ++++++++++++++++ 20.  Top 10 capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
+        a.printTopCapitalContinent(capitalTopContinent);
+
         ArrayList<Capital_City> capitalTopRegion = a.getTopCapitalRegion();
         //Top 10 Capital cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 22.  Top 10 capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
@@ -871,6 +876,24 @@ public class App
             System.out.println(e.getMessage());
             System.out.println("Failed to get top 10 capital city by largest population to smallest in continent");
             return null;
+        }
+    }
+
+    /**
+     * @param capitalList
+     * Print top 10 capital city in continent by largest population to smallest
+     */
+    public void printTopCapitalContinent(ArrayList<Capital_City> capitalList) {
+        // Print header
+        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
+        // Loop over all countries in the list
+        for (Capital_City capital : capitalList) {
+            if (capital == null)
+                continue;
+            String cty_string =
+                    String.format("%-30s %-25s %-10s",
+                            capital.getName(), capital.getCountry(), capital.getPopulation());
+            System.out.println(cty_string);
         }
     }
 
