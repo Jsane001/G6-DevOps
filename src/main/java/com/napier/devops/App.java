@@ -652,9 +652,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, country.Name, country.Population "
+                    "SELECT city.Name, country.Name, city.Population "
                             +"FROM country, city "
-                            +"WHERE country.Capital = city.ID ORDER BY country.Population DESC";
+                            +"WHERE country.Capital = city.ID ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
@@ -702,9 +702,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, country.Name, country.Population "
+                    "SELECT city.Name, country.Name, city.Population "
                             +"FROM country, city "
-                            +"WHERE country.Capital = city.ID AND country.Continent ='Asia' ORDER BY country.Population DESC";
+                            +"WHERE country.Capital = city.ID AND country.Continent ='Asia' ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
@@ -752,9 +752,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, country.Name, country.Population "
+                    "SELECT city.Name, country.Name, city.Population "
                             +"FROM country, city "
-                            +"WHERE country.Capital = city.ID AND country.Region ='Caribbean' ORDER BY country.Population DESC";
+                            +"WHERE country.Capital = city.ID AND country.Region ='Caribbean' ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
@@ -802,9 +802,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, country.Name, country.Population "
+                    "SELECT city.Name, country.Name, city.Population "
                             +"FROM country, city "
-                            +"WHERE country.Capital = city.ID ORDER BY country.Population DESC LIMIT 10";
+                            +"WHERE country.Capital = city.ID ORDER BY city.Population DESC LIMIT 10";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
@@ -852,9 +852,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, country.Name, country.Population "
+                    "SELECT city.Name, country.Name, city.Population "
                             +"FROM country, city "
-                            +"WHERE country.Capital = city.ID AND country.Region ='Caribbean' ORDER BY country.Population DESC LIMIT 10";
+                            +"WHERE country.Capital = city.ID AND country.Region ='Caribbean' ORDER BY city.Population DESC LIMIT 10";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
