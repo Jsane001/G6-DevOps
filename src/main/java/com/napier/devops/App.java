@@ -73,6 +73,11 @@ public class App
         System.out.println(" \n ++++++++++++++++ 13.  Top 10 populated cities in continent  ++++++++++++++++ \n ");
         a.printTopCityContinent(cityTopContinent);
 
+        ArrayList<City> cityTopRegion = a.getTopCityRegion();
+        //Cities in the region organised by largest population to smallest
+        System.out.println(" \n ++++++++++++++++ 14.  Top 10 populated cities in region  ++++++++++++++++ \n ");
+        a.printTopCityRegion(cityTopRegion);
+
         ArrayList<City> cityTopCountry = a.getTopCityCountry();
         //Cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 15.  Top 10 populated cities in country  ++++++++++++++++ \n ");
@@ -649,7 +654,7 @@ public class App
             String strSelect =
                     "SELECT city.Name, country.Name, city.District, city.Population "
                             + "FROM city, country WHERE city.CountryCode = country.Code AND city.District = 'Bahia' "
-                            + "ORDER BY city.Population DESC LIMIT 10";
+                            + "ORDER BY city.Population";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             ArrayList<City> cityList = new ArrayList<>();
@@ -777,6 +782,57 @@ public class App
      * Show top 10 city in the continent organised by largest population to smallest
      */
     public void printTopCityContinent(ArrayList<City> cityList) {
+        // Print header
+        System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
+        // Loop over all city in the list
+        for (City city : cityList) {
+            if (city == null)
+                continue;
+            String cty_string =
+                    String.format("%-30s %-10s %-20s %10s",
+                            city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation());
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * Get top 10 cities in the region organised by largest population to smallest
+     * @return cityList
+     */
+    public ArrayList<City> getTopCityRegion() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Region = 'Southern and Central Asia' "
+                            + "ORDER BY city.Population DESC LIMIT 10";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<City> cityList = new ArrayList<>();
+            // Extract Country information
+            while (rest.next()) {
+                City city = new City();
+                city.setName(rest.getString(1));
+                city.setCountryCode(rest.getString(2));
+                city.setDistrict(rest.getString(3));
+                city.setPopulation(rest.getInt(4));
+                cityList.add(city);
+            }
+            return cityList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get top 10 City by largest population to smallest in region");
+            return null;
+        }
+    }
+
+    /**
+     * @param cityList
+     * Show top 10 city in the region organised by largest population to smallest
+     */
+    public void printTopCityRegion(ArrayList<City> cityList) {
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
