@@ -772,6 +772,24 @@ public class App
     }
 
     /**
+     * @param capitalList
+     * Print list of capital city in region by largest population to smallest
+     */
+    public void printCapitalRegion(ArrayList<Capital_City> capitalList) {
+        // Print header
+        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
+        // Loop over all countries in the list
+        for (Capital_City capital : capitalList) {
+            if (capital == null)
+                continue;
+            String cty_string =
+                    String.format("%-30s %-25s %-10s",
+                            capital.getName(), capital.getCountry(), capital.getPopulation());
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
      * Get top 10 capital city in the world organised by largest population to smallest
      * @return countryList
      */
