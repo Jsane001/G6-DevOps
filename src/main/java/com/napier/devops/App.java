@@ -843,6 +843,38 @@ public class App
     }
 
     /**
+     * Get top 10 capital city in the continent organised by largest population to smallest
+     * @return countryList
+     */
+    public ArrayList<Capital_City> getTopCapitalContinent() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.Name, country.Name, city.Population "
+                            +"FROM country, city "
+                            +"WHERE country.Capital = city.ID ORDER BY city.Population DESC LIMIT 10";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            // Extract Country information
+            ArrayList<Capital_City> capitalList = new ArrayList<>();
+            while (rest.next()) {
+                Capital_City capital = new Capital_City();
+                capital.setName(rest.getString(1));
+                capital.setCountry(rest.getString(2));
+                capital.setPopulation(rest.getInt(3));
+                capitalList.add(capital);
+            }
+            return capitalList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get top 10 capital city by largest population to smallest in continent");
+            return null;
+        }
+    }
+
+    /**
      * Get top 10 capital city in the region organised by largest population to smallest
      * @return countryList
      */
