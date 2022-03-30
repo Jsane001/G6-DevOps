@@ -58,6 +58,11 @@ public class App
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
 
+        ArrayList<Country> populationRegion = a.getPopulationRegion();
+        System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
+        //Print the population of people living in cities and people not living in cities in each region
+        a.printPopulationRegion(populationRegion);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -616,4 +621,63 @@ public class App
             System.out.println(cty_string);
         }
     }
+
+
+
+    public ArrayList<Country> getPopulationRegion() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Region, SUM(country.Population), SUM(city.Population) "
+                            +"FROM country, city "
+                            +"WHERE country.Capital = city.ID GROUP BY country.Region";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Country> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Country population = new Country();
+                population.setRegion(rest.getString(1));
+                population.setPopulation(rest.getInt(2));
+                population.setCityPopulation(rest.getInt(3));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get Countries by largest population to smallest in Region");
+            return null;
+        }
+    }
+
+    /**
+     * @param populationList
+     * Print list the population of people living in cities and people not living in cities in each region
+     */
+    public void printPopulationRegion(ArrayList<Country> populationList) {
+        // Print header
+        System.out.printf("%-35s %-22s %-22s %-21s%n", "Region", "Total Population", "Living", "Non-living");
+
+        // Loop over all population of people living in cities and people not living in cities in each region
+        int living = 0;
+        int nonliving = 0;
+        for (Country population : populationList) {
+            if (population == null)
+                continue;
+            living = (population.getCityPopulation() *100) / population.getPopulation();
+            nonliving = 100 - living;
+            String cty_string =
+                    String.format("%-35s %-22s %-22s %-21s",
+                            population.getRegion(), population.getPopulation(), living+"%", nonliving+"%");
+            System.out.println(cty_string);
+        }
+    }
+
+
+
+
+
 }
