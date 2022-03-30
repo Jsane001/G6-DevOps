@@ -622,8 +622,10 @@ public class App
         }
     }
 
-
-
+    /**
+     * Get list the population of people living in cities and people not living in cities in each region
+     * @return populationList
+     */
     public ArrayList<Country> getPopulationRegion() {
         try {
             // Create an SQL statement
@@ -648,7 +650,7 @@ public class App
             return populationList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get Countries by largest population to smallest in Region");
+            System.out.println("Failed to get the population of people living in cities and people not living in cities in each region");
             return null;
         }
     }
@@ -675,9 +677,4 @@ public class App
             System.out.println(cty_string);
         }
     }
-
-
-
-
-
 }
