@@ -665,20 +665,20 @@ public class App
         System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
 
         // Loop over all population of people living in cities and people not living in cities in each region
-        double living = 0, nonlivingperc = 0;
-        int nonliving = 0;
+        double living, nonLivingPerc;
+        int nonLiving;
         for (Population population : populationList) {
             if (population == null)
                 continue;
             double city = population.getCityPopulation();
             double country = population.getCountryPopulation();
             living = (city * 100) / country;
-            nonliving = population.getCountryPopulation() - population.getCityPopulation();
-            nonlivingperc = 100 - living;
+            nonLiving = population.getCountryPopulation() - population.getCityPopulation();
+            nonLivingPerc = 100 - living;
             DecimalFormat df = new DecimalFormat("#.##");
             String cty_string =
                     String.format("%-35s %-25s %-25s %-25s",
-                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonliving+" ("+df.format(nonlivingperc)+"%)");
+                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPerc)+"%)");
             System.out.println(cty_string);
         }
     }
