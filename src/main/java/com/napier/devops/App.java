@@ -636,8 +636,7 @@ public class App
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-           // String strSelect= "SELECT country.Name, country.Population FROM country ";
-             //Create string for SQL statement
+            //Create string for SQL statement
             String strSelect = "SELECT country.Name, country.Population,SUM(DISTINCT city.Population),(SUM(DISTINCT city.Population)/country.Population)*100,country.Population-SUM(DISTINCT city.Population),((country.Population-SUM(DISTINCT city.Population))/country.Population)*100 "
                     +"FROM city, country WHERE country.Code = city.CountryCode GROUP BY country.Name, country.Population "
                     +"ORDER BY country.Population DESC";
@@ -675,7 +674,7 @@ public class App
     private static final DecimalFormat df = new DecimalFormat("0.00");
     public void printPopulationCountry(ArrayList<Country> countryList) {
         // Print header
-        System.out.printf("%-50s %-30s %-30s %-30s %-30s %20s%n", "Country Name", "Country Population", "Living population","Not Living population", "Living population(%)", "Not Living population(%)");
+        System.out.printf("%-50s %-30s %-30s %-30s%n ", "Country Name", "Country Population", "Living population","Not Living population");
         // Loop over all city in the list
     
         for (Country country : countryList) {
@@ -683,8 +682,8 @@ public class App
                 continue;
             df.setRoundingMode(RoundingMode.UP);
             String cty_string =
-                    String.format("%-50s %-30s %-30s %-30s %-30s %-20s",
-                            country.getName(), country.getPopulation(), country.getLiving(),country.getNotLiving(),df.format(country.getLivingper())+"%", df.format(country.getNotLivingper())+ "%");
+                    String.format("%-50s %-30s %-30s %-30s ",
+                            country.getName(), country.getPopulation(), country.getLiving()+" ("+df.format(country.getLivingper())+"%)",country.getNotLiving() + " (" + df.format(country.getNotLivingper())+ "%)");
             System.out.println(cty_string);
         }
     }
