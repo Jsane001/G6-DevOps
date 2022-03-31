@@ -3,6 +3,7 @@ package com.napier.devops;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.math.RoundingMode;
 
 public class App
 {
@@ -58,6 +59,11 @@ public class App
         //Cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
+
+        ArrayList<Population> populationContinent = a.getPopulationContinent();
+        System.out.println(" \n ++++++++++++++++ 23. The population of people living in cities and people not living in cities in each continent  ++++++++++++++++ \n ");
+        //Print the population of people living in cities and people not living in cities in each continent
+        a.printPopulationContinent(populationContinent);
 
         ArrayList<Population> populationRegion = a.getPopulationRegion();
         System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
@@ -582,9 +588,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Code, country.Region "
-                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Continent = 'Asia'"
-                            + "ORDER BY city.Population DESC";
+                   "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Code, country.Region "
+                           + "FROM city, country WHERE city.CountryCode = country.Code AND country.Continent = 'Asia'"
+                           + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             ArrayList<City> cityList = new ArrayList<>();
@@ -622,6 +628,75 @@ public class App
             System.out.println(cty_string);
         }
     }
+
+
+
+
+    /**
+     * Get list the population of people living in cities and people not living in cities in each continent
+     * @return populationList
+     */
+    public ArrayList<Population> getPopulationContinent() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Continent, SUM(DISTINCT country.Population), SUM(city.Population) "
+                            + "FROM city, country WHERE country.Code = city.CountryCode GROUP BY country.Continent, country.Population "
+                            + "ORDER BY country.Continent DESC";
+
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> listPopulation = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setContinent(rest.getString(1));
+                population.setCountryPopulation(rest.getInt(2));
+                population.setCityPopulation(rest.getInt(3));
+                listPopulation.add(population);
+            }
+            return listPopulation;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people living in cities and people not living in cities in each continent");
+            return null;
+        }
+    }
+
+    /**
+     * @param listPopulation
+     * Print list the population of people living in cities and people not living in cities in each continent
+     */
+    public void printPopulationContinent(ArrayList<Population> listPopulation) {
+        // Print header
+        System.out.printf("%-35s %-25s %-25s %-25s%n", "Continent", "Total Population", "Living on City", "Non-living on City");
+
+        // Loop over all population of people living in cities and people not living in cities in each continent
+        double living, nonLivingPerc;
+        int nonLiving;
+
+        for (Population population : listPopulation) {
+            if (population == null)
+                continue;
+            double city = population.getCityPopulation();
+            double country = population.getCountryPopulation();
+            living = (city * 100) / country;
+            nonLiving = population.getCountryPopulation() - population.getCityPopulation();
+            nonLivingPerc = 100 - living;
+            DecimalFormat df = new DecimalFormat("#.##");
+            String cty_string =
+                    String.format("%-35s %-25s %-25s %-25s",
+                            population.getContinent(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPerc)+"%)");
+            System.out.println(cty_string);
+        }
+    }
+
+
+
+
+
 
     /**
      * Get list the population of people living in cities and people not living in cities in each region
