@@ -633,9 +633,9 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.Region, SUM(country.Population), SUM(city.Population) "
+                    "SELECT country.Region, SUM(DISTINCT country.Population), SUM(city.Population) "
                             +"FROM country, city "
-                            +"WHERE country.Capital = city.ID GROUP BY country.Region ORDER BY country.Region ASC";
+                            +"WHERE country.Code = city.CountryCode GROUP BY country.Region ORDER BY country.Region ASC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
 
