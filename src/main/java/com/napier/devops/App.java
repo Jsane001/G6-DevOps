@@ -61,9 +61,9 @@ public class App
         a.printCityContinent(cityContinent);
 
         // Country City
-        ArrayList<Country> cityCounty = a.getPopulationCountry();
-        System.out.println(" \n\t\t\t\t ++++++++++++++++ 10.  population of cities in the country with percentage  ++++++++++++++++ \n ");
-        a.printPopulationCountry(cityCounty);
+        ArrayList<Population> countryPopulation = a.getPopulationCountry();
+        System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
+        a.printPopulationCountry(countryPopulation);
 
 
 
@@ -632,7 +632,7 @@ public class App
         }
     }
 
-    public ArrayList<Country> getPopulationCountry() {
+    public ArrayList<Population> getPopulationCountry() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -644,21 +644,21 @@ public class App
 
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
-            ArrayList<Country> countryList = new ArrayList<>();
+            ArrayList<Population> populationList = new ArrayList<>();
             // Extract Country information
             while (rest.next()) {
-                Country country = new Country();
-                country.setName(rest.getString(1));
-                country.setPopulation(rest.getInt(2));
-                country.setLiving(rest.getInt(3));
-                country.setLivingper(rest.getFloat(4));
-                country.setNotLiving(rest.getInt(5));
-                country.setNotLivingper(rest.getFloat(6));
+                Population populations = new Population();
+                populations.setName(rest.getString(1));
+                populations.setPopulation(rest.getInt(2));
+                populations.setCountryPopulation(rest.getInt(3));
+                populations.setLivingPer(rest.getFloat(4));
+                populations.setCityPopulation(rest.getInt(5));
+                populations.setNotLivingPer(rest.getFloat(6));
 
 
-                countryList.add(country);
+                populationList.add(populations);
             }
-            return countryList;
+            return populationList;
         }
         catch (SQLException e){
             System.out.println(e.getMessage());
@@ -672,18 +672,18 @@ public class App
         }
     }
     private static final DecimalFormat df = new DecimalFormat("0.00");
-    public void printPopulationCountry(ArrayList<Country> countryList) {
+    public void printPopulationCountry(ArrayList<Population> populationList) {
         // Print header
         System.out.printf("%-50s %-30s %-30s %-30s%n ", "Country Name", "Country Population", "Living population","Not Living population");
         // Loop over all city in the list
     
-        for (Country country : countryList) {
-            if (country == null)
+        for (Population population : populationList) {
+            if (population == null)
                 continue;
             df.setRoundingMode(RoundingMode.UP);
             String cty_string =
                     String.format("%-50s %-30s %-30s %-30s ",
-                            country.getName(), country.getPopulation(), country.getLiving()+" ("+df.format(country.getLivingper())+"%)",country.getNotLiving() + " (" + df.format(country.getNotLivingper())+ "%)");
+                            population.getName(), population.getPopulation(), population.getCountryPopulation()+" ("+df.format(population.getLivingPer())+"%)",population.getCityPopulation() + " (" + df.format(population.getNotLivingPer())+ "%)");
             System.out.println(cty_string);
         }
     }
