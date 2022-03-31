@@ -16,11 +16,11 @@ public class Population {
     /**
      * Total Population for country
      */
-    private double countrypopulation;
+    private int countrypopulation;
     /**
      * Total Population for city
      */
-    private double citypopulation;
+    private int citypopulation;
 
     //getter method for continent
     public String getContinent(){
@@ -50,18 +50,18 @@ public class Population {
     }
 
     //getter method for country population
-    public double getCountryPopulation(){
+    public int getCountryPopulation(){
         return countrypopulation;
     }
     //setter method for country population
-    public void setCountryPopulation(double countrypopulation){
+    public void setCountryPopulation(int countrypopulation){
         this.countrypopulation=countrypopulation;
     }
 
     //getter method for city population
-    public double getCityPopulation(){ return citypopulation; }
+    public int getCityPopulation(){ return citypopulation; }
     //setter method for city population
-    public void setCityPopulation(double citypopulation){
+    public void setCityPopulation(int citypopulation){
         this.citypopulation=citypopulation;
     }
 

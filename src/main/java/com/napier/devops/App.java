@@ -1,6 +1,7 @@
 package com.napier.devops;
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class App
@@ -634,7 +635,7 @@ public class App
             String strSelect =
                     "SELECT country.Region, SUM(country.Population), SUM(city.Population) "
                             +"FROM country, city "
-                            +"WHERE country.Capital = city.ID GROUP BY country.Region";
+                            +"WHERE country.Capital = city.ID GROUP BY country.Region ORDER BY country.Region ASC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
 
@@ -661,18 +662,23 @@ public class App
      */
     public void printPopulationRegion(ArrayList<Population> populationList) {
         // Print header
-        System.out.printf("%-35s %-22s %-22s %-21s%n", "Region", "Total Population", "Living", "Non-living");
+        System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
 
         // Loop over all population of people living in cities and people not living in cities in each region
-        double living = 0, nonliving = 0;
+        double living = 0, nonlivingperc = 0;
+        int nonliving = 0;
         for (Population population : populationList) {
             if (population == null)
                 continue;
-            living = (population.getCityPopulation() * 100) / population.getCountryPopulation();
-            nonliving = 100 - living;
+            double city = population.getCityPopulation();
+            double country = population.getCountryPopulation();
+            living = (city * 100) / country;
+            nonliving = population.getCountryPopulation() - population.getCityPopulation();
+            nonlivingperc = 100 - living;
+            DecimalFormat df = new DecimalFormat("#.##");
             String cty_string =
-                    String.format("%-35s %-22s %-22s %-21s",
-                            population.getRegion(), population.getCountryPopulation(), living+"%", nonliving+"%");
+                    String.format("%-35s %-25s %-25s %-25s",
+                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonliving+" ("+df.format(nonlivingperc)+"%)");
             System.out.println(cty_string);
         }
     }
