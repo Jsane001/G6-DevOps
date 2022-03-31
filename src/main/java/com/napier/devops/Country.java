@@ -31,6 +31,11 @@ public class Country {
      */
     private int capital;
 
+    private int Living;
+    private int NotLiving;
+    private float NotLivingper;
+    private float Livingper;
+
     //getter method for code
     public String getCode(){
         return code;
@@ -84,5 +89,32 @@ public class Country {
     public void setCapital(int capital){
         this.capital=capital;
     }
+
+    public int getLiving(){
+        return Living;
+    }
+    //setter method for living
+    public void setLiving(int Living){ this.Living=Living;}
+
+    public float getLivingper(){
+        return Livingper;
+    }
+    //setter method for living percentage
+    public void setLivingper(float Livingper){
+        this.Livingper=Livingper;}
+
+    public int getNotLiving(){
+        return NotLiving;
+    }
+    //setter method for living
+    public void setNotLiving(int NotLiving){ this.NotLiving=NotLiving;}
+
+    public float getNotLivingper(){
+        return NotLivingper;
+    }
+    //setter method for living percentage
+    public void setNotLivingper(float NotLivingper){
+        this.NotLivingper=NotLivingper;}
+
 
 }
