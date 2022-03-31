@@ -2,40 +2,67 @@ package com.napier.devops;
 
 public class Population {
     /**
+     * Continent Name
+     */
+    private String continent;
+    /**
+     * Region Name
+     */
+    private String region;
+    /**
      * City Name
      */
-    private String name;
+    private String city;
     /**
-     * Total Population
+     * Total Population for country
      */
-    private String population;
+    private double countrypopulation;
     /**
-     * People Living in City
+     * Total Population for city
      */
-    private String living;
-    /**
-     * People Not Living People in City
-     */
-    private String nonliving;
+    private double citypopulation;
 
-    //getter method for city name
-    public String getName(){
-        return name;
+    //getter method for continent
+    public String getContinent(){
+        return continent;
+    }
+    //setter method for continent
+    public void setContinent(String continent){
+        this.continent=continent;
     }
 
-    //getter method for population
-    public String getPopulation(){
-        return population;
+    //getter method for region
+    public String getRegion(){
+        return region;
+    }
+    //setter method for region
+    public void setRegion(String region){
+        this.region=region;
     }
 
-    //getter method for living people in city
-    public String getLiving(){
-        return living;
+    //getter method for city
+    public String getCity(){
+        return city;
+    }
+    //setter method for city
+    public void setCity(String city){
+        this.city=city;
     }
 
-    //getter method for people not living in city
-    public String getNonliving(){
-        return nonliving;
+    //getter method for country population
+    public double getCountryPopulation(){
+        return countrypopulation;
+    }
+    //setter method for country population
+    public void setCountryPopulation(double countrypopulation){
+        this.countrypopulation=countrypopulation;
+    }
+
+    //getter method for city population
+    public double getCityPopulation(){ return citypopulation; }
+    //setter method for city population
+    public void setCityPopulation(double citypopulation){
+        this.citypopulation=citypopulation;
     }
 
 }

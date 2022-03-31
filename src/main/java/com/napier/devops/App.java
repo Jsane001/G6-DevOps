@@ -58,7 +58,7 @@ public class App
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
 
-        ArrayList<Country> populationRegion = a.getPopulationRegion();
+        ArrayList<Population> populationRegion = a.getPopulationRegion();
         System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
         //Print the population of people living in cities and people not living in cities in each region
         a.printPopulationRegion(populationRegion);
@@ -626,7 +626,7 @@ public class App
      * Get list the population of people living in cities and people not living in cities in each region
      * @return populationList
      */
-    public ArrayList<Country> getPopulationRegion() {
+    public ArrayList<Population> getPopulationRegion() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
@@ -639,11 +639,11 @@ public class App
             ResultSet rest = stmt.executeQuery(strSelect);
 
             // Extract Population information
-            ArrayList<Country> populationList = new ArrayList<>();
+            ArrayList<Population> populationList = new ArrayList<>();
             while (rest.next()) {
-                Country population = new Country();
+                Population population = new Population();
                 population.setRegion(rest.getString(1));
-                population.setPopulation(rest.getInt(2));
+                population.setCountryPopulation(rest.getInt(2));
                 population.setCityPopulation(rest.getInt(3));
                 populationList.add(population);
             }
@@ -659,21 +659,20 @@ public class App
      * @param populationList
      * Print list the population of people living in cities and people not living in cities in each region
      */
-    public void printPopulationRegion(ArrayList<Country> populationList) {
+    public void printPopulationRegion(ArrayList<Population> populationList) {
         // Print header
         System.out.printf("%-35s %-22s %-22s %-21s%n", "Region", "Total Population", "Living", "Non-living");
 
         // Loop over all population of people living in cities and people not living in cities in each region
-        int living = 0;
-        int nonliving = 0;
-        for (Country population : populationList) {
+        double living = 0, nonliving = 0;
+        for (Population population : populationList) {
             if (population == null)
                 continue;
-            living = (population.getCityPopulation() *100) / population.getPopulation();
+            living = (population.getCityPopulation() * 100) / population.getCountryPopulation();
             nonliving = 100 - living;
             String cty_string =
                     String.format("%-35s %-22s %-22s %-21s",
-                            population.getRegion(), population.getPopulation(), living+"%", nonliving+"%");
+                            population.getRegion(), population.getCountryPopulation(), living+"%", nonliving+"%");
             System.out.println(cty_string);
         }
     }

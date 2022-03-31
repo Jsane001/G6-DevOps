@@ -27,11 +27,6 @@ public class Country {
     private int population;
 
     /**
-     * Country City Population
-     */
-    private int citypopulation;
-
-    /**
      * Country Capital
      */
     private String capital;
@@ -79,15 +74,6 @@ public class Country {
     //setter method for population
     public void setPopulation(int population){
         this.population=population;
-    }
-
-    //getter method for city population
-    public int getCityPopulation(){
-        return citypopulation;
-    }
-    //setter method for city population
-    public void setCityPopulation(int citypopulation){
-        this.citypopulation=citypopulation;
     }
 
     //getter method for capital
