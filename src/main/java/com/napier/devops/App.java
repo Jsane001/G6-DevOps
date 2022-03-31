@@ -1,6 +1,7 @@
 package com.napier.devops;
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class App
@@ -57,6 +58,11 @@ public class App
         //Cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
+
+        ArrayList<Population> populationRegion = a.getPopulationRegion();
+        System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
+        //Print the population of people living in cities and people not living in cities in each region
+        a.printPopulationRegion(populationRegion);
 
         // Disconnect from database
         a.disconnect();
@@ -613,6 +619,66 @@ public class App
             String cty_string =
                     String.format("%-30s %-10s %-20s %10s",
                             city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation());
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * Get list the population of people living in cities and people not living in cities in each region
+     * @return populationList
+     */
+    public ArrayList<Population> getPopulationRegion() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Region, SUM(DISTINCT country.Population), SUM(city.Population) "
+                            +"FROM country, city "
+                            +"WHERE country.Code = city.CountryCode GROUP BY country.Region ORDER BY country.Region ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setRegion(rest.getString(1));
+                population.setCountryPopulation(rest.getInt(2));
+                population.setCityPopulation(rest.getInt(3));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people living in cities and people not living in cities in each region");
+            return null;
+        }
+    }
+
+    /**
+     * @param populationList
+     * Print list the population of people living in cities and people not living in cities in each region
+     */
+    public void printPopulationRegion(ArrayList<Population> populationList) {
+        // Print header
+        System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
+
+        // Loop over all population of people living in cities and people not living in cities in each region
+        double living, nonLivingPerc;
+        int nonLiving;
+        for (Population population : populationList) {
+            if (population == null)
+                continue;
+            double city = population.getCityPopulation();
+            double country = population.getCountryPopulation();
+            living = (city * 100) / country;
+            nonLiving = population.getCountryPopulation() - population.getCityPopulation();
+            nonLivingPerc = 100 - living;
+            DecimalFormat df = new DecimalFormat("#.##");
+            String cty_string =
+                    String.format("%-35s %-25s %-25s %-25s",
+                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPerc)+"%)");
             System.out.println(cty_string);
         }
     }

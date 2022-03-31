@@ -31,56 +31,86 @@ public class Country {
      */
     private String capital;
 
-    //getter method for code
+    /**
+     * getter method for code
+     */
     public String getCode(){
         return code;
     }
-    //setter method for code
+
+    /**
+     * setter method for code
+     */
     public void setCode(String code){
         this.code=code;
     }
 
-    //getter method for name
+    /**
+     * getter method for name
+     */
     public String getName(){
         return name;
     }
-    //setter method for name
+
+    /**
+     * setter method for name
+     */
     public void setName(String name){
         this.name=name;
     }
 
-    //getter method for continent
+    /**
+     * getter method for continent
+     */
     public String getContinent(){
         return continent;
     }
-    //setter method for continent
+
+    /**
+     * setter method for continent
+     */
     public void setContinent(String continent){
         this.continent=continent;
     }
 
-    //getter method for region
+    /**
+     * getter method for region
+     */
     public String getRegion(){
         return region;
     }
-    //setter method for region
+
+    /**
+     * setter method for region
+     */
     public void setRegion(String region){
         this.region=region;
     }
 
-    //getter method for population
+    /**
+     * getter method for population
+     */
     public int getPopulation(){
         return population;
     }
-    //setter method for population
+
+    /**
+     * setter method for population
+     */
     public void setPopulation(int population){
         this.population=population;
     }
 
-    //getter method for capital
+    /**
+     * getter method for capital
+     */
     public String getCapital(){
         return capital;
     }
-    //setter method for capital
+
+    /**
+     * setter method for capital
+     */
     public void setCapital(String capital){
         this.capital=capital;
     }

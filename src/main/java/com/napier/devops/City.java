@@ -21,42 +21,58 @@ public class City {
      */
     private int population;
 
-    //getter method for city name
+    /**
+     * getter method for city name
+     */
     public String getName(){
         return name;
     }
 
-    //setter method for city name
+    /**
+     * setter method for city name
+     */
     public void setName(String name){
         this.name=name;
     }
 
-    //getter method for countryCode
+    /**
+     * getter method for countryCode
+     */
     public String getCountryCode(){
         return countryCode;
     }
 
-    //setter method for countryCode
+    /**
+     * setter method for countryCode
+     */
     public void setCountryCode(String countryCode){
         this.countryCode=countryCode;
     }
 
-    //getter method for district
+    /**
+     * getter method for district
+     */
     public String getDistrict(){
         return district;
     }
 
-    //setter method for district
+    /**
+     * setter method for district
+     */
     public void setDistrict(String district){
         this.district=district;
     }
 
-    //getter method for population
+    /**
+     * getter method for population
+     */
     public int getPopulation(){
         return population;
     }
 
-    //setter method for population
+    /**
+     * setter method for population
+     */
     public void setPopulation(int population){
         this.population=population;
     }
