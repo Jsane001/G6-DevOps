@@ -54,6 +54,40 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    //PopulationContinent
+    @Test
+    void printCapitalContinentNull()
+    {
+        app.printCapitalContinent(null);
+    }
+
+    @Test
+    void printCapitalContinentTestEmpty()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        app.printCapitalContinent(capitalList);
+    }
+
+    @Test
+    void printCapitalContinentContainsNull()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        capitalList.add(null);
+        app.printCapitalContinent(capitalList);
+    }
+
+    @Test
+    void printCapitalContinent()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        Capital_City capital = new Capital_City();
+        capital.setName("Bandar Seri Begawan");
+        capital.setCountry("Brunei");
+        capital.setPopulation(21484);
+        capitalList.add(capital);
+        app.printCapitalContinent(capitalList);
+    }
+
     //PopulationRegion
     @Test
     void printCapitalRegionNull()
@@ -88,7 +122,7 @@ public class AppTest
         app.printCapitalRegion(capitalList);
     }
 
-    //PopulationContinent
+    //PopulationWorld
     @Test
     void printTopCapitalWorldNull()
     {
