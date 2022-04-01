@@ -322,6 +322,12 @@ public class App
      * Print list of Countries in continent by largest population to smallest
      */
     public void printCountryContinent(ArrayList<Country> countryList) {
+        // Check countryList is not null
+        if (countryList == null)
+        {
+            System.out.println("No Country");
+            return;
+        }
         // Print header
         System.out.printf("%-10s %-25s %-10s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list

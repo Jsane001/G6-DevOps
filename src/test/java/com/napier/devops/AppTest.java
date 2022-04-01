@@ -54,4 +54,40 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    @Test
+    void printCountryContinentNull()
+    {
+        app.printCountryContinent(null);
+    }
+
+    @Test
+    void printCountryContinentTestEmpty()
+    {
+        ArrayList<Country> countryWorld = new ArrayList<>();
+        app.printCountryContinent(countryWorld);
+    }
+
+    @Test
+    void printCountryContinentContainsNull()
+    {
+        ArrayList<Country> countryWorld = new ArrayList<>();
+        countryWorld.add(null);
+        app.printCountryContinent(countryWorld);
+    }
+
+    @Test
+    void printCountryContinent()
+    {
+        ArrayList<Country> countryWorld = new ArrayList<>();
+        Country country = new Country();
+        country.setCode("MM");
+        country.setName("Myanmar");
+        country.setContinent("Asia");
+        country.setRegion("Southeast Asia");
+        country.setPopulation(1000);
+        country.setCapital("Yangon");
+        countryWorld.add(country);
+        app.printCountryWorld(countryWorld);
+    }
+
 }
