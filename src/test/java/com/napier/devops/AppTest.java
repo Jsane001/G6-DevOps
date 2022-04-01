@@ -54,4 +54,41 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    //Population
+    @Test
+    void printPopulationCountryNull()
+    {
+        app.printPopulationCountry(null);
+    }
+
+    @Test
+    void printPopulationCountryTestEmpty()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        app.printPopulationCountry(populationList);
+    }
+
+    @Test
+    void printPopulationCountryContainsNull()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        populationList.add(null);
+        app.printPopulationCountry(populationList);
+    }
+
+    @Test
+    void printPopulationCountry()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        Population populations = new Population();
+        populations.setName("Pitcairn");
+        populations.setPopulation(50);
+        populations.setCountryPopulation(42);
+        populations.setLivingPer(84);
+        populations.setCityPopulation(8);
+        populations.setNotLivingPer(16);
+        populationList.add(populations);
+        app.printPopulationCountry(populationList);
+    }
+
 }
