@@ -59,16 +59,6 @@ public class App
         //Cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
-  
-        ArrayList<Population> populationRegion = a.getPopulationRegion();
-        System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
-        //Print the population of people living in cities and people not living in cities in each region
-        a.printPopulationRegion(populationRegion);
-  
-        // Country City
-        ArrayList<Population> countryPopulation = a.getPopulationCountry();
-        System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
-        a.printPopulationCountry(countryPopulation);
 
         ArrayList<City> cityCountry = a.getCityCountry();
         //Cities in the country organised by largest population to smallest
@@ -134,6 +124,16 @@ public class App
         //Top 10 Capital cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 22.  Top 10 capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printTopCapitalRegion(capitalTopRegion);
+
+        ArrayList<Population> populationRegion = a.getPopulationRegion();
+        System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
+        //Print the population of people living in cities and people not living in cities in each region
+        a.printPopulationRegion(populationRegion);
+
+        // Country City
+        ArrayList<Population> countryPopulation = a.getPopulationCountry();
+        System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
+        a.printPopulationCountry(countryPopulation);
 
         // Disconnect from database
         a.disconnect();
@@ -1130,39 +1130,6 @@ public class App
         return null;
         }
     }
-        
-             /**
-             * Get list the population of people living in cities and people not living in cities in each region
-             * @return populationList
-             */
-            public ArrayList<Population> getPopulationRegion() {
-            try {
-              // Create an SQL statement
-              Statement stmt = con.createStatement();
-              // Create string for SQL statement
-              String strSelect =
-                    "SELECT country.Region, SUM(DISTINCT country.Population), SUM(city.Population) "
-                            +"FROM country, city "
-                            +"WHERE country.Code = city.CountryCode GROUP BY country.Region ORDER BY country.Region ASC";
-            // Execute SQL statement
-            ResultSet rest = stmt.executeQuery(strSelect);
-
-            // Extract Population information
-            ArrayList<Population> populationList = new ArrayList<>();
-            while (rest.next()) {
-                Population population = new Population();
-                population.setRegion(rest.getString(1));
-                population.setCountryPopulation(rest.getInt(2));
-                population.setCityPopulation(rest.getInt(3));
-                populationList.add(population);
-            }
-            return populationList;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of people living in cities and people not living in cities in each region");
-            return null;
-        }
-    }
 
     /**
      * @param capitalList
@@ -1381,7 +1348,40 @@ public class App
           System.out.println(cty_string);
         }
     }
-  
+
+    /**
+     * Get list the population of people living in cities and people not living in cities in each region
+     * @return populationList
+     */
+    public ArrayList<Population> getPopulationRegion() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Region, SUM(DISTINCT country.Population), SUM(city.Population) "
+                            +"FROM country, city "
+                            +"WHERE country.Code = city.CountryCode GROUP BY country.Region ORDER BY country.Region ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setRegion(rest.getString(1));
+                population.setCountryPopulation(rest.getInt(2));
+                population.setCityPopulation(rest.getInt(3));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people living in cities and people not living in cities in each region");
+            return null;
+        }
+    }
+
     /**
      * @param populationList
      * Print list the population of people living in cities and people not living in cities in each region
@@ -1417,8 +1417,6 @@ public class App
             String strSelect = "SELECT country.Name, country.Population,SUM(DISTINCT city.Population),(SUM(DISTINCT city.Population)/country.Population)*100,country.Population-SUM(DISTINCT city.Population),((country.Population-SUM(DISTINCT city.Population))/country.Population)*100 "
                     +"FROM city, country WHERE country.Code = city.CountryCode GROUP BY country.Name, country.Population "
                     +"ORDER BY country.Population DESC";
-
-
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             ArrayList<Population> populationList = new ArrayList<>();
@@ -1431,8 +1429,6 @@ public class App
                 populations.setLivingPer(rest.getFloat(4));
                 populations.setCityPopulation(rest.getInt(5));
                 populations.setNotLivingPer(rest.getFloat(6));
-
-
                 populationList.add(populations);
             }
             return populationList;
@@ -1448,6 +1444,7 @@ public class App
             return null;
         }
     }
+
     private static final DecimalFormat df = new DecimalFormat("0.00");
     public void printPopulationCountry(ArrayList<Population> populationList) {
         // Print header
