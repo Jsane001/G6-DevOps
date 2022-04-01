@@ -54,7 +54,42 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
-    //PopulationCapital
+    //PopulationCountry
+    @Test
+    void printTopCityCountryNull()
+    {
+        app.printTopCityCountry(null);
+    }
+
+    @Test
+    void printTopCityCountryTestEmpty()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        app.printTopCityCountry(cityList);
+    }
+
+    @Test
+    void printTopCityCountryContainsNull()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        cityList.add(null);
+        app.printTopCityCountry(cityList);
+    }
+
+    @Test
+    void printTopCityCountry()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        City city = new City();
+        city.setName("Mergui (Myeik)");
+        city.setCountryCode("Myanmar");
+        city.setDistrict("Tenasserim [Tanintha");
+        city.setPopulation(122700);
+        cityList.add(city);
+        app.printTopCityCountry(cityList);
+    }
+
+    //PopulationDistrict
     @Test
     void printTopCityDistrictNull()
     {
