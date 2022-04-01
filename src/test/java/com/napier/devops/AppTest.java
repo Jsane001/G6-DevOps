@@ -54,7 +54,7 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
-    //PopulationRegion
+    //PopulationCapital
     @Test
     void printTopCapitalRegionNull()
     {
