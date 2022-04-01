@@ -838,6 +838,12 @@ public class App
      * Show top 10 city in the world organised by largest population to smallest
      */
     public void printTopCityWorld(ArrayList<City> cityList) {
+        // Check cityList is not null
+        if (cityList == null)
+        {
+            System.out.println("No Population city");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
