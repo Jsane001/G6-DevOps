@@ -54,6 +54,41 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    //PopulationRegion
+    @Test
+    void printTopCityRegionNull()
+    {
+        app.printTopCityRegion(null);
+    }
+
+    @Test
+    void printTopCityRegionTestEmpty()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        app.printTopCityRegion(cityList);
+    }
+
+    @Test
+    void printTopCityRegionContainsNull()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        cityList.add(null);
+        app.printTopCityRegion(cityList);
+    }
+
+    @Test
+    void printTopCityRegion()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        City city = new City();
+        city.setName("Ahmedabad");
+        city.setCountryCode("India");
+        city.setDistrict("Gujarat");
+        city.setPopulation(2876710);
+        cityList.add(city);
+        app.printTopCityRegion(cityList);
+    }
+
     //PopulationCountry
     @Test
     void printTopCityCountryNull()
