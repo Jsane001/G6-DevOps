@@ -33,6 +33,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, countryWorld.get(0).getPopulation());
             assertEquals("Peking", countryWorld.get(0).getCapital());
         }
+        app.printCountryWorld(countryWorld);
     }
 
     @Test
@@ -49,6 +50,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, countryContinent.get(0).getPopulation());
             assertEquals("Peking", countryContinent.get(0).getCapital());
         }
+        app.printCountryContinent(countryContinent);
     }
 
     @Test
@@ -64,6 +66,7 @@ public class AppIntegrationTest
             assertEquals(1013662000, countryRegion.get(0).getPopulation());
             assertEquals("New Delhi", countryRegion.get(0).getCapital());
         }
+        app.printCountryRegion(countryRegion);
     }
 
     @Test
@@ -80,6 +83,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, topCountryWorld.get(0).getPopulation());
             assertEquals("Peking", topCountryWorld.get(0).getCapital());
         }
+        app.printTopCountryWorld(topCountryWorld);
     }
 
     @Test
@@ -96,6 +100,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, topCountryContinent.get(0).getPopulation());
             assertEquals("Peking", topCountryContinent.get(0).getCapital());
         }
+        app.printTopCountryContinent(topCountryContinent);
     }
 
     @Test
@@ -103,8 +108,7 @@ public class AppIntegrationTest
     {
         ArrayList<Country> topCountryRegion = app.getTopCountryRegion();
         //Check topCountryRegion is not null
-        if (topCountryRegion != null)
-        {
+        if (topCountryRegion != null){
             assertEquals("NGA", topCountryRegion.get(0).getCode());
             assertEquals("Nigeria", topCountryRegion.get(0).getName());
             assertEquals("Africa", topCountryRegion.get(0).getContinent());
@@ -112,13 +116,20 @@ public class AppIntegrationTest
             assertEquals(111506000, topCountryRegion.get(0).getPopulation());
             assertEquals("Abuja", topCountryRegion.get(0).getCapital());
         }
+        app.printTopCountryRegion(topCountryRegion);
     }
 
     @Test
     void testGetCityWorld()
     {
         ArrayList<City> cityWorld = app.getCityWorld();
-
+        //Check cityWorld is not null
+        if (cityWorld != null){
+            assertEquals("Mumbai (Bombay)", cityWorld.get(0).getName());
+            assertEquals("India", cityWorld.get(0).getCountryCode());
+            assertEquals("Maharashtra", cityWorld.get(0).getDistrict());
+            assertEquals(10500000, cityWorld.get(0).getPopulation());
+        }
         app.printCityWorld(cityWorld);
     }
 
