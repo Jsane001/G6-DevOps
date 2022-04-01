@@ -1393,6 +1393,7 @@ public class App
      * Print list the population of people living in cities and people not living in cities in each region
      */
     public void printPopulationRegion(ArrayList<Population> populationList) {
+
         // Print header
         System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
 
@@ -1453,6 +1454,12 @@ public class App
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
     public void printPopulationCountry(ArrayList<Population> populationList) {
+        // Check countryList is not null
+        if (populationList == null)
+        {
+            System.out.println("No Population cities in Country");
+            return;
+        }
         // Print header
         System.out.printf("%-50s %-30s %-30s %-30s%n ", "Country Name", "Country Population", "Living population","Not Living population");
         // Loop over all city in the list
