@@ -122,18 +122,6 @@ public class Population {
         this.livingPer=livingPer;}
 
     /**
-     * getter method for people population who is not in cities
-     */
-    public int getCityPopulation(){
-        return cityPopulation;
-    }
-
-    /**
-     * setter method for people population who is not living in cities
-     */
-    public void setCityPopulation(int cityPopulation){ this.cityPopulation=cityPopulation;}
-
-    /**
      * getter method for people population who is not in cities with percent
      */
     public float getNotLivingPer(){
@@ -145,13 +133,6 @@ public class Population {
      */
     public void setNotLivingPer(float notLivingPer){
         this.notLivingPer=notLivingPer;}
-}
-     /**
-     * setter method for country population
-     */
-    public void setCountryPopulation(int countryPopulation){
-        this.countryPopulation=countryPopulation;
-    }
 
     /**
      * getter method for city population

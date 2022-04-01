@@ -4,7 +4,6 @@ import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 public class App
 {
@@ -672,7 +671,7 @@ public class App
         System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
 
         // Loop over all population of people living in cities and people not living in cities in each region
-        double living, nonLivingPerc;
+        double living, nonLivingPer;
         int nonLiving;
         for (Population population : populationList) {
             if (population == null)
@@ -681,11 +680,11 @@ public class App
             double country = population.getCountryPopulation();
             living = (city * 100) / country;
             nonLiving = population.getCountryPopulation() - population.getCityPopulation();
-            nonLivingPerc = 100 - living;
+            nonLivingPer = 100 - living;
             DecimalFormat df = new DecimalFormat("#.##");
             String cty_string =
                     String.format("%-35s %-25s %-25s %-25s",
-                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPerc)+"%)");
+                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPer)+"%)");
             System.out.println(cty_string);
         }
     }
