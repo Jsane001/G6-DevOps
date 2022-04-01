@@ -1342,8 +1342,8 @@ public class App
      * Print top 10 capital city in region by largest population to smallest
      */
     public void printTopCapitalRegion(ArrayList<Capital_City> capitalList) {
-        // Check PopulationList is not null
-        if (populationList == null)
+        // Check capitalList is not null
+        if (capitalList == null)
         {
             System.out.println("No Population Country in Region");
             return;
