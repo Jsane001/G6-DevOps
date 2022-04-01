@@ -54,6 +54,41 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    //PopulationContinent
+    @Test
+    void printTopCityContinentNull()
+    {
+        app.printTopCityContinent(null);
+    }
+
+    @Test
+    void printTopCityContinentTestEmpty()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        app.printTopCityContinent(cityList);
+    }
+
+    @Test
+    void printTopCityContinentContainsNull()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        cityList.add(null);
+        app.printTopCityContinent(cityList);
+    }
+
+    @Test
+    void printTopCityContinent()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        City city = new City();
+        city.setName("Teheran");
+        city.setCountryCode("Iran");
+        city.setDistrict("Teheran");
+        city.setPopulation(6758845);
+        cityList.add(city);
+        app.printTopCityContinent(cityList);
+    }
+
     //PopulationRegion
     @Test
     void printTopCityRegionNull()
