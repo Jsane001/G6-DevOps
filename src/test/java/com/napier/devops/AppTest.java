@@ -54,6 +54,40 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    //PopulationContinent
+    @Test
+    void printTopCapitalContinentNull()
+    {
+        app.printTopCapitalContinent(null);
+    }
+
+    @Test
+    void printTopCapitalContinentTestEmpty()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        app.printTopCapitalContinent(capitalList);
+    }
+
+    @Test
+    void printTopCapitalContinentContainsNull()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        capitalList.add(null);
+        app.printTopCapitalContinent(capitalList);
+    }
+
+    @Test
+    void printTopCapitalContinent()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        Capital_City capital = new Capital_City();
+        capital.setName("Lima");
+        capital.setCountry("Peru");
+        capital.setPopulation(6464693);
+        capitalList.add(capital);
+        app.printTopCapitalContinent(capitalList);
+    }
+
     //PopulationCapital
     @Test
     void printTopCapitalRegionNull()
