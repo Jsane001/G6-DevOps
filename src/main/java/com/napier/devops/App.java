@@ -788,7 +788,7 @@ public class App
             String strSelect =
                     "SELECT city.Name, country.Name, city.District, city.Population "
                             + "FROM city, country WHERE city.CountryCode = country.Code AND city.District = 'Bahia' "
-                            + "ORDER BY city.Population";
+                            + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             ArrayList<City> cityList = new ArrayList<>();

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class AppIntegrationTest
 {
@@ -23,16 +23,14 @@ public class AppIntegrationTest
     void testGetCountryWorld()
     {
         ArrayList<Country> countryWorld = app.getCountryWorld();
+        assertNotNull(countryWorld.get(0).getCode());
         //Check countryWorld is not null
-        if (countryWorld != null)
-        {
-            assertEquals("CHN", countryWorld.get(0).getCode());
-            assertEquals("China", countryWorld.get(0).getName());
-            assertEquals("Asia", countryWorld.get(0).getContinent());
-            assertEquals("Eastern Asia", countryWorld.get(0).getRegion());
-            assertEquals(1277558000, countryWorld.get(0).getPopulation());
-            assertEquals("Peking", countryWorld.get(0).getCapital());
-        }
+        assertEquals("CHN", countryWorld.get(0).getCode());
+        assertEquals("China", countryWorld.get(0).getName());
+        assertEquals("Asia", countryWorld.get(0).getContinent());
+        assertEquals("Eastern Asia", countryWorld.get(0).getRegion());
+        assertEquals(1277558000, countryWorld.get(0).getPopulation());
+        assertEquals("Peking", countryWorld.get(0).getCapital());
         app.printCountryWorld(countryWorld);
     }
 
@@ -137,6 +135,13 @@ public class AppIntegrationTest
     void testGetCityContinent()
     {
         ArrayList<City> cityContinent = app.getCityContinent();
+        //Check cityContinent is not null
+        if (cityContinent != null){
+            assertEquals("La Habana", cityContinent.get(0).getName());
+            assertEquals("Cuba", cityContinent.get(0).getCountryCode());
+            assertEquals("La Habana", cityContinent.get(0).getDistrict());
+            assertEquals(2256000, cityContinent.get(0).getPopulation());
+        }
         app.printCityContinent(cityContinent);
     }
 
@@ -144,6 +149,13 @@ public class AppIntegrationTest
     void testGetCityRegion()
     {
         ArrayList<City> cityRegion = app.getCityRegion();
+        //Check cityContinent is not null
+        if (cityRegion != null){
+            assertEquals("Mumbai (Bombay)", cityRegion.get(0).getName());
+            assertEquals("India", cityRegion.get(0).getCountryCode());
+            assertEquals("Maharashtra", cityRegion.get(0).getDistrict());
+            assertEquals(10500000, cityRegion.get(0).getPopulation());
+        }
         app.printCityRegion(cityRegion);
     }
 
@@ -151,6 +163,13 @@ public class AppIntegrationTest
     void testGetCityCountry()
     {
         ArrayList<City> cityCountry = app.getCityCountry();
+        //Check cityCountry is not null
+        if (cityCountry != null){
+            assertEquals("Rangoon (Yangon)", cityCountry.get(0).getName());
+            assertEquals("Myanmar", cityCountry.get(0).getCountryCode());
+            assertEquals("Rangoon [Yangon]", cityCountry.get(0).getDistrict());
+            assertEquals(3361700, cityCountry.get(0).getPopulation());
+        }
         app.printCityCountry(cityCountry);
     }
 
@@ -158,6 +177,13 @@ public class AppIntegrationTest
     void testGetCityDistrict()
     {
         ArrayList<City> cityDistrict = app.getCityDistrict();
+        //Check cityDistrict is not null
+        if (cityDistrict != null){
+            assertEquals("Salvador", cityDistrict.get(0).getName());
+            assertEquals("Brazil", cityDistrict.get(0).getCountryCode());
+            assertEquals("Bahia", cityDistrict.get(0).getDistrict());
+            assertEquals(2302832, cityDistrict.get(0).getPopulation());
+        }
         app.printCityDistrict(cityDistrict);
     }
 
