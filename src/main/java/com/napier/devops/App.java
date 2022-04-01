@@ -1142,6 +1142,11 @@ public class App
      * Print list of capital city in continent by largest population to smallest
      */
     public void printCapitalContinent(ArrayList<Capital_City> capitalList) {
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
