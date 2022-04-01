@@ -54,6 +54,41 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    //PopulationWorld
+    @Test
+    void printTopCityWorldNull()
+    {
+        app.printTopCityWorld(null);
+    }
+
+    @Test
+    void printTopCityWorldTestEmpty()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        app.printTopCityWorld(cityList);
+    }
+
+    @Test
+    void printTopCityWorldContainsNull()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        cityList.add(null);
+        app.printTopCityWorld(cityList);
+    }
+
+    @Test
+    void printTopCityWorld()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        City city = new City();
+        city.setName("New York");
+        city.setCountryCode("United States");
+        city.setDistrict("New York");
+        city.setPopulation(8008278);
+        cityList.add(city);
+        app.printTopCityWorld(cityList);
+    }
+
     //PopulationContinent
     @Test
     void printTopCityContinentNull()
