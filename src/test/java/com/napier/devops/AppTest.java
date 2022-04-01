@@ -56,6 +56,40 @@ public class AppTest
 
     //PopulationRegion
     @Test
+    void printTopCapitalRegionNull()
+    {
+        app.printTopCapitalRegion(null);
+    }
+
+    @Test
+    void printTopCapitalRegionTestEmpty()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        app.printTopCapitalRegion(capitalList);
+    }
+
+    @Test
+    void printTopCapitalRegionContainsNull()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        capitalList.add(null);
+        app.printTopCapitalRegion(capitalList);
+    }
+
+    @Test
+    void printTopCapitalRegion()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        Capital_City capital = new Capital_City();
+        capital.setName("Saint John´s ");
+        capital.setCountry("Antigua and Barbuda ");
+        capital.setPopulation(24000 );
+        capitalList.add(capital);
+        app.printTopCapitalRegion(capitalList);
+    }
+
+    //PopulationRegion
+    @Test
     void printPopulationRegionNull()
     {
         app.printPopulationRegion(null);
