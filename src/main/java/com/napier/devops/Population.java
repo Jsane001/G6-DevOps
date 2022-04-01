@@ -18,7 +18,15 @@ public class Population {
     private int countryPopulation;
 
     /**
-     * People population of Country who is not living in the cities
+     * Continent Name
+     */
+    private String continent;
+    /**
+     * Region Name
+     */
+    private String region;
+    /**
+     * Total Population for city
      */
     private int cityPopulation;
 
@@ -61,7 +69,35 @@ public class Population {
     }
 
     /**
-     * getter method for people population who is living in cities
+     * getter method for continent
+     */
+    public String getContinent(){
+        return continent;
+    }
+
+    /**
+     * setter method for continent
+     */
+    public void setContinent(String continent){
+        this.continent=continent;
+    }
+
+    /**
+     * getter method for region
+     */
+    public String getRegion(){
+        return region;
+    }
+
+    /**
+     * setter method for region
+     */
+    public void setRegion(String region){
+        this.region=region;
+    }
+
+    /**
+     * getter method for country population
      */
     public int getCountryPopulation(){
         return countryPopulation;
@@ -110,4 +146,23 @@ public class Population {
     public void setNotLivingPer(float notLivingPer){
         this.notLivingPer=notLivingPer;}
 }
+     /**
+     * setter method for country population
+     */
+    public void setCountryPopulation(int countryPopulation){
+        this.countryPopulation=countryPopulation;
+    }
 
+    /**
+     * getter method for city population
+     */
+    public int getCityPopulation(){ return cityPopulation; }
+
+    /**
+     * setter method for city population
+     */
+    public void setCityPopulation(int cityPopulation){
+        this.cityPopulation=cityPopulation;
+    }
+
+}

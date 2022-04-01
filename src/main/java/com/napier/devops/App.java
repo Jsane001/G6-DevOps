@@ -1,6 +1,7 @@
 package com.napier.devops;
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -59,15 +60,16 @@ public class App
         //Cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
-
+  
+        ArrayList<Population> populationRegion = a.getPopulationRegion();
+        System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
+        //Print the population of people living in cities and people not living in cities in each region
+        a.printPopulationRegion(populationRegion);
+  
         // Country City
         ArrayList<Population> countryPopulation = a.getPopulationCountry();
         System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
         a.printPopulationCountry(countryPopulation);
-
-
-
-
 
         // Disconnect from database
         a.disconnect();
@@ -167,21 +169,21 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
-                            + "ORDER BY Population DESC";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                        +"FROM country, city "
+                        +"WHERE country.Capital = city.ID ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
             ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.setCode(rest.getString("Code"));
-                country.setName(rest.getString("Name"));
-                country.setContinent(rest.getString("Continent"));
-                country.setRegion(rest.getString("Region"));
-                country.setPopulation(rest.getInt("Population"));
-                country.setCapital(rest.getInt("Capital"));
+                country.setCode(rest.getString(1));
+                country.setName(rest.getString(2));
+                country.setContinent(rest.getString(3));
+                country.setRegion(rest.getString(4));
+                country.setPopulation(rest.getInt(5));
+                country.setCapital(rest.getString(6));
                 countryList.add(country);
             }
             return countryList;
@@ -198,13 +200,13 @@ public class App
      */
     public void printCountryWorld(ArrayList<Country> countryList) {
         // Print header
-        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.printf("%-10s %-35s %-25s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
         for (Country country : countryList) {
             if (country == null)
                 continue;
             String cty_string =
-                    String.format("%-10s %-25s %-25s %-35s %-25s %10s",
+                    String.format("%-10s %-35s %-25s %-35s %-15s %20s",
                             country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
             System.out.println(cty_string);
         }
@@ -220,21 +222,21 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country WHERE Continent = 'Asia'"
-                            + "ORDER BY Population DESC";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            +"FROM country, city "
+                            +"WHERE country.Capital = city.ID AND country.Continent ='Asia' ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
             ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.setCode(rest.getString("Code"));
-                country.setName(rest.getString("Name"));
-                country.setContinent(rest.getString("Continent"));
-                country.setRegion(rest.getString("Region"));
-                country.setPopulation(rest.getInt("Population"));
-                country.setCapital(rest.getInt("Capital"));
+                country.setCode(rest.getString(1));
+                country.setName(rest.getString(2));
+                country.setContinent(rest.getString(3));
+                country.setRegion(rest.getString(4));
+                country.setPopulation(rest.getInt(5));
+                country.setCapital(rest.getString(6));
                 countryList.add(country);
             }
             return countryList;
@@ -251,13 +253,13 @@ public class App
      */
     public void printCountryContinent(ArrayList<Country> countryList) {
         // Print header
-        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.printf("%-10s %-25s %-10s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
         for (Country country : countryList) {
             if (country == null)
                 continue;
             String cty_string =
-                    String.format("%-10s %-25s %-25s %-35s %-25s %10s",
+                    String.format("%-10s %-25s %-10s %-35s %-15s %20s",
                             country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
             System.out.println(cty_string);
         }
@@ -273,21 +275,21 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country WHERE Region = 'Southern and Central Asia' "
-                            + "ORDER BY Population DESC";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            +"FROM country, city "
+                            +"WHERE country.Capital = city.ID AND country.Region = 'Southern and Central Asia' ORDER BY country.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
             ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.setCode(rest.getString("Code"));
-                country.setName(rest.getString("Name"));
-                country.setContinent(rest.getString("Continent"));
-                country.setRegion(rest.getString("Region"));
-                country.setPopulation(rest.getInt("Population"));
-                country.setCapital(rest.getInt("Capital"));
+                country.setCode(rest.getString(1));
+                country.setName(rest.getString(2));
+                country.setContinent(rest.getString(3));
+                country.setRegion(rest.getString(4));
+                country.setPopulation(rest.getInt(5));
+                country.setCapital(rest.getString(6));
                 countryList.add(country);
             }
             return countryList;
@@ -304,13 +306,13 @@ public class App
      */
     public void printCountryRegion(ArrayList<Country> countryList) {
         // Print header
-        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        System.out.printf("%-10s %-25s %-10s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
         for (Country country : countryList) {
             if (country == null)
                 continue;
             String cty_string =
-                    String.format("%-10s %-25s %-25s %-35s %-25s %10s",
+                    String.format("%-10s %-25s %-10s %-35s %-15s %20s",
                             country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
             System.out.println(cty_string);
         }
@@ -326,21 +328,21 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
-                            + "ORDER BY Population DESC LIMIT 10";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            +"FROM country, city "
+                            +"WHERE country.Capital = city.ID ORDER BY country.Population DESC LIMIT 10";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
             ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.setCode(rest.getString("Code"));
-                country.setName(rest.getString("Name"));
-                country.setContinent(rest.getString("Continent"));
-                country.setRegion(rest.getString("Region"));
-                country.setPopulation(rest.getInt("Population"));
-                country.setCapital(rest.getInt("Capital"));
+                country.setCode(rest.getString(1));
+                country.setName(rest.getString(2));
+                country.setContinent(rest.getString(3));
+                country.setRegion(rest.getString(4));
+                country.setPopulation(rest.getInt(5));
+                country.setCapital(rest.getString(6));
                 countryList.add(country);
             }
             return countryList;
@@ -379,23 +381,21 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
-                            + "WHERE Continent = 'Asia' "
-                            + "ORDER BY Population DESC "
-                            + "LIMIT 10";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            +"FROM country, city "
+                            +"WHERE country.Capital = city.ID AND country.Continent = 'Asia' ORDER BY country.Population DESC LIMIT 10";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
             ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.setCode(rest.getString("Code"));
-                country.setName(rest.getString("Name"));
-                country.setContinent(rest.getString("Continent"));
-                country.setRegion(rest.getString("Region"));
-                country.setPopulation(rest.getInt("Population"));
-                country.setCapital(rest.getInt("Capital"));
+                country.setCode(rest.getString(1));
+                country.setName(rest.getString(2));
+                country.setContinent(rest.getString(3));
+                country.setRegion(rest.getString(4));
+                country.setPopulation(rest.getInt(5));
+                country.setCapital(rest.getString(6));
                 countryList.add(country);
             }
             return countryList;
@@ -434,23 +434,21 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT Code, Name, Continent, Region, Population, Capital "
-                            + "FROM country "
-                            + "WHERE Region = 'Western Africa' "
-                            + "ORDER BY Population DESC "
-                            + "LIMIT 10";
+                    "SELECT country.Code, country.Name, country.Continent, country.Region, country.Population, city.Name "
+                            +"FROM country, city "
+                            +"WHERE country.Capital = city.ID AND country.Region = 'Western Africa' ORDER BY country.Population DESC LIMIT 10";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             // Extract Country information
             ArrayList<Country> countryList = new ArrayList<>();
             while (rest.next()) {
                 Country country = new Country();
-                country.setCode(rest.getString("Code"));
-                country.setName(rest.getString("Name"));
-                country.setContinent(rest.getString("Continent"));
-                country.setRegion(rest.getString("Region"));
-                country.setPopulation(rest.getInt("Population"));
-                country.setCapital(rest.getInt("Capital"));
+                country.setCode(rest.getString(1));
+                country.setName(rest.getString(2));
+                country.setContinent(rest.getString(3));
+                country.setRegion(rest.getString(4));
+                country.setPopulation(rest.getInt(5));
+                country.setCapital(rest.getString(6));
                 countryList.add(country);
             }
             return countryList;
@@ -631,7 +629,67 @@ public class App
             System.out.println(cty_string);
         }
     }
+  
+    /**
+     * Get list the population of people living in cities and people not living in cities in each region
+     * @return populationList
+     */
+    public ArrayList<Population> getPopulationRegion() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Region, SUM(DISTINCT country.Population), SUM(city.Population) "
+                            +"FROM country, city "
+                            +"WHERE country.Code = city.CountryCode GROUP BY country.Region ORDER BY country.Region ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
 
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setRegion(rest.getString(1));
+                population.setCountryPopulation(rest.getInt(2));
+                population.setCityPopulation(rest.getInt(3));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people living in cities and people not living in cities in each region");
+            return null;
+        }
+    }
+
+    /**
+     * @param populationList
+     * Print list the population of people living in cities and people not living in cities in each region
+     */
+    public void printPopulationRegion(ArrayList<Population> populationList) {
+        // Print header
+        System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
+
+        // Loop over all population of people living in cities and people not living in cities in each region
+        double living, nonLivingPerc;
+        int nonLiving;
+        for (Population population : populationList) {
+            if (population == null)
+                continue;
+            double city = population.getCityPopulation();
+            double country = population.getCountryPopulation();
+            living = (city * 100) / country;
+            nonLiving = population.getCountryPopulation() - population.getCityPopulation();
+            nonLivingPerc = 100 - living;
+            DecimalFormat df = new DecimalFormat("#.##");
+            String cty_string =
+                    String.format("%-35s %-25s %-25s %-25s",
+                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPerc)+"%)");
+            System.out.println(cty_string);
+        }
+    }
+  
     public ArrayList<Population> getPopulationCountry() {
         try {
             // Create an SQL statement
@@ -687,9 +745,5 @@ public class App
             System.out.println(cty_string);
         }
     }
-
-
-
-
 
 }
