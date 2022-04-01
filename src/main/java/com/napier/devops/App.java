@@ -871,6 +871,12 @@ public class App
      * Show top 10 city in the world organised by largest population to smallest
      */
     public void printTopCityWorld(ArrayList<City> cityList) {
+        // Check cityList is not null
+        if (cityList == null)
+        {
+            System.out.println("No Population city");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -922,6 +928,12 @@ public class App
      * Show top 10 city in the continent organised by largest population to smallest
      */
     public void printTopCityContinent(ArrayList<City> cityList) {
+        // Check cityList is not null
+        if (cityList == null)
+        {
+            System.out.println("No Population city");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -973,6 +985,12 @@ public class App
      * Show top 10 city in the region organised by largest population to smallest
      */
     public void printTopCityRegion(ArrayList<City> cityList) {
+        // Check cityList is not null
+        if (cityList == null)
+        {
+            System.out.println("No Population city");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -1024,6 +1042,12 @@ public class App
      * Show top 10 city in the country organised by largest population to smallest
      */
     public void printTopCityCountry(ArrayList<City> cityList) {
+        // Check cityList is not null
+        if (cityList == null)
+        {
+            System.out.println("No Population city");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -1075,6 +1099,12 @@ public class App
      * Show top 10 city in the district organised by largest population to smallest
      */
     public void printTopCityDistrict(ArrayList<City> cityList) {
+        // Check cityList is not null
+        if (cityList == null)
+        {
+            System.out.println("No Population city");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -1125,6 +1155,12 @@ public class App
      * Print list of capital city in world by largest population to smallest
      */
     public void printCapitalWorld(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1175,6 +1211,12 @@ public class App
      * Print list of capital city in continent by largest population to smallest
      */
     public void printCapitalContinent(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1225,6 +1267,12 @@ public class App
      * Print list of capital city in region by largest population to smallest
      */
     public void printCapitalRegion(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1275,6 +1323,12 @@ public class App
      * Print top 10 capital city in world by largest population to smallest
      */
     public void printTopCapitalWorld(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1325,6 +1379,12 @@ public class App
      * Print top 10 capital city in continent by largest population to smallest
      */
     public void printTopCapitalContinent(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1375,6 +1435,12 @@ public class App
      * Print top 10 capital city in region by largest population to smallest
      */
     public void printTopCapitalRegion(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1426,6 +1492,13 @@ public class App
      * Print list the population of people living in cities and people not living in cities in each region
      */
     public void printPopulationRegion(ArrayList<Population> populationList) {
+        // Check PopulationList is not null
+        if (populationList == null)
+        {
+            System.out.println("No Population Country in Region");
+            return;
+        }
+
         // Print header
         System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
 
@@ -1486,6 +1559,12 @@ public class App
 
     private static final DecimalFormat df = new DecimalFormat("0.00");
     public void printPopulationCountry(ArrayList<Population> populationList) {
+        // Check PopulationList is not null
+        if (populationList == null)
+        {
+            System.out.println("No Population cities in Country");
+            return;
+        }
         // Print header
         System.out.printf("%-50s %-30s %-30s %-30s%n ", "Country Name", "Country Population", "Living population","Not Living population");
         // Loop over all city in the list
