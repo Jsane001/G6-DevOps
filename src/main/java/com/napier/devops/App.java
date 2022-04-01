@@ -1242,6 +1242,7 @@ public class App
      * Print top 10 capital city in world by largest population to smallest
      */
     public void printTopCapitalWorld(ArrayList<Capital_City> capitalList) {
+
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1292,6 +1293,12 @@ public class App
      * Print top 10 capital city in continent by largest population to smallest
      */
     public void printTopCapitalContinent(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1345,7 +1352,7 @@ public class App
         // Check capitalList is not null
         if (capitalList == null)
         {
-            System.out.println("No Population Country in Region");
+            System.out.println("No Population capital");
             return;
         }
         // Print header
