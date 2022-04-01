@@ -13,7 +13,11 @@ public class App
         App a = new App();
 
         // Connect to database
-        a.connect();
+        if(args.length < 1){
+            a.connect("localhost:33060", 0);
+        }else{
+            a.connect("db:3306", 30000);
+        }
 
         ArrayList<Country> countryWorld = a.getCountryWorld();
         System.out.println(" \n ++++++++++++++++ 1. Countries organized by largest to smallest population in World  ++++++++++++++++ \n ");
@@ -143,62 +147,31 @@ public class App
      * Connection to MySQL database.
      */
     private Connection con = null;
-    /**
-     * Connect to the MySQL database.
-     */
-    public void connect()
-    {
-        try
-        {
+
+    public void connect(String location, int delay) {
+        try {
             // Load Database driver
             Class.forName("com.mysql.cj.jdbc.Driver");
-        }
-        catch (ClassNotFoundException e)
-        {
+        } catch (ClassNotFoundException e) {
             System.out.println("Could not load SQL driver");
             System.exit(-1);
         }
-
         int retries = 10;
-        for (int i = 0; i < retries; ++i)
-        {
-            System.out.println("Type 1:Connecting to database...");
-            try
-            {
+        for (int i = 0; i < retries; ++i) {
+            System.out.println("Connecting to database...");
+            try {
                 // Wait a bit for db to start
-                Thread.sleep(30000);
+                Thread.sleep(delay);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://localhost:33060/world", "root", "example");
-                System.out.println("Type 1:Successfully connected");
+                con = DriverManager.getConnection("jdbc:mysql://" + location
+                                + "/world?allowPublicKeyRetrieval=true&useSSL=false",
+                        "root", "example");
+                System.out.println("Successfully connected");
                 break;
-            }
-            catch (SQLException sqle)
-            {
-                System.out.println("Failed to connect to database attempt " + i);
+            } catch (SQLException sqle) {
+                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
-
-                System.out.println("Type 2:Connecting to database...");
-                try
-                {
-                    // Wait a bit for db to start
-                    Thread.sleep(30000);
-                    // Connect to database
-                    con = DriverManager.getConnection("jdbc:mysql://db:3306/world", "root", "example");
-                    System.out.println("Type 2:Successfully connected");
-                    break;
-                }
-                catch (SQLException sqles)
-                {
-                    System.out.println("Failed to connect to database attempt " + i);
-                    System.out.println(sqles.getMessage());
-                }
-                catch (InterruptedException ie)
-                {
-                    System.out.println("Thread interrupted? Should not happen.");
-                }
-            }
-            catch (InterruptedException ie)
-            {
+            } catch (InterruptedException ie) {
                 System.out.println("Thread interrupted? Should not happen.");
             }
         }
@@ -322,6 +295,12 @@ public class App
      * Print list of Countries in continent by largest population to smallest
      */
     public void printCountryContinent(ArrayList<Country> countryList) {
+        // Check countryList is not null
+        if (countryList == null)
+        {
+            System.out.println("No Country");
+            return;
+        }
         // Print header
         System.out.printf("%-10s %-25s %-10s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
@@ -375,6 +354,12 @@ public class App
      * Print list of Countries in region by largest population to smallest
      */
     public void printCountryRegion(ArrayList<Country> countryList) {
+        // Check countryList is not null
+        if (countryList == null)
+        {
+            System.out.println("No Country in Region");
+            return;
+        }
         // Print header
         System.out.printf("%-10s %-25s %-10s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
@@ -428,6 +413,12 @@ public class App
      * Print top 10 countries in the world organised by largest population to smallest
      */
     public void printTopCountryWorld(ArrayList<Country> countryList) {
+        // Check countryList is not null
+        if (countryList == null)
+        {
+            System.out.println("No Country");
+            return;
+        }
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
@@ -481,6 +472,12 @@ public class App
      * Print list of top 10 populated countries in continent by largest population to smallest
      */
     public void printTopCountryContinent(ArrayList<Country> countryList) {
+        // Check countryList is not null
+        if (countryList == null)
+        {
+            System.out.println("No Country");
+            return;
+        }
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
@@ -534,6 +531,12 @@ public class App
      * Print list of top 10 populated countries in region by largest population to smallest
      */
     public void printTopCountryRegion(ArrayList<Country> countryList) {
+        // Check countryList is not null
+        if (countryList == null)
+        {
+            System.out.println("No Country");
+            return;
+        }
         // Print header
         System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
@@ -585,6 +588,12 @@ public class App
      * Show list of cities in the world organised by largest population to smallest
      */
     public void printCityWorld(ArrayList<City> cityList) {
+        // Check countryList is not null
+        if (cityList == null)
+        {
+            System.out.println("No City");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -636,6 +645,12 @@ public class App
      * Show list of cities in the region organised by largest population to smallest
      */
     public void printCityRegion(ArrayList<City> cityList) {
+        // Check countryList is not null
+        if (cityList == null)
+        {
+            System.out.println("No City");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -686,6 +701,12 @@ public class App
      * Show list of city in the continent organised by largest population to smallest
      */
     public void printCityContinent(ArrayList<City> cityList) {
+        // Check countryList is not null
+        if (cityList == null)
+        {
+            System.out.println("No City");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -736,6 +757,12 @@ public class App
      * Show list of city in the country organised by largest population to smallest
      */
     public void printCityCountry(ArrayList<City> cityList) {
+        // Check countryList is not null
+        if (cityList == null)
+        {
+            System.out.println("No City");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -787,6 +814,12 @@ public class App
      * Show list of city in the district organised by largest population to smallest
      */
     public void printCityDistrict(ArrayList<City> cityList) {
+        // Check countryList is not null
+        if (cityList == null)
+        {
+            System.out.println("No City");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
