@@ -54,6 +54,40 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    //PopulationCapital
+    @Test
+    void printCapitalWorldNull()
+    {
+        app.printCapitalWorld(null);
+    }
+
+    @Test
+    void printCapitalWorldTestEmpty()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        app.printCapitalWorld(capitalList);
+    }
+
+    @Test
+    void printCapitalWorldContainsNull()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        capitalList.add(null);
+        app.printCapitalWorld(capitalList);
+    }
+
+    @Test
+    void printCapitalWorld()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        Capital_City capital = new Capital_City();
+        capital.setName("Adamstown");
+        capital.setCountry("Pitcairn");
+        capital.setPopulation(42);
+        capitalList.add(capital);
+        app.printCapitalWorld(capitalList);
+    }
+
     //PopulationContinent
     @Test
     void printCapitalContinentNull()
