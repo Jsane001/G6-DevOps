@@ -54,7 +54,41 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
-    //Population
+    //PopulationRegion
+    @Test
+    void printPopulationRegionNull()
+    {
+        app.printPopulationRegion(null);
+    }
+
+    @Test
+    void printPopulationRegionTestEmpty()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        app.printPopulationRegion(populationList);
+    }
+
+    @Test
+    void printPopulationRegionContainsNull()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        populationList.add(null);
+        app.printPopulationRegion(populationList);
+    }
+
+    @Test
+    void printPopulationRegion()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        Population population = new Population();
+        population.setRegion("Western Europe ");
+        population.setCountryPopulation(183247600);
+        population.setCityPopulation(45683298);
+        populationList.add(population);
+        app.printPopulationRegion(populationList);
+    }
+
+    //Population Country
     @Test
     void printPopulationCountryNull()
     {
