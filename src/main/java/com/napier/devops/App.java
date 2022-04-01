@@ -1042,6 +1042,7 @@ public class App
      * Show top 10 city in the district organised by largest population to smallest
      */
     public void printTopCityDistrict(ArrayList<City> cityList) {
+        
         // Print header
         System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
         // Loop over all city in the list
@@ -1092,6 +1093,12 @@ public class App
      * Print list of capital city in world by largest population to smallest
      */
     public void printCapitalWorld(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
+        if (capitalList == null)
+        {
+            System.out.println("No Population capital");
+            return;
+        }
         // Print header
         System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
         // Loop over all countries in the list
@@ -1142,6 +1149,7 @@ public class App
      * Print list of capital city in continent by largest population to smallest
      */
     public void printCapitalContinent(ArrayList<Capital_City> capitalList) {
+        // Check capitalList is not null
         if (capitalList == null)
         {
             System.out.println("No Population capital");
