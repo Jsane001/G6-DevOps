@@ -54,6 +54,40 @@ public class AppTest
         app.printCountryWorld(countryWorld);
     }
 
+    //PopulationRegion
+    @Test
+    void printCapitalRegionNull()
+    {
+        app.printCapitalRegion(null);
+    }
+
+    @Test
+    void printCapitalRegionTestEmpty()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        app.printCapitalRegion(capitalList);
+    }
+
+    @Test
+    void printCapitalRegionContainsNull()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        capitalList.add(null);
+        app.printCapitalRegion(capitalList);
+    }
+
+    @Test
+    void printCapitalRegion()
+    {
+        ArrayList<Capital_City> capitalList = new ArrayList<>();
+        Capital_City capital = new Capital_City();
+        capital.setName("The Valley");
+        capital.setCountry("Anguilla");
+        capital.setPopulation(595);
+        capitalList.add(capital);
+        app.printCapitalRegion(capitalList);
+    }
+
     //PopulationContinent
     @Test
     void printTopCapitalWorldNull()
