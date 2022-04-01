@@ -1,7 +1,9 @@
 package com.napier.devops;
 
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.math.RoundingMode;
 
 public class App
 {
@@ -57,6 +59,16 @@ public class App
         //Cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
+  
+        ArrayList<Population> populationRegion = a.getPopulationRegion();
+        System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
+        //Print the population of people living in cities and people not living in cities in each region
+        a.printPopulationRegion(populationRegion);
+  
+        // Country City
+        ArrayList<Population> countryPopulation = a.getPopulationCountry();
+        System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
+        a.printPopulationCountry(countryPopulation);
 
         ArrayList<City> cityCountry = a.getCityCountry();
         //Cities in the country organised by largest population to smallest
@@ -1003,6 +1015,122 @@ public class App
             String cty_string =
                     String.format("%-30s %-10s %-20s %10s",
                             city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation());
+            System.out.println(cty_string);
+        }
+    }
+  
+    /**
+     * Get list the population of people living in cities and people not living in cities in each region
+     * @return populationList
+     */
+    public ArrayList<Population> getPopulationRegion() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Region, SUM(DISTINCT country.Population), SUM(city.Population) "
+                            +"FROM country, city "
+                            +"WHERE country.Code = city.CountryCode GROUP BY country.Region ORDER BY country.Region ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setRegion(rest.getString(1));
+                population.setCountryPopulation(rest.getInt(2));
+                population.setCityPopulation(rest.getInt(3));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people living in cities and people not living in cities in each region");
+            return null;
+        }
+    }
+
+    /**
+     * @param populationList
+     * Print list the population of people living in cities and people not living in cities in each region
+     */
+    public void printPopulationRegion(ArrayList<Population> populationList) {
+        // Print header
+        System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
+
+        // Loop over all population of people living in cities and people not living in cities in each region
+        double living, nonLivingPer;
+        int nonLiving;
+        for (Population population : populationList) {
+            if (population == null)
+                continue;
+            double city = population.getCityPopulation();
+            double country = population.getCountryPopulation();
+            living = (city * 100) / country;
+            nonLiving = population.getCountryPopulation() - population.getCityPopulation();
+            nonLivingPer = 100 - living;
+            DecimalFormat df = new DecimalFormat("#.##");
+            String cty_string =
+                    String.format("%-35s %-25s %-25s %-25s",
+                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPer)+"%)");
+            System.out.println(cty_string);
+        }
+    }
+  
+    public ArrayList<Population> getPopulationCountry() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            //Create string for SQL statement
+            String strSelect = "SELECT country.Name, country.Population,SUM(DISTINCT city.Population),(SUM(DISTINCT city.Population)/country.Population)*100,country.Population-SUM(DISTINCT city.Population),((country.Population-SUM(DISTINCT city.Population))/country.Population)*100 "
+                    +"FROM city, country WHERE country.Code = city.CountryCode GROUP BY country.Name, country.Population "
+                    +"ORDER BY country.Population DESC";
+
+
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<Population> populationList = new ArrayList<>();
+            // Extract Country information
+            while (rest.next()) {
+                Population populations = new Population();
+                populations.setName(rest.getString(1));
+                populations.setPopulation(rest.getInt(2));
+                populations.setCountryPopulation(rest.getInt(3));
+                populations.setLivingPer(rest.getFloat(4));
+                populations.setCityPopulation(rest.getInt(5));
+                populations.setNotLivingPer(rest.getFloat(6));
+
+
+                populationList.add(populations);
+            }
+            return populationList;
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            System.out.println("Failed ");
+            return null;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest in continent");
+            return null;
+        }
+    }
+    private static final DecimalFormat df = new DecimalFormat("0.00");
+    public void printPopulationCountry(ArrayList<Population> populationList) {
+        // Print header
+        System.out.printf("%-50s %-30s %-30s %-30s%n ", "Country Name", "Country Population", "Living population","Not Living population");
+        // Loop over all city in the list
+    
+        for (Population population : populationList) {
+            if (population == null)
+                continue;
+            df.setRoundingMode(RoundingMode.UP);
+            String cty_string =
+                    String.format("%-50s %-30s %-30s %-30s ",
+                            population.getName(), population.getPopulation(), population.getCountryPopulation()+" ("+df.format(population.getLivingPer())+"%)",population.getCityPopulation() + " (" + df.format(population.getNotLivingPer())+ "%)");
             System.out.println(cty_string);
         }
     }
