@@ -263,6 +263,12 @@ public class App
      * Print list of Countries in world organised by largest population to smallest
      */
     public void printCountryWorld(ArrayList<Country> countryList) {
+        // Check countryList is not null
+        if (countryList == null)
+        {
+            System.out.println("No Country");
+            return;
+        }
         // Print header
         System.out.printf("%-10s %-35s %-25s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
         // Loop over all countries in the list
