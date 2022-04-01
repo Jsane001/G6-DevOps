@@ -14,6 +14,10 @@ Nyein Chan Soe
 
 - Develop Build Status ![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/Jsane001/G6-DevOps/A_workflow_for_DevOps_Coursework/develop?style=flat=appveyor)
 
+- Master Code Coverage [![codecov](https://codecov.io/gh/jsane001/G6-devops/branch/master/graph/badge.svg?token=CUKU1X6KS7)](https://codecov.io/gh/jsane001/G6-devops)
+
+- Develop Code Coverage [![codecov](https://codecov.io/gh/jsane001/G6-devops/branch/develop/graph/badge.svg?token=CUKU1X6KS7)](https://codecov.io/gh/jsane001/G6-devops)
+
 - License [![LICENSE](https://img.shields.io/github/license/Jsane001/G6-DevOps.svg?style=flat-square)](https://github.com/Jsane001/G6-DevOps/blob/master/LICENSE)
 
 - Release [![Releases](https://img.shields.io/github/release/Jsane001/G6-DevOps/all.svg?style=flat-square)](https://github.com/Jsane001/G6-DevOps/releases)
