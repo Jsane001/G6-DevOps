@@ -56,6 +56,41 @@ public class AppTest
 
     //PopulationCapital
     @Test
+    void printTopCityDistrictNull()
+    {
+        app.printTopCityDistrict(null);
+    }
+
+    @Test
+    void printTopCityDistrictTestEmpty()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        app.printTopCityDistrict(cityList);
+    }
+
+    @Test
+    void printTopCityDistrictContainsNull()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        cityList.add(null);
+        app.printTopCityDistrict(cityList);
+    }
+
+    @Test
+    void printTopCityDistrict()
+    {
+        ArrayList<City> cityList = new ArrayList<>();
+        City city = new City();
+        city.setName("Alagoinhas");
+        city.setCountryCode("Brazil");
+        city.setDistrict("Bahia");
+        city.setPopulation(126820);
+        cityList.add(city);
+        app.printTopCityDistrict(cityList);
+    }
+
+    //PopulationCapital
+    @Test
     void printCapitalWorldNull()
     {
         app.printCapitalWorld(null);
