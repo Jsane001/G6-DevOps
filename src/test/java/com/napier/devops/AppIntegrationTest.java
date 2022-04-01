@@ -23,7 +23,7 @@ public class AppIntegrationTest
     void testGetCountryWorld()
     {
         ArrayList<Country> countryWorld = app.getCountryWorld();
-        assertNotNull(countryWorld.get(0).getCode());
+        assertNotNull(countryWorld);
         //Check countryWorld is not null
         assertEquals("CHN", countryWorld.get(0).getCode());
         assertEquals("China", countryWorld.get(0).getName());
