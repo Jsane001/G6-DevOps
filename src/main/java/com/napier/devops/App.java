@@ -840,5 +840,23 @@ public class App
         }
     }
 
+    //print population of cities
+    //private static final DecimalFormat df = new DecimalFormat("0.00");
+    public void printCountryPopulation(ArrayList<Population> populationList) {
+        // Print header
+        System.out.printf("%-50s %-30s%n ", "City Name", "City Population");
+        // Loop over all city in the list
+
+        for (Population population : populationList) {
+            if (population == null)
+                continue;
+            //  df.setRoundingMode(RoundingMode.UP);
+            String cty_string =
+                    String.format("%-50s %-30s ",
+                            population.getPopulationOfCountryName(), population.getPopulationOfCountry());
+            System.out.println(cty_string);
+        }
+    }
+
 
 }
