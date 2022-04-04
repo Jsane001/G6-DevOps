@@ -900,6 +900,24 @@ public class App
         }
     }
 
+    //print used language all over the world
+    //private static final DecimalFormat df = new DecimalFormat("0.00");
+    public void printLanguage(ArrayList<Language> languagesList) {
+        // Print header
+        System.out.printf("%-50s %-30s%n ", "City Name", "City Population");
+        // Loop over all city in the list
+
+        for (Language languages : languagesList) {
+            if (languages == null)
+                continue;
+            //  df.setRoundingMode(RoundingMode.UP);
+            String cty_string =
+                    String.format("%-50s %-30s ",
+                            languages.getCountryname(), languages.getLanguage());
+            System.out.println(cty_string);
+        }
+    }
+
 
 
 
