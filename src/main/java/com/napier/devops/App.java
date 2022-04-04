@@ -71,6 +71,10 @@ public class App
         System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
         a.printPopulationCountry(countryPopulation);
 
+        // City Population
+        ArrayList<Population> cityPopulation = a.getCityPopulation();
+        System.out.println(" \n ++++++++++++++++ NCS(Unknown).  Population of cities  ++++++++++++++++ \n ");
+        a.printCityPopulation(cityPopulation);
 
 
         // Disconnect from database
