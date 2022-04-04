@@ -76,6 +76,11 @@ public class App
         System.out.println(" \n ++++++++++++++++ NCS(Unknown).  Population of cities  ++++++++++++++++ \n ");
         a.printCityPopulation(cityPopulation);
 
+        // Country Population
+        ArrayList<Population> countryofPopulation = a.getCountryPopulation();
+        System.out.println(" \n ++++++++++++++++ NCS(Unknown).  Population of country  ++++++++++++++++ \n ");
+        a.printCountryPopulation(countryofPopulation);
+
 
         // Disconnect from database
         a.disconnect();
