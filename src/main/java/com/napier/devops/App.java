@@ -81,7 +81,10 @@ public class App
         System.out.println(" \n ++++++++++++++++ NCS(Unknown).  Population of country  ++++++++++++++++ \n ");
         a.printCountryPopulation(countryofPopulation);
 
-
+        // language
+        ArrayList<Language> language = a.getLanguage();
+        System.out.println(" \n ++++++++++++++++ NCS(Unknown). Languages of the world  ++++++++++++++++ \n ");
+        a.printLanguage(language);
 
 
         // Disconnect from database
