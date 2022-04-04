@@ -71,6 +71,8 @@ public class App
         System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
         a.printPopulationCountry(countryPopulation);
 
+
+
         // Disconnect from database
         a.disconnect();
     }
@@ -745,5 +747,41 @@ public class App
             System.out.println(cty_string);
         }
     }
+
+    //Getting population of cities
+    public ArrayList<Population> getCityPopulation() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            //Create string for SQL statement
+            String strSelect = "SELECT city.Name, city.Population "
+                    +"FROM city  "
+                    +"ORDER BY city.Population DESC";
+
+
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<Population> populationList = new ArrayList<>();
+            // Extract Country information
+            while (rest.next()) {
+                Population populations = new Population();
+                populations.setPopulationOfCityName(rest.getString(1));
+                populations.setPopulationOfCity(rest.getInt(2));
+                populationList.add(populations);
+            }
+            return populationList;
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            System.out.println("Failed ");
+            return null;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest in continent");
+            return null;
+        }
+    }
+
 
 }

@@ -41,6 +41,15 @@ public class Population {
     private float livingPer;
 
     /**
+     * People population of cities (name)
+     */
+    private String cityNamePopulation;
+    /**
+     * People population of cities (population)
+     */
+    private int cityofPopulation;
+
+    /**
      * getter method for name
      */
     public String getName(){
@@ -145,24 +154,34 @@ public class Population {
      */
     public void setNotLivingPer(float notLivingPer){
         this.notLivingPer=notLivingPer;}
-}
+
      /**
      * setter method for country population
      */
-    public void setCountryPopulation(int countryPopulation){
+    public void setCountryPopulations(int countryPopulation){
         this.countryPopulation=countryPopulation;
     }
 
     /**
      * getter method for city population
      */
-    public int getCityPopulation(){ return cityPopulation; }
+    public int getCityPopulations(){ return cityPopulation; }
 
     /**
      * setter method for city population
      */
-    public void setCityPopulation(int cityPopulation){
+    public void setCityPopulations(int cityPopulation){
         this.cityPopulation=cityPopulation;
     }
+
+    public void setPopulationOfCityName(String cityNamePopulation){ this.cityNamePopulation=cityNamePopulation; }
+
+    public String getPopulationOfCityName(){
+        return cityNamePopulation;
+    }
+
+    public void setPopulationOfCity(int cityofPopulation){ this.cityofPopulation=cityofPopulation; }
+
+    public int getPopulationOfCity() {return cityofPopulation; }
 
 }
