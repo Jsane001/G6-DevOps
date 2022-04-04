@@ -82,6 +82,8 @@ public class App
         a.printCountryPopulation(countryofPopulation);
 
 
+
+
         // Disconnect from database
         a.disconnect();
     }
@@ -862,6 +864,43 @@ public class App
             System.out.println(cty_string);
         }
     }
+
+    //Getting languages of world
+    public ArrayList<Language> getLanguage() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            //Create string for SQL statement
+            String strSelect = "SELECT country.Name, countrylanguage.Language "
+                    +"FROM country,countrylanguage WHERE country.Code=countrylanguage.CountryCode "
+                    +"ORDER BY country.Population DESC";
+
+
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<Language> languagesList = new ArrayList<>();
+            // Extract Country information
+            while (rest.next()) {
+                Language languages = new Language();
+                languages.setCountryname(rest.getString(1));
+                languages.setLanguage(rest.getString(2));
+                languagesList.add(languages);
+            }
+            return languagesList;
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            System.out.println("Failed ");
+            return null;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest in continent");
+            return null;
+        }
+    }
+
+
 
 
 }
