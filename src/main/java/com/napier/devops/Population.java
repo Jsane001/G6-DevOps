@@ -44,10 +44,21 @@ public class Population {
      * People population of cities (name)
      */
     private String cityNamePopulation;
+
     /**
      * People population of cities (population)
      */
     private int cityofPopulation;
+
+    /**
+     * People population of country (name)
+     */
+    private String countryNamePopulation;
+
+    /**
+     * People population of country (population)
+     */
+    private int countryofPopulation;
 
     /**
      * getter method for name
@@ -183,5 +194,15 @@ public class Population {
     public void setPopulationOfCity(int cityofPopulation){ this.cityofPopulation=cityofPopulation; }
 
     public int getPopulationOfCity() {return cityofPopulation; }
+
+    public void setPopulationOfCountryName(String countryNamePopulation){ this.countryNamePopulation=countryNamePopulation; }
+
+    public String getPopulationOfCountryName(){
+        return countryNamePopulation;
+    }
+
+    public void setPopulationOfCountry(int countryofPopulation){ this.countryofPopulation=countryofPopulation; }
+
+    public int getPopulationOfCountry() {return countryofPopulation; }
 
 }

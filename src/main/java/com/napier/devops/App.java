@@ -805,5 +805,40 @@ public class App
         }
     }
 
+    //Getting population of country
+    public ArrayList<Population> getCountryPopulation() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            //Create string for SQL statement
+            String strSelect = "SELECT country.Name, country.Population "
+                    +"FROM country  "
+                    +"ORDER BY country.Population DESC";
+
+
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<Population> populationList = new ArrayList<>();
+            // Extract Country information
+            while (rest.next()) {
+                Population populations = new Population();
+                populations.setPopulationOfCountryName(rest.getString(1));
+                populations.setPopulationOfCountry(rest.getInt(2));
+                populationList.add(populations);
+            }
+            return populationList;
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            System.out.println("Failed ");
+            return null;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest in continent");
+            return null;
+        }
+    }
+
 
 }
