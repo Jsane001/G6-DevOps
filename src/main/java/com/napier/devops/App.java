@@ -83,7 +83,7 @@ public class App
 
         // language
         ArrayList<Language> language = a.getLanguage();
-        System.out.println(" \n ++++++++++++++++ 32. Languages of the world  ++++++++++++++++ \n ");
+        System.out.println(" \n ++++++++++++++++ 32. Using languages of the world  ++++++++++++++++ \n ");
         a.printLanguage(language);
 
 
@@ -907,7 +907,7 @@ public class App
     //private static final DecimalFormat df = new DecimalFormat("0.00");
     public void printLanguage(ArrayList<Language> languagesList) {
         // Print header
-        System.out.printf("%-50s %-30s %n ", "Language", "Population");
+        System.out.printf("%-50s %-30s %n ", "Language", "Using Language Population");
         // Loop over all city in the list
 
         for (Language languages : languagesList) {
