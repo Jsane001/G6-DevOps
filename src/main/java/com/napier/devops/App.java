@@ -144,6 +144,11 @@ public class App
         System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
         a.printPopulationCountry(countryPopulation);
 
+        ArrayList<Population> worldPopulation = a.getWorldPopulation();
+        System.out.println(" \n ++++++++++++++++ 26. The population of the world  ++++++++++++++++ \n ");
+        //Print the population of the world
+        a.printWorldPopulation(worldPopulation);
+
         // Disconnect from database
         a.disconnect();
     }
@@ -1645,4 +1650,50 @@ public class App
         }
     }
 
+    /**
+     * Get list the population of the world
+     * @return populationList
+     */
+    public ArrayList<Population> getWorldPopulation() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT SUM(country.Population) FROM country";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setWorldPopulation(rest.getLong(1));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of the world");
+            return null;
+        }
+    }
+
+    /**
+     * @param populationList
+     * Print list the population of the world
+     */
+    public void printWorldPopulation(ArrayList<Population> populationList) {
+        // Print header
+        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        // Loop over all population of the world
+        for (Population population : populationList) {
+            if (population == null)
+                continue;
+            String cty_string =
+                    String.format("%-35s %-25s",
+                            "World" , population.getWorldPopulation());
+            System.out.println(cty_string);
+        }
+    }
 }
