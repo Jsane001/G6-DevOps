@@ -60,15 +60,15 @@ public class App
         System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printCityContinent(cityContinent);
 
-        ArrayList<Population> populationContinent = a.getPopulationContinent();
-        System.out.println(" \n ++++++++++++++++ 23. The population of people living in cities and people not living in cities in each continent  ++++++++++++++++ \n ");
-        //Print the population of people living in cities and people not living in cities in each continent
-        a.printPopulationContinent(populationContinent);
-
         ArrayList<Population> populationRegion = a.getPopulationRegion();
         System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
         //Print the population of people living in cities and people not living in cities in each region
         a.printPopulationRegion(populationRegion);
+
+        ArrayList<Population> allContinentPopulation = a.getAllContinentPopulation();
+        System.out.println(" \n ++++++++++++++++ 27. The population of a continent  ++++++++++++++++ \n ");
+        //Print the population of a continent
+        a.printAllContinentPopulation(allContinentPopulation);
 
         // Disconnect from database
         a.disconnect();
@@ -642,7 +642,7 @@ public class App
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.Continent, SUM(DISTINCT country.Population), SUM(city.Population) "
+                    "SELECT country.Continent, SUM(Distinct country.Population), SUM(city.Population) "
                             + "FROM city, country WHERE country.Code = city.CountryCode GROUP BY country.Continent, country.Population "
                             + "ORDER BY country.Continent DESC";
 
@@ -757,4 +757,60 @@ public class App
             System.out.println(cty_string);
         }
     }
+
+
+
+
+
+
+    /**
+     * Get list the population of a continent
+     * @return populationList
+     */
+    public ArrayList<Population> getAllContinentPopulation() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Continent, SUM(country.Population) FROM country GROUP BY country.Continent ORDER BY country.Continent ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setName(rest.getString(1));
+                population.setWorldPopulation(rest.getLong(2));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of a continent");
+            return null;
+        }
+    }
+
+    /**
+     * @param allContinentPopulation
+     * Print list the population of a continent
+     */
+    public void printAllContinentPopulation(ArrayList<Population> allContinentPopulation) {
+        // Print header
+        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        // Loop over all population of a continent
+        for (Population population : allContinentPopulation) {
+            if (population == null)
+                continue;
+            String cty_string =
+                    String.format("%-35s %-25s",
+                            population.getName() , population.getWorldPopulation());
+            System.out.println(cty_string);
+        }
+    }
+
+
+
 }

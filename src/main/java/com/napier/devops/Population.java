@@ -1,6 +1,17 @@
 package com.napier.devops;
 
 public class Population {
+
+    /**
+     * Country Name
+     */
+    private String name;
+
+    /**
+     * People population of Country that is to calculate for world population
+     */
+    private long worldPopulation;
+
     /**
      * Continent Name
      */
@@ -17,6 +28,32 @@ public class Population {
      * Total Population for city
      */
     private int cityPopulation;
+
+    /**
+     * getter method for name
+     */
+    public String getName(){
+        return name;
+    }
+
+    /**
+     * setter method for name
+     */
+    public void setName(String name){
+        this.name=name;
+    }
+
+    /**
+     * getter method for country population that is to calculate for world population
+     */
+    public long getWorldPopulation(){
+        return worldPopulation;
+    }
+
+    /**
+     * setter method for country population that is to calculate for world population
+     */
+    public void setWorldPopulation(long WorldPopulation){ this.worldPopulation=WorldPopulation;}
 
     /**
      * getter method for continent
