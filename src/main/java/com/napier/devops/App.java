@@ -1474,7 +1474,7 @@ public class App
             ArrayList<Population> populationList = new ArrayList<>();
             while (rest.next()) {
                 Population population = new Population();
-                population.setRegion(rest.getString(1));
+                population.setName(rest.getString(1));
                 population.setCountryPopulation(rest.getInt(2));
                 population.setCityPopulation(rest.getInt(3));
                 populationList.add(population);
@@ -1516,7 +1516,7 @@ public class App
             DecimalFormat df = new DecimalFormat("#.##");
             String cty_string =
                     String.format("%-35s %-25s %-25s %-25s",
-                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPer)+"%)");
+                            population.getName(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPer)+"%)");
             System.out.println(cty_string);
         }
     }
@@ -1536,7 +1536,7 @@ public class App
             while (rest.next()) {
                 Population populations = new Population();
                 populations.setName(rest.getString(1));
-                populations.setPopulation(rest.getInt(2));
+                populations.setCountryPopulation(rest.getInt(2));
                 populations.setCountryPopulation(rest.getInt(3));
                 populations.setLivingPer(rest.getFloat(4));
                 populations.setCityPopulation(rest.getInt(5));
@@ -1575,7 +1575,7 @@ public class App
             df.setRoundingMode(RoundingMode.UP);
             String cty_string =
                     String.format("%-50s %-30s %-30s %-30s ",
-                            population.getName(), population.getPopulation(), population.getCountryPopulation()+" ("+df.format(population.getLivingPer())+"%)",population.getCityPopulation() + " (" + df.format(population.getNotLivingPer())+ "%)");
+                            population.getName(), population.getCountryPopulation(), population.getCountryPopulation()+" ("+df.format(population.getLivingPer())+"%)",population.getCityPopulation() + " (" + df.format(population.getNotLivingPer())+ "%)");
             System.out.println(cty_string);
         }
     }

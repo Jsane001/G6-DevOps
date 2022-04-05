@@ -809,7 +809,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         Population population = new Population();
-        population.setRegion("Western Europe ");
+        population.setName("Western Europe ");
         population.setCountryPopulation(183247600);
         population.setCityPopulation(45683298);
         populationList.add(population);
@@ -844,7 +844,6 @@ public class AppTest
         ArrayList<Population> populationList = new ArrayList<>();
         Population populations = new Population();
         populations.setName("Pitcairn");
-        populations.setPopulation(50);
         populations.setCountryPopulation(42);
         populations.setLivingPer(84);
         populations.setCityPopulation(8);

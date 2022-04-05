@@ -8,27 +8,14 @@ public class Population {
     private String name;
 
     /**
-     * Country Population
+     * People population of Country that is to calculate for world population
      */
-    private int population;
+    private long worldPopulation;
 
     /**
      * People population of Country who is living in the cities
      */
     private int countryPopulation;
-
-    /**
-     * Continent Name
-     */
-    private String continent;
-    /**
-     * Region Name
-     */
-    private String region;
-    /**
-     * Total Population for city
-     */
-    private int cityPopulation;
 
     /**
      * People population of Country who is not living in the cities with percent
@@ -41,67 +28,34 @@ public class Population {
     private float livingPer;
 
     /**
+     * Total Population for city
+     */
+    private int cityPopulation;
+
+    /**
      * getter method for name
      */
-    public String getName(){
-        return name;
-    }
+    public String getName(){ return name; }
 
     /**
      * setter method for name
      */
-    public void setName(String name){
-        this.name=name;
-    }
+    public void setName(String name){ this.name=name; }
 
     /**
-     * getter method for population
+     * getter method for country population that is to calculate for world population
      */
-    public int getPopulation(){
-        return population;
-    }
+    public long getWorldPopulation(){ return worldPopulation; }
 
     /**
-     * setter method for population
+     * setter method for country population that is to calculate for world population
      */
-    public void setPopulation(int population){
-        this.population=population;
-    }
-
-    /**
-     * getter method for continent
-     */
-    public String getContinent(){
-        return continent;
-    }
-
-    /**
-     * setter method for continent
-     */
-    public void setContinent(String continent){
-        this.continent=continent;
-    }
-
-    /**
-     * getter method for region
-     */
-    public String getRegion(){
-        return region;
-    }
-
-    /**
-     * setter method for region
-     */
-    public void setRegion(String region){
-        this.region=region;
-    }
+    public void setWorldPopulation(long WorldPopulation){ this.worldPopulation=WorldPopulation;}
 
     /**
      * getter method for country population
      */
-    public int getCountryPopulation(){
-        return countryPopulation;
-    }
+    public int getCountryPopulation(){ return countryPopulation; }
 
     /**
      * setter method for people population who is living in cities
@@ -111,28 +65,22 @@ public class Population {
     /**
      * getter method for people population who is living in cities with percent
      */
-    public float getLivingPer(){
-        return livingPer;
-    }
+    public float getLivingPer(){ return livingPer; }
 
     /**
      * setter method for people population who is living in cities with percent
      */
-    public void setLivingPer(float livingPer){
-        this.livingPer=livingPer;}
+    public void setLivingPer(float livingPer){ this.livingPer=livingPer;}
 
     /**
      * getter method for people population who is not in cities with percent
      */
-    public float getNotLivingPer(){
-        return notLivingPer;
-    }
+    public float getNotLivingPer(){ return notLivingPer; }
 
     /**
      * setter method for people population who is not in cities with percent
      */
-    public void setNotLivingPer(float notLivingPer){
-        this.notLivingPer=notLivingPer;}
+    public void setNotLivingPer(float notLivingPer){ this.notLivingPer=notLivingPer;}
 
     /**
      * getter method for city population
@@ -142,8 +90,6 @@ public class Population {
     /**
      * setter method for city population
      */
-    public void setCityPopulation(int cityPopulation){
-        this.cityPopulation=cityPopulation;
-    }
+    public void setCityPopulation(int cityPopulation){ this.cityPopulation=cityPopulation; }
 
 }
