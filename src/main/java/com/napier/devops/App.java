@@ -129,6 +129,11 @@ public class App
         System.out.println(" \n ++++++++++++++++ 22.  Top 10 capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
         a.printTopCapitalRegion(capitalTopRegion);
 
+        ArrayList<Population> populationContinent = a.getPopulationContinent();
+        System.out.println(" \n ++++++++++++++++ 23. The population of people living in cities and people not living in cities in each continent  ++++++++++++++++ \n ");
+        //Print the population of people living in cities and people not living in cities in each continent
+        a.printPopulationContinent(populationContinent);
+
         ArrayList<Population> populationRegion = a.getPopulationRegion();
         System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
         //Print the population of people living in cities and people not living in cities in each region
@@ -1451,6 +1456,66 @@ public class App
                     String.format("%-30s %-25s %-10s",
                             capital.getName(), capital.getCountry(), capital.getPopulation());
           System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * Get list the population of people living in cities and people not living in cities in each continent
+     * @return populationList
+     */
+    public ArrayList<Population> getPopulationContinent() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Continent, SUM(DISTINCT country.Population), SUM(city.Population) "
+                            +"FROM country, city "
+                            +"WHERE country.Code = city.CountryCode GROUP BY country.Continent ORDER BY country.Continent ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setName(rest.getString(1));
+                population.setWorldPopulation(rest.getLong(2));
+                population.setCityPopulation(rest.getInt(3));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people living in cities and people not living in cities in each continent");
+            return null;
+        }
+    }
+
+    /**
+     * @param populationList
+     * Print list the population of people living in cities and people not living in cities in each continent
+     */
+    public void printPopulationContinent(ArrayList<Population> populationList) {
+        // Print header
+        System.out.printf("%-35s %-25s %-25s %-25s%n", "Continent", "Total Population", "Living on City", "Non-living on City");
+
+        // Loop over all population of people living in cities and people not living in cities in each continent
+        double living, nonLivingPer;
+        long nonLiving;
+        for (Population population : populationList) {
+            if (population == null)
+                continue;
+            long city = population.getCityPopulation();
+            long country = population.getWorldPopulation();
+            living = (city * 100) / country;
+            nonLiving = population.getWorldPopulation() - population.getCityPopulation();
+            nonLivingPer = 100 - living;
+            DecimalFormat df = new DecimalFormat("#.##");
+            String cty_string =
+                    String.format("%-35s %-25s %-25s %-25s",
+                            population.getName(), population.getWorldPopulation(), population.getCityPopulation() + " (" + df.format(living) + "%)", nonLiving + " (" + df.format(nonLivingPer) + "%)");
+            System.out.println(cty_string);
         }
     }
 
