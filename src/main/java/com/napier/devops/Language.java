@@ -4,12 +4,17 @@ public class Language {
     /**
      * Variable for getting country name
      */
-    String countryname;
+    private String countryname;
 
     /**
      * Variable for getting Language
      */
-    String language;
+    private String language;
+
+    /**
+     * Variable for Population
+     */
+    private int population;
 
     /**
      * Create set function for getting Country Name form database
@@ -30,4 +35,14 @@ public class Language {
      * Create get function for Country Name
      */
     public String getLanguage(){return language;}
+
+    /**
+     * Create set function for getting Country Name form database
+     */
+    public void setLanguagePopulation(int population){ this.population=population; }
+
+    /**
+     * Create get function for Country Name
+     */
+    public int getLanguagePopulation(){return population;}
 }

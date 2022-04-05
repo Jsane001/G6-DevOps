@@ -166,24 +166,6 @@ public class Population {
     public void setNotLivingPer(float notLivingPer){
         this.notLivingPer=notLivingPer;}
 
-     /**
-     * setter method for country population
-     */
-    public void setCountryPopulations(int countryPopulation){
-        this.countryPopulation=countryPopulation;
-    }
-
-    /**
-     * getter method for city population
-     */
-    public int getCityPopulations(){ return cityPopulation; }
-
-    /**
-     * setter method for city population
-     */
-    public void setCityPopulations(int cityPopulation){
-        this.cityPopulation=cityPopulation;
-    }
 
     public void setPopulationOfCityName(String cityNamePopulation){ this.cityNamePopulation=cityNamePopulation; }
 

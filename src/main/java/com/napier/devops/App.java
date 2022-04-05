@@ -71,19 +71,19 @@ public class App
         System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
         a.printPopulationCountry(countryPopulation);
 
-        // City Population
-        ArrayList<Population> cityPopulation = a.getCityPopulation();
-        System.out.println(" \n ++++++++++++++++ NCS(Unknown).  Population of cities  ++++++++++++++++ \n ");
-        a.printCityPopulation(cityPopulation);
-
         // Country Population
         ArrayList<Population> countryofPopulation = a.getCountryPopulation();
-        System.out.println(" \n ++++++++++++++++ NCS(Unknown).  Population of country  ++++++++++++++++ \n ");
+        System.out.println(" \n ++++++++++++++++ 29.  Population of country  ++++++++++++++++ \n ");
         a.printCountryPopulation(countryofPopulation);
+
+        // City Population
+        ArrayList<Population> cityPopulation = a.getCityPopulation();
+        System.out.println(" \n ++++++++++++++++ 30.  Population of cities  ++++++++++++++++ \n ");
+        a.printCityPopulation(cityPopulation);
 
         // language
         ArrayList<Language> language = a.getLanguage();
-        System.out.println(" \n ++++++++++++++++ NCS(Unknown). Languages of the world  ++++++++++++++++ \n ");
+        System.out.println(" \n ++++++++++++++++ 32. Languages of the world  ++++++++++++++++ \n ");
         a.printLanguage(language);
 
 
@@ -854,7 +854,7 @@ public class App
     //private static final DecimalFormat df = new DecimalFormat("0.00");
     public void printCountryPopulation(ArrayList<Population> populationList) {
         // Print header
-        System.out.printf("%-50s %-30s%n ", "City Name", "City Population");
+        System.out.printf("%-50s %-30s%n ", "Country Name", "Country Population");
         // Loop over all city in the list
 
         for (Population population : populationList) {
@@ -874,9 +874,8 @@ public class App
             // Create an SQL statement
             Statement stmt = con.createStatement();
             //Create string for SQL statement
-            String strSelect = "SELECT country.Name, countrylanguage.Language "
-                    +"FROM country,countrylanguage WHERE country.Code=countrylanguage.CountryCode "
-                    +"ORDER BY country.Population DESC";
+            String strSelect = "SELECT countrylanguage.Language, SUM(country.Population) FROM country,countrylanguage WHERE country.Code=countrylanguage.CountryCode "
+                    +"And countrylanguage.Language In ('Chinese','English','Hindi','Spanish','Arabic') And countrylanguage.IsOfficial='T' GROUP BY countrylanguage.Language ";
 
 
             // Execute SQL statement
@@ -885,8 +884,9 @@ public class App
             // Extract Country information
             while (rest.next()) {
                 Language languages = new Language();
-                languages.setCountryname(rest.getString(1));
-                languages.setLanguage(rest.getString(2));
+
+                languages.setLanguage(rest.getString(1));
+                languages.setLanguagePopulation(rest.getInt(2));
                 languagesList.add(languages);
             }
             return languagesList;
@@ -907,7 +907,7 @@ public class App
     //private static final DecimalFormat df = new DecimalFormat("0.00");
     public void printLanguage(ArrayList<Language> languagesList) {
         // Print header
-        System.out.printf("%-50s %-30s%n ", "City Name", "City Population");
+        System.out.printf("%-50s %-30s %n ", "Language", "Population");
         // Loop over all city in the list
 
         for (Language languages : languagesList) {
@@ -916,7 +916,7 @@ public class App
             //  df.setRoundingMode(RoundingMode.UP);
             String cty_string =
                     String.format("%-50s %-30s ",
-                            languages.getCountryname(), languages.getLanguage());
+                            languages.getLanguage(),languages.getLanguagePopulation());
             System.out.println(cty_string);
         }
     }
