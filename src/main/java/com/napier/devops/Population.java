@@ -46,9 +46,7 @@ public class Population {
     /**
      * getter method for country population that is to calculate for world population
      */
-    public long getWorldPopulation(){
-        return worldPopulation;
-    }
+    public long getWorldPopulation(){ return worldPopulation; }
 
     /**
      * setter method for country population that is to calculate for world population

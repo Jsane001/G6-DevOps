@@ -75,10 +75,10 @@ public class App
         //Print the population of a region
         a.printAllRegionPopulation(allRegionPopulation);
 
-        ArrayList<Population> allRegionPopulation = a.getAllRegionPopulation();
-        System.out.println(" \n ++++++++++++++++ 27. The population of a region  ++++++++++++++++ \n ");
-        //Print the population of a region
-        a.printAllRegionPopulation(allRegionPopulation);
+        ArrayList<Population> allDistrictPopulation = a.getAllDistrictPopulation();
+        System.out.println(" \n ++++++++++++++++ 27. The population of a district  ++++++++++++++++ \n ");
+        //Print the population of a district
+        a.printAllDistrictPopulation(allDistrictPopulation);
 
         // Disconnect from database
         a.disconnect();
@@ -870,16 +870,16 @@ public class App
 
 
     /**
-     * Get list the population of a Region
+     * Get list the population of a District
      * @return populationList
      */
-    public ArrayList<Population> getAllRegionPopulation() {
+    public ArrayList<Population> getAllDistrictPopulation() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             // Create string for SQL statement
             String strSelect =
-                    "SELECT country.Region, SUM(country.Population) FROM country GROUP BY country.Region ORDER BY country.Region ASC";
+                    "SELECT city.District, SUM(city.Population) FROM city GROUP BY city.District ORDER BY city.District ASC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
 
@@ -887,32 +887,32 @@ public class App
             ArrayList<Population> populationList = new ArrayList<>();
             while (rest.next()) {
                 Population population = new Population();
-                population.setRegion(rest.getString(1));
+                population.setName(rest.getString(1));
                 population.setWorldPopulation(rest.getLong(2));
                 populationList.add(population);
             }
             return populationList;
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of a region");
+            System.out.println("Failed to get the population of a district");
             return null;
         }
     }
 
     /**
-     * @param allRegionPopulation
-     * Print list the population of a region
+     * @param populationList
+     * Print list the population of a district
      */
-    public void printAllRegionPopulation(ArrayList<Population> allRegionPopulation) {
+    public void printAllDistrictPopulation(ArrayList<Population> populationList) {
         // Print header
         System.out.printf("%-35s %-25s%n", "Name", "Total Population");
-        // Loop over all population of a region
-        for (Population population : allRegionPopulation) {
+        // Loop over all population of a district
+        for (Population population : populationList) {
             if (population == null)
                 continue;
             String cty_string =
                     String.format("%-35s %-25s",
-                            population.getRegion() , population.getWorldPopulation());
+                            population.getName() , population.getWorldPopulation());
             System.out.println(cty_string);
         }
     }
