@@ -16,70 +16,70 @@ public class App
         // Connect to database
         a.connect();
 
-       ArrayList<Country> countryWorld = a.getCountryWorld();
-       System.out.println(" \n ++++++++++++++++ 1. Countries organized by largest to smallest population in World  ++++++++++++++++ \n ");
-       //Print list of Countries by largest population to smallest
-       a.printCountryWorld(countryWorld);
-     
-       ArrayList<Country> countryContinent = a.getCountryContinent();
-       System.out.println(" \n ++++++++++++++++ 2. Countries organized by largest to smallest population in Continent  ++++++++++++++++ \n ");
-       //Print list of Countries by largest population to smallest in continent
-       a.printCountryContinent(countryContinent);
-     
-       ArrayList<Country> countryRegion = a.getCountryRegion();
-       System.out.println(" \n ++++++++++++++++ 3. Countries organized by largest to smallest population in Region  ++++++++++++++++ \n ");
-       //Print list of Countries by largest population to smallest in region
-       a.printCountryRegion(countryRegion);
-     
-       ArrayList<Country> topCountryWorld = a.getTopCountryWorld();
-       System.out.println(" \n ++++++++++++++++ 4. Top 10 Populated Countries in World  ++++++++++++++++ \n ");
-       //Print list of Countries by largest population to smallest
-       a.printTopCountryWorld(topCountryWorld);
-     
-       ArrayList<Country> topCountryContinent = a.getTopCountryContinent();
-       System.out.println(" \n ++++++++++++++++ 5. Top 10 Populated Countries in Continent  ++++++++++++++++ \n ");
-       //Print Top 10 Populated Country List in Continent
-       a.printTopCountryContinent(topCountryContinent);
-     
-       ArrayList<Country> topCountryRegion = a.getTopCountryRegion();
-       System.out.println(" \n ++++++++++++++++ 6. Top 10 Populated Countries in Region  ++++++++++++++++ \n ");
-       //Print Top 10 Populated Country List in Region
-       a.printTopCountryRegion(topCountryRegion);
-     
-       ArrayList<City> cityWorld = a.getCityWorld();
-       //Cities in the world organised by largest population to smallest
-       System.out.println(" \n ++++++++++++++++ 7.  List of cities in the world organised by largest population to smallest  ++++++++++++++++ \n ");
-       a.printCityWorld(cityWorld);
-     
-       ArrayList<City> cityRegion = a.getCityRegion();
-       //Cities in the region organised by largest population to smallest
-       System.out.println(" \n ++++++++++++++++ 8.  List of cities in the region organised by largest population to smallest  ++++++++++++++++ \n ");
-       a.printCityRegion(cityRegion);
-     
-       ArrayList<City> cityContinent = a.getCityContinent();
-       //Cities in the continent organised by largest population to smallest
-       System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
-       a.printCityContinent(cityContinent);
-     
-       ArrayList<Population> populationRegion = a.getPopulationRegion();
-       System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
-       //Print the population of people living in cities and people not living in cities in each region
-       a.printPopulationRegion(populationRegion);
-     
-       // Country City
-       ArrayList<Population> countryPopulation = a.getPopulationCountry();
-       System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
-       a.printPopulationCountry(countryPopulation);
-     
-       // Country Population
-       ArrayList<Population> countryofPopulation = a.getCountryPopulation();
-       System.out.println(" \n ++++++++++++++++ 29.  Population of country  ++++++++++++++++ \n ");
-       a.printCountryPopulation(countryofPopulation);
-     
-       // City Population
-       ArrayList<Population> cityPopulation = a.getCityPopulation();
-       System.out.println(" \n ++++++++++++++++ 30.  Population of cities  ++++++++++++++++ \n ");
-       a.printCityPopulation(cityPopulation);
+      // ArrayList<Country> countryWorld = a.getCountryWorld();
+      // System.out.println(" \n ++++++++++++++++ 1. Countries organized by largest to smallest population in World  ++++++++++++++++ \n ");
+      // //Print list of Countries by largest population to smallest
+      // a.printCountryWorld(countryWorld);
+      //
+      // ArrayList<Country> countryContinent = a.getCountryContinent();
+      // System.out.println(" \n ++++++++++++++++ 2. Countries organized by largest to smallest population in Continent  ++++++++++++++++ \n ");
+      // //Print list of Countries by largest population to smallest in continent
+      // a.printCountryContinent(countryContinent);
+      //
+      // ArrayList<Country> countryRegion = a.getCountryRegion();
+      // System.out.println(" \n ++++++++++++++++ 3. Countries organized by largest to smallest population in Region  ++++++++++++++++ \n ");
+      // //Print list of Countries by largest population to smallest in region
+      // a.printCountryRegion(countryRegion);
+      //
+      // ArrayList<Country> topCountryWorld = a.getTopCountryWorld();
+      // System.out.println(" \n ++++++++++++++++ 4. Top 10 Populated Countries in World  ++++++++++++++++ \n ");
+      // //Print list of Countries by largest population to smallest
+      // a.printTopCountryWorld(topCountryWorld);
+      //
+      // ArrayList<Country> topCountryContinent = a.getTopCountryContinent();
+      // System.out.println(" \n ++++++++++++++++ 5. Top 10 Populated Countries in Continent  ++++++++++++++++ \n ");
+      // //Print Top 10 Populated Country List in Continent
+      // a.printTopCountryContinent(topCountryContinent);
+      //
+      // ArrayList<Country> topCountryRegion = a.getTopCountryRegion();
+      // System.out.println(" \n ++++++++++++++++ 6. Top 10 Populated Countries in Region  ++++++++++++++++ \n ");
+      // //Print Top 10 Populated Country List in Region
+      // a.printTopCountryRegion(topCountryRegion);
+      //
+      // ArrayList<City> cityWorld = a.getCityWorld();
+      // //Cities in the world organised by largest population to smallest
+      // System.out.println(" \n ++++++++++++++++ 7.  List of cities in the world organised by largest population to smallest  ++++++++++++++++ \n ");
+      // a.printCityWorld(cityWorld);
+      //
+      // ArrayList<City> cityRegion = a.getCityRegion();
+      // //Cities in the region organised by largest population to smallest
+      // System.out.println(" \n ++++++++++++++++ 8.  List of cities in the region organised by largest population to smallest  ++++++++++++++++ \n ");
+      // a.printCityRegion(cityRegion);
+      //
+      // ArrayList<City> cityContinent = a.getCityContinent();
+      // //Cities in the continent organised by largest population to smallest
+      // System.out.println(" \n ++++++++++++++++ 9.  List of cities in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
+      // a.printCityContinent(cityContinent);
+      //
+      // ArrayList<Population> populationRegion = a.getPopulationRegion();
+      // System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
+      // //Print the population of people living in cities and people not living in cities in each region
+      // a.printPopulationRegion(populationRegion);
+      //
+      // // Country City
+      // ArrayList<Population> countryPopulation = a.getPopulationCountry();
+      // System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
+      // a.printPopulationCountry(countryPopulation);
+      //
+      // // Country Population
+      // ArrayList<Population> countryofPopulation = a.getCountryPopulation();
+      // System.out.println(" \n ++++++++++++++++ 29.  Population of country  ++++++++++++++++ \n ");
+      // a.printCountryPopulation(countryofPopulation);
+      //
+      // // City Population
+      // ArrayList<Population> cityPopulation = a.getCityPopulation();
+      // System.out.println(" \n ++++++++++++++++ 30.  Population of cities  ++++++++++++++++ \n ");
+      // a.printCityPopulation(cityPopulation);
 
        // language
        System.out.println(" \n ++++++++++++++++ 32. Using languages of the world  ++++++++++++++++ \n ");
@@ -922,7 +922,7 @@ public class App
     //private static final DecimalFormat dfs = new DecimalFormat("0.00");
     public void printLanguage(ArrayList<Language> lang,double W) {
         // Print header
-        System.out.printf("%-50s %-30s %30s%n ", "Language", "Using Language Population of Country", "Percentage");
+        System.out.printf("%-50s %30s%n", "Language", "Using Language Population of Country");
         // Loop over all city in the list
 
         for (int i=0;i<lang.size();i++) {
@@ -930,8 +930,8 @@ public class App
                 continue;
             df.setRoundingMode(RoundingMode.UP);
             String cty_string =
-                    String.format("%-50s %-30s %40s",
-                            lang.get(i).getLanguage(),lang.get(i).getLanguagePopulation(),"("+df.format((lang.get(i).getLanguagePopulation()/W)*100)+"%)");
+                    String.format("%-50s %-30s",
+                            lang.get(i).getLanguage(),lang.get(i).getLanguagePopulation()+"("+df.format((lang.get(i).getLanguagePopulation()/W)*100)+"%)");
             System.out.println(cty_string);
         }
     }
