@@ -4,7 +4,6 @@ import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 public class App
 {
@@ -60,9 +59,7 @@ public class App
        //Cities in the region organised by largest population to smallest
        System.out.println(" \n ++++++++++++++++ 9.  List of cities in the region organised by largest population to smallest  ++++++++++++++++ \n ");
        a.printCityRegion(cityRegion);
-      
 
-      
        ArrayList<Population> populationRegion = a.getPopulationRegion();
        System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
        //Print the population of people living in cities and people not living in cities in each region
@@ -74,9 +71,9 @@ public class App
        a.printPopulationCountry(countryPopulation);
       
        // Country Population
-       ArrayList<Population> countryofPopulation = a.getCountryPopulation();
+       ArrayList<Population> countryTotalPopulation = a.getCountryPopulation();
        System.out.println(" \n ++++++++++++++++ 29.  Population of country  ++++++++++++++++ \n ");
-       a.printCountryPopulation(countryofPopulation);
+       a.printCountryPopulation(countryTotalPopulation);
       
        // City Population
        ArrayList<Population> cityPopulation = a.getCityPopulation();
@@ -113,7 +110,6 @@ public class App
             System.out.println("Could not load SQL driver");
             System.exit(-1);
         }
-
         int retries = 10;
         for (int i = 0; i < retries; ++i)
         {
@@ -131,7 +127,6 @@ public class App
             {
                 System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
-
                 System.out.println("Type 2:Connecting to database...");
                 try
                 {
@@ -558,7 +553,7 @@ public class App
             // Create string for SQL statement
             String strSelect =
                     "SELECT city.Name, city.CountryCode, city.District, city.Population, country.Code, country.Region  "
-                            + "FROM city, country WHERE city.CountryCode = country.Code "
+                            + "FROM city, country WHERE city.CountryCode = country.Code AND country.Region = 'Western Africa' "
                             + "ORDER BY city.Population DESC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
@@ -664,7 +659,6 @@ public class App
                             +"WHERE country.Code = city.CountryCode GROUP BY country.Region ORDER BY country.Region ASC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
-
             // Extract Population information
             ArrayList<Population> populationList = new ArrayList<>();
             while (rest.next()) {
@@ -689,9 +683,8 @@ public class App
     public void printPopulationRegion(ArrayList<Population> populationList) {
         // Print header
         System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
-
         // Loop over all population of people living in cities and people not living in cities in each region
-        double living, nonLivingPerc;
+        double living, nonLivingPer;
         int nonLiving;
         for (Population population : populationList) {
             if (population == null)
@@ -700,15 +693,19 @@ public class App
             double country = population.getCountryPopulation();
             living = (city * 100) / country;
             nonLiving = population.getCountryPopulation() - population.getCityPopulation();
-            nonLivingPerc = 100 - living;
+            nonLivingPer = 100 - living;
             DecimalFormat df = new DecimalFormat("#.##");
             String cty_string =
                     String.format("%-35s %-25s %-25s %-25s",
-                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPerc)+"%)");
+                            population.getRegion(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPer)+"%)");
             System.out.println(cty_string);
         }
     }
-  
+
+    /**
+     * @return populationList
+     * Getting list the population of people living in cities and people not living in cities in each country
+     */
     public ArrayList<Population> getPopulationCountry() {
         try {
             // Create an SQL statement
@@ -717,8 +714,6 @@ public class App
             String strSelect = "SELECT country.Name, country.Population,SUM(DISTINCT city.Population),(SUM(DISTINCT city.Population)/country.Population)*100,country.Population-SUM(DISTINCT city.Population),((country.Population-SUM(DISTINCT city.Population))/country.Population)*100 "
                     +"FROM city, country WHERE country.Code = city.CountryCode GROUP BY country.Name, country.Population "
                     +"ORDER BY country.Population DESC";
-
-
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             ArrayList<Population> populationList = new ArrayList<>();
@@ -731,8 +726,6 @@ public class App
                 populations.setLivingPer(rest.getFloat(4));
                 populations.setCityPopulation(rest.getInt(5));
                 populations.setNotLivingPer(rest.getFloat(6));
-
-
                 populationList.add(populations);
             }
             return populationList;
@@ -748,12 +741,15 @@ public class App
             return null;
         }
     }
+
+    /**
+     * Print list the population of people living in cities and people not living in cities in each country
+     */
     private static final DecimalFormat df = new DecimalFormat("0.00");
     public void printPopulationCountry(ArrayList<Population> populationList) {
         // Print header
         System.out.printf("%-50s %-30s %-30s %-30s%n ", "Country Name", "Country Population", "Living population","Not Living population");
         // Loop over all city in the list
-    
         for (Population population : populationList) {
             if (population == null)
                 continue;
@@ -765,7 +761,10 @@ public class App
         }
     }
 
-    //Getting population of cities
+    /**
+     * @return populationList
+     * Getting list the population of people in cities
+     */
     public ArrayList<Population> getCityPopulation() {
         try {
             // Create an SQL statement
@@ -774,8 +773,6 @@ public class App
             String strSelect = "SELECT city.Name, city.Population "
                     +"FROM city  "
                     +"ORDER BY city.Population DESC";
-
-
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             ArrayList<Population> populationList = new ArrayList<>();
@@ -800,17 +797,17 @@ public class App
         }
     }
 
-    //print population of cities
-    //private static final DecimalFormat df = new DecimalFormat("0.00");
+    /**
+     * @param populationList
+     * Print list the population of people living in cities
+     */
     public void printCityPopulation(ArrayList<Population> populationList) {
         // Print header
         System.out.printf("%-50s %-30s%n ", "City Name", "City Population");
         // Loop over all city in the list
-
         for (Population population : populationList) {
             if (population == null)
                 continue;
-            //  df.setRoundingMode(RoundingMode.UP);
             String cty_string =
                     String.format("%-50s %-30s ",
                             population.getPopulationOfCityName(), population.getPopulationOfCity());
@@ -818,7 +815,10 @@ public class App
         }
     }
 
-    //Getting population of country
+    /**
+     * @return  populationList
+     * Getting list the population of people living in cities in each country
+     */
     public ArrayList<Population> getCountryPopulation() {
         try {
             // Create an SQL statement
@@ -827,8 +827,6 @@ public class App
             String strSelect = "SELECT country.Name, country.Population "
                     +"FROM country  "
                     +"ORDER BY country.Population DESC";
-
-
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             ArrayList<Population> populationList = new ArrayList<>();
@@ -853,17 +851,17 @@ public class App
         }
     }
 
-    //print population of cities
-    //private static final DecimalFormat df = new DecimalFormat("0.00");
+    /**
+     * @param populationList
+     * Print list the population of people living in cities in each country
+     */
     public void printCountryPopulation(ArrayList<Population> populationList) {
         // Print header
         System.out.printf("%-50s %-30s%n ", "Country Name", "Country Population");
         // Loop over all city in the list
-
         for (Population population : populationList) {
             if (population == null)
                 continue;
-            //  df.setRoundingMode(RoundingMode.UP);
             String cty_string =
                     String.format("%-50s %-30s ",
                             population.getPopulationOfCountryName(), population.getPopulationOfCountry());
@@ -871,74 +869,61 @@ public class App
         }
     }
 
-    //private static final DecimalFormat dfs = new DecimalFormat("0.00");
-    //Getting languages of world
+
+    /**
+     * Getting list of language over the world with percentage
+     */
     public void getLanguage() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
             //Create string for SQL statement
-
             String strSelects="SELECT SUM(country.Population) FROM country  ";
             ResultSet rests = stmt.executeQuery(strSelects);
-            ArrayList<Language> WpopulationLists = new ArrayList<>();
             // Extract Country information
-            double W=0l;
+            double W=0;
             while (rests.next()) {
-
                 W=rests.getDouble(1);
             }
-
-
             String strSelect = "SELECT countrylanguage.Language, SUM(country.Population) FROM country,countrylanguage WHERE country.Code=countrylanguage.CountryCode "
                     +"And countrylanguage.Language In ('Chinese','English','Hindi','Spanish','Arabic') And countrylanguage.IsOfficial='T' GROUP BY countrylanguage.Language ";
-
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
             ArrayList<Language> languagesList = new ArrayList<>();
             // Extract Country information
             while (rest.next()) {
                 Language languages = new Language();
-
                 languages.setLanguage(rest.getString(1));
                 languages.setLanguagePopulation(rest.getInt(2));
                 languagesList.add(languages);
             }
-
             printLanguage(languagesList,W);
-
         }
        catch (SQLException e){
            System.out.println(e.getMessage());
            System.out.println("Failed ");
-       //    return null;
        }
        catch (Exception e) {
            System.out.println(e.getMessage());
            System.out.println("Failed to get City by largest population to smallest in continent");
-       //    return null;
        }
     }
 
-    //print used language all over the world
-    //private static final DecimalFormat dfs = new DecimalFormat("0.00");
+    /**
+     * Print list of language over the world with percentage
+     */
     public void printLanguage(ArrayList<Language> lang,double W) {
         // Print header
         System.out.printf("%-50s %30s%n", "Language", "Using Language Population of Country");
         // Loop over all city in the list
-
-        for (int i=0;i<lang.size();i++) {
+        for (Language language : lang) {
             if (lang == null)
                 continue;
             df.setRoundingMode(RoundingMode.UP);
             String cty_string =
                     String.format("%-50s %-30s",
-                            lang.get(i).getLanguage(),lang.get(i).getLanguagePopulation()+"("+df.format((lang.get(i).getLanguagePopulation()/W)*100)+"%)");
+                            language.getLanguage(), language.getLanguagePopulation() + "(" + df.format((language.getLanguagePopulation() / W) * 100) + "%)");
             System.out.println(cty_string);
         }
     }
-
-
-
-
 }
