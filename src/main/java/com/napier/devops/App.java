@@ -81,6 +81,10 @@ public class App
        System.out.println(" \n ++++++++++++++++ 30.  Population of cities  ++++++++++++++++ \n ");
        a.printCityPopulation(cityPopulation);
 
+       // language
+       System.out.println(" \n ++++++++++++++++ 32. Using languages of the world  ++++++++++++++++ \n ");
+       a.getLanguage();
+       // a.printLanguage(language);
 
 
 
