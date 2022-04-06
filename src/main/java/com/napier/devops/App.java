@@ -899,7 +899,7 @@ public class App
                 languagesList.add(languages);
             }
 
-            //printLanguage(languagesList,W);
+            printLanguage(languagesList,W);
 
         }
        catch (SQLException e){
@@ -914,7 +914,23 @@ public class App
        }
     }
 
+    //print used language all over the world
+    //private static final DecimalFormat dfs = new DecimalFormat("0.00");
+    public void printLanguage(ArrayList<Language> lang,double W) {
+        // Print header
+        System.out.printf("%-50s %-30s %30s%n ", "Language", "Using Language Population of Country", "Percentage");
+        // Loop over all city in the list
 
+        for (int i=0;i<lang.size();i++) {
+            if (lang == null)
+                continue;
+            df.setRoundingMode(RoundingMode.UP);
+            String cty_string =
+                    String.format("%-50s %-30s %40s",
+                            lang.get(i).getLanguage(),lang.get(i).getLanguagePopulation(),"("+df.format((lang.get(i).getLanguagePopulation()/W)*100)+"%)");
+            System.out.println(cty_string);
+        }
+    }
 
 
 
