@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/devops-0.1.Alpha.4-jar-with-dependencies.jar /tmp
+COPY ./target/G6-DevOps.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "devops-0.1.Alpha.4-jar-with-dependencies.jar"]
+ENTRYPOINT ["java", "-jar", "G6-DevOps.jar", "db:3306", "30000"]
