@@ -150,6 +150,16 @@ public class App
         //Print the population of the world
         a.printWorldPopulation(worldPopulation);
 
+        ArrayList<Population> allContinentPopulation = a.getAllContinentPopulation();
+        System.out.println(" \n ++++++++++++++++ 27. The population of a continent  ++++++++++++++++ \n ");
+        //Print the population of a continent
+        a.printAllContinentPopulation(allContinentPopulation);
+
+        ArrayList<Population> allRegionPopulation = a.getAllRegionPopulation();
+        System.out.println(" \n ++++++++++++++++ 28. The population of a region  ++++++++++++++++ \n ");
+        //Print the population of a region
+        a.printAllRegionPopulation(allRegionPopulation);
+
         // Country Population
         ArrayList<Population> countryTotalPopulation = a.getCountryPopulation();
         System.out.println(" \n ++++++++++++++++ 29.  Population of country  ++++++++++++++++ \n ");
@@ -159,6 +169,11 @@ public class App
         ArrayList<Population> cityPopulation = a.getCityPopulation();
         System.out.println(" \n ++++++++++++++++ 30.  Population of cities  ++++++++++++++++ \n ");
         a.printCityPopulation(cityPopulation);
+
+        ArrayList<Population> allDistrictPopulation = a.getAllDistrictPopulation();
+        System.out.println(" \n ++++++++++++++++ 31. The population of a district  ++++++++++++++++ \n ");
+        //Print the population of a district
+        a.printAllDistrictPopulation(allDistrictPopulation);
 
         // language
         System.out.println(" \n ++++++++++++++++ 32. Using languages of the world  ++++++++++++++++ \n ");
@@ -1540,6 +1555,72 @@ public class App
     }
 
     /**
+     * Get list the population of people living in cities and people not living in cities in each continent
+     * @return populationList
+     */
+    public ArrayList<Population> getPopulationContinent() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Continent, SUM(Distinct country.Population), SUM(city.Population) "
+                            + "FROM city, country WHERE country.Code = city.CountryCode GROUP BY country.Continent, country.Population "
+                            + "ORDER BY country.Continent DESC";
+
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> listPopulation = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setContinent(rest.getString(1));
+                population.setCountryPopulation(rest.getInt(2));
+                population.setCityPopulation(rest.getInt(3));
+                listPopulation.add(population);
+            }
+            return listPopulation;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of people living in cities and people not living in cities in each continent");
+            return null;
+        }
+    }
+
+    /**
+     * @param listPopulation
+     * Print list the population of people living in cities and people not living in cities in each continent
+     */
+    public void printPopulationContinent(ArrayList<Population> listPopulation) {
+        // Print header
+        System.out.printf("%-35s %-25s %-25s %-25s%n", "Continent", "Total Population", "Living on City", "Non-living on City");
+
+        // Loop over all population of people living in cities and people not living in cities in each continent
+        double living, nonLivingPerc;
+        int nonLiving;
+
+        for (Population population : listPopulation) {
+            if (population == null)
+                continue;
+            double city = population.getCityPopulation();
+            double country = population.getCountryPopulation();
+            living = (city * 100) / country;
+            nonLiving = population.getCountryPopulation() - population.getCityPopulation();
+            nonLivingPerc = 100 - living;
+            DecimalFormat df = new DecimalFormat("#.##");
+            String cty_string =
+                    String.format("%-35s %-25s %-25s %-25s",
+                            population.getContinent(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPerc)+"%)");
+            System.out.println(cty_string);
+        }
+    }
+
+
+
+
+
+
+    /**
      * Get list the population of people living in cities and people not living in cities in each region
      * @return populationList
      */
@@ -1583,10 +1664,8 @@ public class App
             System.out.println("No Population Country in Region");
             return;
         }
-
         // Print header
         System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
-
         // Loop over all population of people living in cities and people not living in cities in each region
         double living, nonLivingPer;
         int nonLiving;
@@ -1856,14 +1935,14 @@ public class App
             }
             printLanguage(languagesList,W);
         }
-       catch (SQLException e){
-           System.out.println(e.getMessage());
-           System.out.println("Failed ");
-       }
-       catch (Exception e) {
-           System.out.println(e.getMessage());
-           System.out.println("Failed to get City by largest population to smallest in continent");
-       }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            System.out.println("Failed ");
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest in continent");
+        }
     }
 
     /**
@@ -1880,6 +1959,54 @@ public class App
             String cty_string =
                     String.format("%-50s %-30s",
                             language.getLanguage(), language.getLanguagePopulation() + "(" + df.format((language.getLanguagePopulation() / W) * 100) + "%)");
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * Get list the population of a continent
+     * @return populationList
+     */
+    public ArrayList<Population> getAllContinentPopulation() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Continent, SUM(country.Population) FROM country GROUP BY country.Continent ORDER BY country.Continent ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setName(rest.getString(1));
+                population.setWorldPopulation(rest.getLong(2));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of a continent");
+            return null;
+        }
+    }
+
+    /**
+     * @param allContinentPopulation
+     * Print list the population of a continent
+     */
+    public void printAllContinentPopulation(ArrayList<Population> allContinentPopulation) {
+        // Print header
+        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        // Loop over all population of a continent
+        for (Population population : allContinentPopulation) {
+            if (population == null)
+                continue;
+            String cty_string =
+                    String.format("%-35s %-25s",
+                            population.getName() , population.getWorldPopulation());
             System.out.println(cty_string);
         }
     }
