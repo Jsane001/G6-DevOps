@@ -714,7 +714,7 @@ public class AppTest
         app.printTopCapitalWorld(capitalList);
     }
 
-    //PopulationContinent
+    //Population Continent
     @Test
     void printTopCapitalContinentNull()
     {
@@ -748,7 +748,7 @@ public class AppTest
         app.printTopCapitalContinent(capitalList);
     }
 
-    //PopulationCapital
+    //Population Capital
     @Test
     void printTopCapitalRegionNull()
     {
@@ -782,7 +782,7 @@ public class AppTest
         app.printTopCapitalRegion(capitalList);
     }
 
-    //PopulationRegion
+    //Population Region
     @Test
     void printPopulationRegionNull()
     {
