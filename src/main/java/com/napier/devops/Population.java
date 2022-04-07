@@ -8,6 +8,11 @@ public class Population {
     private String name;
 
     /**
+     * People population
+     */
+    private long population;
+
+    /**
      * People population of Country that is to calculate for world population
      */
     private long worldPopulation;
@@ -35,7 +40,12 @@ public class Population {
     /**
      * People population of cities (population)
      */
-    private int cityofPopulation;
+    private int cityOfPopulation;
+
+    /**
+     * People population of cities (population)
+     */
+    private int cityPopulation;
 
     /**
      * People population of country (name)
@@ -45,7 +55,7 @@ public class Population {
     /**
      * People population of country (population)
      */
-    private int countryofPopulation;
+    private int countryOfPopulation;
 
     /**
      * getter method for name
@@ -56,6 +66,16 @@ public class Population {
      * setter method for name
      */
     public void setName(String name){ this.name=name; }
+
+    /**
+     * getter method for population
+     */
+    public long getPopulation(){ return population; }
+
+    /**
+     * setter method for population
+     */
+    public void setPopulation(long population){ this.population=population;}
 
     /**
      * getter method for country population that is to calculate for world population
@@ -115,9 +135,9 @@ public class Population {
         return cityNamePopulation;
     }
 
-    public void setPopulationOfCity(int cityofPopulation){ this.cityofPopulation=cityofPopulation; }
+    public void setPopulationOfCity(int cityOfPopulation){ this.cityOfPopulation=cityOfPopulation; }
 
-    public int getPopulationOfCity() {return cityofPopulation; }
+    public int getPopulationOfCity() {return cityOfPopulation; }
 
     public void setPopulationOfCountryName(String countryNamePopulation){ this.countryNamePopulation=countryNamePopulation; }
 
@@ -125,8 +145,8 @@ public class Population {
         return countryNamePopulation;
     }
 
-    public void setPopulationOfCountry(int countryofPopulation){ this.countryofPopulation=countryofPopulation; }
+    public void setPopulationOfCountry(int countryOfPopulation){ this.countryOfPopulation=countryOfPopulation; }
 
-    public int getPopulationOfCountry() {return countryofPopulation; }
+    public int getPopulationOfCountry() {return countryOfPopulation; }
 
 }
