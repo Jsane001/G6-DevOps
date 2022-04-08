@@ -4,7 +4,6 @@ import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 public class App
 {
@@ -1542,8 +1541,8 @@ public class App
         for (Population population : populationList) {
             if (population == null)
                 continue;
-            long city = population.getCityPopulation();
-            long country = population.getWorldPopulation();
+            double city = population.getCityPopulation();
+            double country = population.getWorldPopulation();
             living = (city * 100) / country;
             nonLiving = population.getWorldPopulation() - population.getCityPopulation();
             nonLivingPer = 100 - living;
@@ -1661,7 +1660,6 @@ public class App
     }
 
     /**
-     * @param populationList
      * Print list the population of people living in cities and people not living in cities in each country
      */
     private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -1885,7 +1883,6 @@ public class App
 
     /**
      * 30. Getting list the population of people in cities
-     * @populationList
      */
     public ArrayList<Population> getCityPopulation() {
         try {
