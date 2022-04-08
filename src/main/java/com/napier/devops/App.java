@@ -1718,6 +1718,12 @@ public class App
      * Print list the population of the world
      */
     public void printWorldPopulation(ArrayList<Population> populationList) {
+        // Check PopulationList is not null
+        if (populationList == null)
+        {
+            System.out.println("No Population Country in world");
+            return;
+        }
         // Print header
         System.out.printf("%-35s %-25s%n", "Name", "Total Population");
         // Loop over all population of the world
@@ -1766,6 +1772,12 @@ public class App
      * Print list the population of a continent
      */
     public void printAllContinentPopulation(ArrayList<Population> allContinentPopulation) {
+        // Check PopulationList is not null
+        if (allContinentPopulation == null)
+        {
+            System.out.println("No list the population of a continent");
+            return;
+        }
         // Print header
         System.out.printf("%-35s %-25s%n", "Name", "Total Population");
         // Loop over all population of a continent
@@ -1814,6 +1826,12 @@ public class App
      * Print list the population of a region
      */
     public void printAllRegionPopulation(ArrayList<Population> allRegionPopulation) {
+        // Check PopulationList is not null
+        if (allRegionPopulation == null)
+        {
+            System.out.println("No Population Country in Region");
+            return;
+        }
         // Print header
         System.out.printf("%-35s %-25s%n", "Name", "Total Population");
         // Loop over all population of a region
@@ -1868,6 +1886,12 @@ public class App
      * Print list the population of people living in cities in each country
      */
     public void printCountryPopulation(ArrayList<Population> populationList) {
+        // Check PopulationList is not null
+        if (populationList == null)
+        {
+            System.out.println("No list the population of people living in cities in each country");
+            return;
+        }
         // Print header
         System.out.printf("%-50s %-30s%n ", "Country Name", "Country Population");
         // Loop over all city in the list
@@ -1921,6 +1945,12 @@ public class App
      * Print list the population of people living in cities
      */
     public void printCityPopulation(ArrayList<Population> populationList) {
+        // Check PopulationList is not null
+        if (populationList == null)
+        {
+            System.out.println("No list the population of people living in cities");
+            return;
+        }
         // Print header
         System.out.printf("%-50s %-30s%n ", "City Name", "City Population");
         // Loop over all city in the list
@@ -1969,6 +1999,12 @@ public class App
      * Print list the population of a district
      */
     public void printAllDistrictPopulation(ArrayList<Population> populationList) {
+        // Check PopulationList is not null
+        if (populationList == null)
+        {
+            System.out.println("No Population Country in District");
+            return;
+        }
         // Print header
         System.out.printf("%-35s %-25s%n", "Name", "Total Population");
         // Loop over all population of a district
@@ -2025,11 +2061,17 @@ public class App
      * Print list of language over the world with percentage
      */
     public void printLanguage(ArrayList<Language> lang,double W) {
+        // Check PopulationList is not null
+        if (lang == null)
+        {
+            System.out.println("No list of language over the world with percentage");
+            return;
+        }
         // Print header
         System.out.printf("%-50s %30s%n", "Language", "Using Language Population of Country");
         // Loop over all city in the list
         for (Language language : lang) {
-            if (lang == null)
+            if (language == null)
                 continue;
             df.setRoundingMode(RoundingMode.UP);
             String cty_string =
