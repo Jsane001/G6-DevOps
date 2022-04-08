@@ -178,7 +178,6 @@ public class App
         // language
         System.out.println(" \n ++++++++++++++++ 32. Using languages of the world  ++++++++++++++++ \n ");
         a.getLanguage();
-        // a.printLanguage(language);
 
         // Disconnect from database
         a.disconnect();
@@ -237,7 +236,7 @@ public class App
     }
 
     /**
-     * Get list of Countries in the world organised by largest population to smallest
+     * 1. Get list of Countries in the world organised by largest population to smallest
      * @return countryList
      */
     public ArrayList<Country> getCountryWorld() {
@@ -296,7 +295,7 @@ public class App
     }
 
     /**
-     * Get list of countries in the continent organised by largest population to smallest
+     * 2. Get list of countries in the continent organised by largest population to smallest
      * @return countryList
      */
     public ArrayList<Country> getCountryContinent() {
@@ -355,7 +354,7 @@ public class App
     }
 
     /**
-     * Get list of countries in region organised by largest population to smallest in region
+     * 3. Get list of countries in region organised by largest population to smallest in region
      * @return countryList
      */
     public ArrayList<Country> getCountryRegion() {
@@ -414,7 +413,7 @@ public class App
     }
 
     /**
-     * Get top 10 countries in the world organised by largest population to smallest.
+     * 4. Get top 10 countries in the world organised by largest population to smallest.
      * @return countryList
      */
     public ArrayList<Country> getTopCountryWorld() {
@@ -473,7 +472,7 @@ public class App
     }
 
     /**
-     * Get Top 10 populated countries in continent list by largest population to smallest
+     * 5. Get Top 10 populated countries in continent list by largest population to smallest
      * @return countryList
      */
     public ArrayList<Country> getTopCountryContinent() {
@@ -532,7 +531,7 @@ public class App
     }
 
     /**
-     * Get top 10 populated countries in region list by largest population to smallest
+     * 6. Get top 10 populated countries in region list by largest population to smallest
      * @return countryList
      */
     public ArrayList<Country> getTopCountryRegion() {
@@ -591,7 +590,7 @@ public class App
     }
 
     /**
-     * Get list of cities in the world organised by largest population to smallest
+     * 7. Get list of cities in the world organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getCityWorld() {
@@ -648,7 +647,7 @@ public class App
     }
 
     /**
-     * Get list of cities in the region organised by largest population to smallest
+     * 8. Get list of cities in the region organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getCityRegion() {
@@ -705,7 +704,7 @@ public class App
     }
 
     /**
-     * Get list of cities in the continent organised by largest population to smallest
+     * 9. Get list of cities in the continent organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getCityContinent() {
@@ -738,6 +737,7 @@ public class App
     }
 
     /**
+     * @param cityList
      * Show list of city in the continent organised by largest population to smallest
      */
     public void printCityContinent(ArrayList<City> cityList) {
@@ -761,7 +761,7 @@ public class App
     }
 
     /**
-     * Get list of cities in the country organised by largest population to smallest
+     * 10. Get list of cities in the country organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getCityCountry() {
@@ -794,6 +794,7 @@ public class App
     }
 
     /**
+     * @param cityList
      * Show list of city in the country organised by largest population to smallest
      */
     public void printCityCountry(ArrayList<City> cityList) {
@@ -817,7 +818,7 @@ public class App
     }
 
     /**
-     * Get list of cities in the district organised by largest population to smallest
+     * 11. Get list of cities in the district organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getCityDistrict() {
@@ -874,7 +875,7 @@ public class App
     }
 
     /**
-     * Get top 10 cities in the world organised by largest population to smallest
+     * 12. Get top 10 cities in the world organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getTopCityWorld() {
@@ -931,7 +932,7 @@ public class App
     }
 
     /**
-     * Get top 10 cities in the continent organised by largest population to smallest
+     * 13. Get top 10 cities in the continent organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getTopCityContinent() {
@@ -988,7 +989,7 @@ public class App
     }
 
     /**
-     * Get top 10 cities in the region organised by largest population to smallest
+     * 14. Get top 10 cities in the region organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getTopCityRegion() {
@@ -1045,7 +1046,7 @@ public class App
     }
 
     /**
-     * Get top 10 cities in the country organised by largest population to smallest
+     * 15. Get top 10 cities in the country organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getTopCityCountry() {
@@ -1102,7 +1103,7 @@ public class App
     }
 
     /**
-     * Get top 10 cities in the district organised by largest population to smallest
+     * 16. Get top 10 cities in the district organised by largest population to smallest
      * @return cityList
      */
     public ArrayList<City> getTopCityDistrict() {
@@ -1159,7 +1160,7 @@ public class App
     }
 
     /**
-     * Get list of capital city in the world organised by largest population to smallest
+     * 17. Get list of capital city in the world organised by largest population to smallest
      * @return countryList
      */
     public ArrayList<Capital_City> getCapitalWorld() {
@@ -1215,7 +1216,7 @@ public class App
     }
 
     /**
-     * Get list of capital city in the continent organised by largest population to smallest
+     * 18. Get list of capital city in the continent organised by largest population to smallest
      * @return countryList
      */
     public ArrayList<Capital_City> getCapitalContinent() {
@@ -1271,7 +1272,7 @@ public class App
     }
 
     /**
-     * Get list of capital city in the region organised by largest population to smallest
+     * 19. Get list of capital city in the region organised by largest population to smallest
      * @return countryList
      */
     public ArrayList<Capital_City> getCapitalRegion() {
@@ -1327,7 +1328,7 @@ public class App
     }
 
     /**
-     * Get top 10 capital city in the world organised by largest population to smallest
+     * 20. Get top 10 capital city in the world organised by largest population to smallest
      * @return countryList
      */
     public ArrayList<Capital_City> getTopCapitalWorld() {
@@ -1383,8 +1384,8 @@ public class App
     }
 
     /**
-     * Get top 10 capital city in the continent organised by largest population to smallest
-     * @return countryList
+     * 21. Get top 10 capital city in the continent organised by largest population to smallest
+     * @return capitalList
      */
     public ArrayList<Capital_City> getTopCapitalContinent() {
         try {
@@ -1439,8 +1440,8 @@ public class App
     }
 
     /**
-     * Get top 10 capital city in the region organised by largest population to smallest
-     * @return countryList
+     * 22. Get top 10 capital city in the region organised by largest population to smallest
+     * @return capitalList
      */
     public ArrayList<Capital_City> getTopCapitalRegion() {
         try {
@@ -1495,7 +1496,7 @@ public class App
     }
 
     /**
-     * Get list the population of people living in cities and people not living in cities in each continent
+     * 23. Get list the population of people living in cities and people not living in cities in each continent
      * @return populationList
      */
     public ArrayList<Population> getPopulationContinent() {
@@ -1555,7 +1556,7 @@ public class App
     }
 
     /**
-     * Get list the population of people living in cities and people not living in cities in each region
+     * 24. Get list the population of people living in cities and people not living in cities in each region
      * @return populationList
      */
     public ArrayList<Population> getPopulationRegion() {
@@ -1620,8 +1621,8 @@ public class App
     }
 
     /**
+     * 25. Getting list the population of people living in cities and people not living in cities in each country
      * @return populationList
-     * Getting list the population of people living in cities and people not living in cities in each country
      */
     public ArrayList<Population> getPopulationCountry() {
         try {
@@ -1660,6 +1661,7 @@ public class App
     }
 
     /**
+     * @param populationList
      * Print list the population of people living in cities and people not living in cities in each country
      */
     private static final DecimalFormat df = new DecimalFormat("0.00");
@@ -1685,7 +1687,7 @@ public class App
     }
 
     /**
-     * Get list the population of the world
+     * 26. Get list the population of the world
      * @return populationList
      */
     public ArrayList<Population> getWorldPopulation() {
@@ -1732,8 +1734,158 @@ public class App
     }
 
     /**
+     * 27. Get list the population of a continent
      * @return populationList
-     * Getting list the population of people in cities
+     */
+    public ArrayList<Population> getAllContinentPopulation() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Continent, SUM(country.Population) FROM country GROUP BY country.Continent ORDER BY country.Continent ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setName(rest.getString(1));
+                population.setWorldPopulation(rest.getLong(2));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of a continent");
+            return null;
+        }
+    }
+
+    /**
+     * @param allContinentPopulation
+     * Print list the population of a continent
+     */
+    public void printAllContinentPopulation(ArrayList<Population> allContinentPopulation) {
+        // Print header
+        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        // Loop over all population of a continent
+        for (Population population : allContinentPopulation) {
+            if (population == null)
+                continue;
+            String cty_string =
+                    String.format("%-35s %-25s",
+                            population.getName() , population.getWorldPopulation());
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * 28. Get list the population of a Region
+     * @return populationList
+     */
+    public ArrayList<Population> getAllRegionPopulation() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT country.Region, SUM(country.Population) FROM country GROUP BY country.Region ORDER BY country.Region ASC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
+            ArrayList<Population> populationList = new ArrayList<>();
+            while (rest.next()) {
+                Population population = new Population();
+                population.setName(rest.getString(1));
+                population.setWorldPopulation(rest.getLong(2));
+                populationList.add(population);
+            }
+            return populationList;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get the population of a region");
+            return null;
+        }
+    }
+
+    /**
+     * @param allRegionPopulation
+     * Print list the population of a region
+     */
+    public void printAllRegionPopulation(ArrayList<Population> allRegionPopulation) {
+        // Print header
+        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        // Loop over all population of a region
+        for (Population population : allRegionPopulation) {
+            if (population == null)
+                continue;
+            String cty_string =
+                    String.format("%-35s %-25s",
+                            population.getName() , population.getWorldPopulation());
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * 29. Getting list the population of people living in cities in each country
+     * @return  populationList
+     */
+    public ArrayList<Population> getCountryPopulation() {
+        try {
+            // Create an SQL statement
+            Statement stmt = con.createStatement();
+            //Create string for SQL statement
+            String strSelect = "SELECT country.Name, country.Population "
+                    +"FROM country  "
+                    +"ORDER BY country.Population DESC";
+            // Execute SQL statement
+            ResultSet rest = stmt.executeQuery(strSelect);
+            ArrayList<Population> populationList = new ArrayList<>();
+            // Extract Country information
+            while (rest.next()) {
+                Population populations = new Population();
+                populations.setPopulationOfCountryName(rest.getString(1));
+                populations.setPopulationOfCountry(rest.getInt(2));
+                populationList.add(populations);
+            }
+            return populationList;
+        }
+        catch (SQLException e){
+            System.out.println(e.getMessage());
+            System.out.println("Failed ");
+            return null;
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Failed to get City by largest population to smallest in continent");
+            return null;
+        }
+    }
+
+    /**
+     * @param populationList
+     * Print list the population of people living in cities in each country
+     */
+    public void printCountryPopulation(ArrayList<Population> populationList) {
+        // Print header
+        System.out.printf("%-50s %-30s%n ", "Country Name", "Country Population");
+        // Loop over all city in the list
+        for (Population population : populationList) {
+            if (population == null)
+                continue;
+            String cty_string =
+                    String.format("%-50s %-30s ",
+                            population.getPopulationOfCountryName(), population.getPopulationOfCountry());
+            System.out.println(cty_string);
+        }
+    }
+
+    /**
+     * 30. Getting list the population of people in cities
+     * @populationList
      */
     public ArrayList<Population> getCityPopulation() {
         try {
@@ -1786,62 +1938,55 @@ public class App
     }
 
     /**
-     * @return  populationList
-     * Getting list the population of people living in cities in each country
+     * 31. Get list the population of a District
+     * @return populationList
      */
-    public ArrayList<Population> getCountryPopulation() {
+    public ArrayList<Population> getAllDistrictPopulation() {
         try {
             // Create an SQL statement
             Statement stmt = con.createStatement();
-            //Create string for SQL statement
-            String strSelect = "SELECT country.Name, country.Population "
-                    +"FROM country  "
-                    +"ORDER BY country.Population DESC";
+            // Create string for SQL statement
+            String strSelect =
+                    "SELECT city.District, SUM(city.Population) FROM city GROUP BY city.District ORDER BY city.District ASC";
             // Execute SQL statement
             ResultSet rest = stmt.executeQuery(strSelect);
+
+            // Extract Population information
             ArrayList<Population> populationList = new ArrayList<>();
-            // Extract Country information
             while (rest.next()) {
-                Population populations = new Population();
-                populations.setPopulationOfCountryName(rest.getString(1));
-                populations.setPopulationOfCountry(rest.getInt(2));
-                populationList.add(populations);
+                Population population = new Population();
+                population.setName(rest.getString(1));
+                population.setWorldPopulation(rest.getLong(2));
+                populationList.add(population);
             }
             return populationList;
-        }
-        catch (SQLException e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Failed ");
-            return null;
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get City by largest population to smallest in continent");
+            System.out.println("Failed to get the population of a district");
             return null;
         }
     }
 
     /**
      * @param populationList
-     * Print list the population of people living in cities in each country
+     * Print list the population of a district
      */
-    public void printCountryPopulation(ArrayList<Population> populationList) {
+    public void printAllDistrictPopulation(ArrayList<Population> populationList) {
         // Print header
-        System.out.printf("%-50s %-30s%n ", "Country Name", "Country Population");
-        // Loop over all city in the list
+        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        // Loop over all population of a district
         for (Population population : populationList) {
             if (population == null)
                 continue;
             String cty_string =
-                    String.format("%-50s %-30s ",
-                            population.getPopulationOfCountryName(), population.getPopulationOfCountry());
+                    String.format("%-35s %-25s",
+                            population.getName() , population.getWorldPopulation());
             System.out.println(cty_string);
         }
     }
 
-
     /**
-     * Getting list of language over the world with percentage
+     * 32. Getting list of language over the world with percentage
      */
     public void getLanguage() {
         try {
@@ -1893,150 +2038,6 @@ public class App
             String cty_string =
                     String.format("%-50s %-30s",
                             language.getLanguage(), language.getLanguagePopulation() + "(" + df.format((language.getLanguagePopulation() / W) * 100) + "%)");
-            System.out.println(cty_string);
-        }
-    }
-
-    /**
-     * Get list the population of a continent
-     * @return populationList
-     */
-    public ArrayList<Population> getAllContinentPopulation() {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.Continent, SUM(country.Population) FROM country GROUP BY country.Continent ORDER BY country.Continent ASC";
-            // Execute SQL statement
-            ResultSet rest = stmt.executeQuery(strSelect);
-
-            // Extract Population information
-            ArrayList<Population> populationList = new ArrayList<>();
-            while (rest.next()) {
-                Population population = new Population();
-                population.setName(rest.getString(1));
-                population.setWorldPopulation(rest.getLong(2));
-                populationList.add(population);
-            }
-            return populationList;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of a continent");
-            return null;
-        }
-    }
-
-    /**
-     * @param allContinentPopulation
-     * Print list the population of a continent
-     */
-    public void printAllContinentPopulation(ArrayList<Population> allContinentPopulation) {
-        // Print header
-        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
-        // Loop over all population of a continent
-        for (Population population : allContinentPopulation) {
-            if (population == null)
-                continue;
-            String cty_string =
-                    String.format("%-35s %-25s",
-                            population.getName() , population.getWorldPopulation());
-            System.out.println(cty_string);
-        }
-    }
-
-    /**
-     * Get list the population of a Region
-     * @return populationList
-     */
-    public ArrayList<Population> getAllRegionPopulation() {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT country.Region, SUM(country.Population) FROM country GROUP BY country.Region ORDER BY country.Region ASC";
-            // Execute SQL statement
-            ResultSet rest = stmt.executeQuery(strSelect);
-
-            // Extract Population information
-            ArrayList<Population> populationList = new ArrayList<>();
-            while (rest.next()) {
-                Population population = new Population();
-                population.setName(rest.getString(1));
-                population.setWorldPopulation(rest.getLong(2));
-                populationList.add(population);
-            }
-            return populationList;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of a region");
-            return null;
-        }
-    }
-
-    /**
-     * @param allRegionPopulation
-     * Print list the population of a region
-     */
-    public void printAllRegionPopulation(ArrayList<Population> allRegionPopulation) {
-        // Print header
-        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
-        // Loop over all population of a region
-        for (Population population : allRegionPopulation) {
-            if (population == null)
-                continue;
-            String cty_string =
-                    String.format("%-35s %-25s",
-                            population.getName() , population.getWorldPopulation());
-            System.out.println(cty_string);
-        }
-    }
-
-    /**
-     * Get list the population of a District
-     * @return populationList
-     */
-    public ArrayList<Population> getAllDistrictPopulation() {
-        try {
-            // Create an SQL statement
-            Statement stmt = con.createStatement();
-            // Create string for SQL statement
-            String strSelect =
-                    "SELECT city.District, SUM(city.Population) FROM city GROUP BY city.District ORDER BY city.District ASC";
-            // Execute SQL statement
-            ResultSet rest = stmt.executeQuery(strSelect);
-
-            // Extract Population information
-            ArrayList<Population> populationList = new ArrayList<>();
-            while (rest.next()) {
-                Population population = new Population();
-                population.setName(rest.getString(1));
-                population.setWorldPopulation(rest.getLong(2));
-                populationList.add(population);
-            }
-            return populationList;
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Failed to get the population of a district");
-            return null;
-        }
-    }
-
-    /**
-     * @param populationList
-     * Print list the population of a district
-     */
-    public void printAllDistrictPopulation(ArrayList<Population> populationList) {
-        // Print header
-        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
-        // Loop over all population of a district
-        for (Population population : populationList) {
-            if (population == null)
-                continue;
-            String cty_string =
-                    String.format("%-35s %-25s",
-                            population.getName() , population.getWorldPopulation());
             System.out.println(cty_string);
         }
     }

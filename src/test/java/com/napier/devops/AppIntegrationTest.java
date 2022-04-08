@@ -278,4 +278,52 @@ public class AppIntegrationTest
         app.printPopulationCountry(populationCountry);
     }
 
+    @Test
+    void testGetWorldPopulation()
+    {
+        ArrayList<Population> populationList = app.getWorldPopulation();
+        app.printWorldPopulation(populationList);
+    }
+
+    @Test
+    void testGetAllContinentPopulation()
+    {
+        ArrayList<Population> populationList = app.getAllContinentPopulation();
+        app.printAllContinentPopulation(populationList);
+    }
+
+    @Test
+    void testGetAllRegionPopulation()
+    {
+        ArrayList<Population> populationList = app.getAllRegionPopulation();
+        app.printAllRegionPopulation(populationList);
+    }
+
+    @Test
+    void testGetCountryPopulation()
+    {
+        ArrayList<Population> populationList = app.getCountryPopulation();
+        app.printCountryPopulation(populationList);
+    }
+
+    @Test
+    void testGetCityPopulation()
+    {
+        ArrayList<Population> populationList = app.getCityPopulation();
+        app.printCityPopulation(populationList);
+    }
+
+    @Test
+    void testGetAllDistrictPopulation()
+    {
+        ArrayList<Population> populationList = app.getAllDistrictPopulation();
+        app.printAllDistrictPopulation(populationList);
+    }
+
+    @Test
+    void testGetLanguage()
+    {
+        app.getLanguage();
+    }
+
 }
