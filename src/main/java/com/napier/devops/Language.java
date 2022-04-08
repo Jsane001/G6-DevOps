@@ -12,11 +12,6 @@ public class Language {
     private int population;
 
     /**
-     * Variable for world Population
-     */
-    private int worldpopulation;
-
-    /**
      * Create set function for getting Country Languages form database
      */
     public void setLanguage(String language){ this.language=language; }
@@ -35,16 +30,4 @@ public class Language {
      * Create get function for Country Name
      */
     public int getLanguagePopulation(){return population;}
-
-
-    /**
-     * Create set function for getting world population form database
-     */
-    public void setWorldPopulation(int worldpopulation){ this.worldpopulation=worldpopulation; }
-
-    /**
-     * Create get function for Country Name
-     */
-    public int getWorldpopulation(){return worldpopulation;}
-
 }

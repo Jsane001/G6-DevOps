@@ -852,4 +852,235 @@ public class AppTest
         app.printPopulationCountry(populationList);
     }
 
+    //World Population
+    @Test
+    void printWorldPopulationNull()
+    {
+        app.printWorldPopulation(null);
+    }
+
+    @Test
+    void printWorldPopulationTestEmpty()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        app.printWorldPopulation(populationList);
+    }
+
+    @Test
+    void printWorldPopulationContainsNull()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        populationList.add(null);
+        app.printWorldPopulation(populationList);
+    }
+
+    @Test
+    void printWorldPopulation()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        Population populations = new Population();
+        populations.setWorldPopulation(553573);
+        populationList.add(populations);
+        app.printPopulationCountry(populationList);
+    }
+
+    //All Continent Population
+    @Test
+    void printAllContinentPopulationNull()
+    {
+        app.printAllContinentPopulation(null);
+    }
+
+    @Test
+    void printAllContinentPopulationTestEmpty()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        app.printAllContinentPopulation(populationList);
+    }
+
+    @Test
+    void printAllContinentPopulationContainsNull()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        populationList.add(null);
+        app.printAllContinentPopulation(populationList);
+    }
+
+    @Test
+    void printAllContinentPopulation()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        Population populations = new Population();
+        populations.setName("Antarctica");
+        populations.setWorldPopulation(0);
+        populationList.add(populations);
+        app.printAllContinentPopulation(populationList);
+    }
+
+    //All Region Population
+    @Test
+    void printAllRegionPopulationNull()
+    {
+        app.printAllRegionPopulation(null);
+    }
+
+    @Test
+    void printAllRegionPopulationTestEmpty()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        app.printAllRegionPopulation(populationList);
+    }
+
+    @Test
+    void printAllRegionPopulationContainsNull()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        populationList.add(null);
+        app.printAllRegionPopulation(populationList);
+    }
+
+    @Test
+    void printAllRegionPopulation()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        Population populations = new Population();
+        populations.setName("Western Europe");
+        populations.setWorldPopulation(183247600);
+        populationList.add(populations);
+        app.printAllRegionPopulation(populationList);
+    }
+
+    //All Country Population
+    @Test
+    void printCountryPopulationNull()
+    {
+        app.printCountryPopulation(null);
+    }
+
+    @Test
+    void printCountryPopulationTestEmpty()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        app.printCountryPopulation(populationList);
+    }
+
+    @Test
+    void printCountryPopulationContainsNull()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        populationList.add(null);
+        app.printCountryPopulation(populationList);
+    }
+
+    @Test
+    void printCountryPopulation()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        Population populations = new Population();
+        populations.setName("Pitcairn");
+        populations.setWorldPopulation(553573);
+        populationList.add(populations);
+        app.printCountryPopulation(populationList);
+    }
+
+    //All City Population
+    @Test
+    void printCityPopulationNull()
+    {
+        app.printCityPopulation(null);
+    }
+
+    @Test
+    void printCityPopulationTestEmpty()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        app.printCityPopulation(populationList);
+    }
+
+    @Test
+    void printCityPopulationContainsNull()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        populationList.add(null);
+        app.printCityPopulation(populationList);
+    }
+
+    @Test
+    void printCityPopulation()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        Population populations = new Population();
+        populations.setPopulationOfCityName("Shanghai");
+        populations.setPopulationOfCity(9696300);
+        populationList.add(populations);
+        app.printCountryPopulation(populationList);
+    }
+
+
+
+    //All District Population
+    @Test
+    void printAllDistrictPopulationNull()
+    {
+        app.printAllDistrictPopulation(null);
+    }
+
+    @Test
+    void printAllDistrictPopulationTestEmpty()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        app.printAllDistrictPopulation(populationList);
+    }
+
+    @Test
+    void printAllDistrictPopulationContainsNull()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        populationList.add(null);
+        app.printAllDistrictPopulation(populationList);
+    }
+
+    @Test
+    void printAllDistrictPopulation()
+    {
+        ArrayList<Population> populationList = new ArrayList<>();
+        Population populations = new Population();
+        populations.setName("Abidjan");
+        populations.setWorldPopulation(2500000);
+        populationList.add(populations);
+        app.printAllDistrictPopulation(populationList);
+    }
+
+    //All language over the world with percentage
+    @Test
+    void printLanguageNull()
+    {
+        app.printLanguage(null,0.0);
+    }
+
+    @Test
+    void printLanguageTestEmpty()
+    {
+        ArrayList<Language> languagesList = new ArrayList<>();
+        app.printLanguage(languagesList,0.0);
+    }
+
+    @Test
+    void printLanguageContainsNull()
+    {
+        ArrayList<Language> languagesList = new ArrayList<>();
+        languagesList.add(null);
+        app.printLanguage(languagesList,0.0);
+    }
+
+    @Test
+    void printLanguage()
+    {
+        ArrayList<Language> languagesList = new ArrayList<>();
+        Language languages = new Language();
+        languages.setLanguage("English");
+        languages.setLanguagePopulation(459158800);
+        languagesList.add(languages);
+        app.printLanguage(languagesList,7.56);
+    }
 }
