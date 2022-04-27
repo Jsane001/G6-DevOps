@@ -31,7 +31,7 @@ public class AppIntegrationTest
         assertEquals("Eastern Asia", countryWorld.get(0).getRegion());
         assertEquals(1277558000, countryWorld.get(0).getPopulation());
         assertEquals("Peking", countryWorld.get(0).getCapital());
-        app.printCountryWorld(countryWorld);
+        app.printCountryWorld(countryWorld, "CountryWorld.md");
     }
 
     @Test

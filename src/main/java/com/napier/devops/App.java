@@ -1,5 +1,9 @@
 package com.napier.devops;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -22,7 +26,7 @@ public class App
         ArrayList<Country> countryWorld = a.getCountryWorld();
         System.out.println(" \n ++++++++++++++++ 1. Countries organized by largest to smallest population in World  ++++++++++++++++ \n ");
         //Print list of Countries by largest population to smallest
-        a.printCountryWorld(countryWorld);
+        a.printCountryWorld(countryWorld, "CountryWorld.md");
 
         ArrayList<Country> countryContinent = a.getCountryContinent();
         System.out.println(" \n ++++++++++++++++ 2. Countries organized by largest to smallest population in Continent  ++++++++++++++++ \n ");
@@ -273,7 +277,7 @@ public class App
      * @param countryList
      * Print list of Countries in world organised by largest population to smallest
      */
-    public void printCountryWorld(ArrayList<Country> countryList) {
+    public void printCountryWorld(ArrayList<Country> countryList, String filename) {
         // Check countryList is not null
         if (countryList == null)
         {
@@ -281,15 +285,22 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-10s %-35s %-25s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        StringBuilder sb = new StringBuilder();
+        sb.append("| Code | Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
         for (Country country : countryList) {
             if (country == null)
                 continue;
-            String cty_string =
-                    String.format("%-10s %-35s %-25s %-35s %-15s %20s",
-                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
-            System.out.println(cty_string);
+            sb.append("| "+ country.getCode() + " | " + country.getName() + " | " + country.getContinent() + " | " + country.getRegion() + " | " + country.getPopulation() + " | " + country.getCapital() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

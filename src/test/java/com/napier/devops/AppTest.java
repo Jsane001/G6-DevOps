@@ -21,14 +21,14 @@ public class AppTest
     @Test
     void printCountryWorldTestNull()
     {
-        app.printCountryWorld(null);
+        app.printCountryWorld(null, "CountryWorld.md");
     }
 
     @Test
     void printCountryWorldTestEmpty()
     {
         ArrayList<Country> countryWorld = new ArrayList<>();
-        app.printCountryWorld(countryWorld);
+        app.printCountryWorld(countryWorld, "CountryWorld.md");
     }
 
     @Test
@@ -36,7 +36,7 @@ public class AppTest
     {
         ArrayList<Country> countryWorld = new ArrayList<>();
         countryWorld.add(null);
-        app.printCountryWorld(countryWorld);
+        app.printCountryWorld(countryWorld, "CountryWorld.md");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class AppTest
         country.setPopulation(1000);
         country.setCapital("Yangon");
         countryWorld.add(country);
-        app.printCountryWorld(countryWorld);
+        app.printCountryWorld(countryWorld, "CountryWorld.md");
     }
 
     @Test
@@ -87,7 +87,7 @@ public class AppTest
         country.setPopulation(1000);
         country.setCapital("Yangon");
         countryWorld.add(country);
-        app.printCountryWorld(countryWorld);
+        app.printCountryWorld(countryWorld, "CountryWorld.md");
     }
 
     @Test
