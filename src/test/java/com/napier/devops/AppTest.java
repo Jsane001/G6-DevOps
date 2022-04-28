@@ -1055,14 +1055,14 @@ public class AppTest
     @Test
     void printLanguageNull()
     {
-        app.printLanguage(null,0.0);
+        app.printLanguage(null,0.0, "LanguagesList.md");
     }
 
     @Test
     void printLanguageTestEmpty()
     {
         ArrayList<Language> languagesList = new ArrayList<>();
-        app.printLanguage(languagesList,0.0);
+        app.printLanguage(languagesList,0.0, "LanguagesList.md");
     }
 
     @Test
@@ -1070,7 +1070,7 @@ public class AppTest
     {
         ArrayList<Language> languagesList = new ArrayList<>();
         languagesList.add(null);
-        app.printLanguage(languagesList,0.0);
+        app.printLanguage(languagesList,0.0, "LanguagesList.md");
     }
 
     @Test
@@ -1081,6 +1081,6 @@ public class AppTest
         languages.setLanguage("English");
         languages.setLanguagePopulation(459158800);
         languagesList.add(languages);
-        app.printLanguage(languagesList,7.56);
+        app.printLanguage(languagesList,7.56, "LanguagesList.md");
     }
 }

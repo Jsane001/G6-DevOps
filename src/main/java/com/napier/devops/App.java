@@ -2134,7 +2134,7 @@ public class App
                 languages.setLanguagePopulation(rest.getInt(2));
                 languagesList.add(languages);
             }
-            printLanguage(languagesList,W);
+            printLanguage(languagesList,W,"LanguagesList.md");
         }
         catch (SQLException e){
             System.out.println(e.getMessage());
@@ -2149,7 +2149,7 @@ public class App
     /**
      * Print list of language over the world with percentage
      */
-    public void printLanguage(ArrayList<Language> lang,double W) {
+    public void printLanguage(ArrayList<Language> lang,double W, String filename) {
         // Check PopulationList is not null
         if (lang == null)
         {
@@ -2157,16 +2157,24 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-50s %30s%n", "Language", "Using Language Population of Country");
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 32. Using languages of the world\r\n");
+        sb.append("| Language | Using Language Population of Country |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all city in the list
         for (Language language : lang) {
             if (language == null)
                 continue;
             df.setRoundingMode(RoundingMode.UP);
-            String cty_string =
-                    String.format("%-50s %-30s",
-                            language.getLanguage(), language.getLanguagePopulation() + "(" + df.format((language.getLanguagePopulation() / W) * 100) + "%)");
-            System.out.println(cty_string);
+            sb.append("| " + language.getLanguage() + " | " + language.getLanguagePopulation() + "(" + df.format((language.getLanguagePopulation() / W) * 100) + "%)" +"|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
