@@ -305,14 +305,14 @@ public class AppTest
     @Test
     void printCityContinentNull()
     {
-        app.printCityContinent(null);
+        app.printCityContinent(null, "CityContinent.md");
     }
 
     @Test
     void printCityContinentTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printCityContinent(cityList);
+        app.printCityContinent(cityList, "CityContinent.md");
     }
 
     @Test
@@ -320,7 +320,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printCityContinent(cityList);
+        app.printCityContinent(cityList, "CityContinent.md");
     }
 
     @Test
@@ -333,7 +333,7 @@ public class AppTest
         city.setDistrict("Southeast Asia");
         city.setPopulation(1000);
         cityList.add(city);
-        app.printCityContinent(cityList);
+        app.printCityContinent(cityList, "CityContinent.md");
     }
 
     @Test
