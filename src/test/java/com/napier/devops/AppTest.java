@@ -547,14 +547,14 @@ public class AppTest
     @Test
     void printTopCityDistrictNull()
     {
-        app.printTopCityDistrict(null);
+        app.printTopCityDistrict(null, "TopCityDistrict.md");
     }
 
     @Test
     void printTopCityDistrictTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityDistrict(cityList);
+        app.printTopCityDistrict(cityList, "TopCityDistrict.md");
     }
 
     @Test
@@ -562,7 +562,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityDistrict(cityList);
+        app.printTopCityDistrict(cityList, "TopCityDistrict.md");
     }
 
     @Test
@@ -575,7 +575,7 @@ public class AppTest
         city.setDistrict("Bahia");
         city.setPopulation(126820);
         cityList.add(city);
-        app.printTopCityDistrict(cityList);
+        app.printTopCityDistrict(cityList, "TopCityDistrict.md");
     }
 
     //PopulationCapital

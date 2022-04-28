@@ -219,7 +219,7 @@ public class AppIntegrationTest
     void testGetTopCityDistrict()
     {
         ArrayList<City> cityTopDistrict = app.getTopCityDistrict();
-        app.printTopCityDistrict(cityTopDistrict);
+        app.printTopCityDistrict(cityTopDistrict, "TopCityDistrict.md");
     }
 
     @Test
