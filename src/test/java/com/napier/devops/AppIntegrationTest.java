@@ -310,7 +310,7 @@ public class AppIntegrationTest
     void testGetCityPopulation()
     {
         ArrayList<Population> populationList = app.getCityPopulation();
-        app.printCityPopulation(populationList);
+        app.printCityPopulation(populationList, "CityPopulation.md");
     }
 
     @Test

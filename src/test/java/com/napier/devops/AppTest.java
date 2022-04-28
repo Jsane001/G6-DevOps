@@ -987,14 +987,14 @@ public class AppTest
     @Test
     void printCityPopulationNull()
     {
-        app.printCityPopulation(null);
+        app.printCityPopulation(null, "CityPopulation.md");
     }
 
     @Test
     void printCityPopulationTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printCityPopulation(populationList);
+        app.printCityPopulation(populationList, "CityPopulation.md");
     }
 
     @Test
@@ -1002,7 +1002,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printCityPopulation(populationList);
+        app.printCityPopulation(populationList, "CityPopulation.md");
     }
 
     @Test
