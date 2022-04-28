@@ -93,14 +93,14 @@ public class AppTest
     @Test
     void printCountryRegionNull()
     {
-        app.printCountryRegion(null);
+        app.printCountryRegion(null, "CountryRegion.md");
     }
 
     @Test
     void printCountryRegionTestEmpty()
     {
         ArrayList<Country> countryList = new ArrayList<>();
-        app.printCountryRegion(countryList);
+        app.printCountryRegion(countryList, "CountryRegion.md");
     }
 
     @Test
@@ -108,7 +108,7 @@ public class AppTest
     {
         ArrayList<Country> countryList = new ArrayList<>();
         countryList.add(null);
-        app.printCountryRegion(countryList);
+        app.printCountryRegion(countryList, "CountryRegion.md");
     }
 
     @Test
@@ -123,20 +123,20 @@ public class AppTest
         country.setPopulation(1000);
         country.setCapital("Yangon");
         countryList.add(country);
-        app.printCountryRegion(countryList);
+        app.printCountryRegion(countryList, "CountryRegion.md");
     }
 
     @Test
     void printTopCountryWorldNull()
     {
-        app.printTopCountryWorld(null);
+        app.printTopCountryWorld(null, "TopCountryWorld.md");
     }
 
     @Test
     void printTopCountryWorldTestEmpty()
     {
         ArrayList<Country> countryList = new ArrayList<>();
-        app.printTopCountryWorld(countryList);
+        app.printTopCountryWorld(countryList, "TopCountryWorld.md");
     }
 
     @Test
@@ -144,7 +144,7 @@ public class AppTest
     {
         ArrayList<Country> countryList = new ArrayList<>();
         countryList.add(null);
-        app.printTopCountryWorld(countryList);
+        app.printTopCountryWorld(countryList, "TopCountryWorld.md");
     }
 
     @Test
@@ -159,20 +159,20 @@ public class AppTest
         country.setPopulation(1000);
         country.setCapital("Yangon");
         countryList.add(country);
-        app.printTopCountryWorld(countryList);
+        app.printTopCountryWorld(countryList, "TopCountryWorld.md");
     }
 
     @Test
     void printTopCountryContinentNull()
     {
-        app.printTopCountryContinent(null);
+        app.printTopCountryContinent(null, "TopCountryContinent.md");
     }
 
     @Test
     void printTopCountryContinentTestEmpty()
     {
         ArrayList<Country> countryList = new ArrayList<>();
-        app.printTopCountryContinent(countryList);
+        app.printTopCountryContinent(countryList, "TopCountryContinent.md");
     }
 
     @Test
@@ -180,7 +180,7 @@ public class AppTest
     {
         ArrayList<Country> countryList = new ArrayList<>();
         countryList.add(null);
-        app.printTopCountryContinent(countryList);
+        app.printTopCountryContinent(countryList, "TopCountryContinent.md");
     }
 
     @Test
@@ -195,7 +195,7 @@ public class AppTest
         country.setPopulation(1000);
         country.setCapital("Yangon");
         countryList.add(country);
-        app.printTopCountryContinent(countryList);
+        app.printTopCountryContinent(countryList, "TopCountryContinent.md");
     }
 
     @Test

@@ -64,7 +64,7 @@ public class AppIntegrationTest
             assertEquals(1013662000, countryRegion.get(0).getPopulation());
             assertEquals("New Delhi", countryRegion.get(0).getCapital());
         }
-        app.printCountryRegion(countryRegion);
+        app.printCountryRegion(countryRegion, "CountryRegion.md");
     }
 
     @Test
@@ -81,7 +81,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, topCountryWorld.get(0).getPopulation());
             assertEquals("Peking", topCountryWorld.get(0).getCapital());
         }
-        app.printTopCountryWorld(topCountryWorld);
+        app.printTopCountryWorld(topCountryWorld, "TopCountryWorld.md");
     }
 
     @Test
@@ -98,7 +98,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, topCountryContinent.get(0).getPopulation());
             assertEquals("Peking", topCountryContinent.get(0).getCapital());
         }
-        app.printTopCountryContinent(topCountryContinent);
+        app.printTopCountryContinent(topCountryContinent, "TopCountryContinent.md");
     }
 
     @Test
