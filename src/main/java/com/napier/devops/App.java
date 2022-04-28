@@ -51,7 +51,7 @@ public class App
         ArrayList<Country> topCountryRegion = a.getTopCountryRegion();
         System.out.println(" \n ++++++++++++++++ 6. Top 10 Populated Countries in Region  ++++++++++++++++ \n ");
         //Print Top 10 Populated Country List in Region
-        a.printTopCountryRegion(topCountryRegion);
+        a.printTopCountryRegion(topCountryRegion, "TopCountryRegion.md");
 
         ArrayList<City> cityWorld = a.getCityWorld();
         //Cities in the world organised by largest population to smallest
@@ -612,7 +612,7 @@ public class App
      * @param countryList
      * Print list of top 10 populated countries in region by largest population to smallest
      */
-    public void printTopCountryRegion(ArrayList<Country> countryList) {
+    public void printTopCountryRegion(ArrayList<Country> countryList, String filename) {
         // Check countryList is not null
         if (countryList == null)
         {
@@ -620,15 +620,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-10s %-25s %-25s %-35s %-25s %10s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 6. Top 10 Populated Countries in Region\r\n");
+        sb.append("| Code | Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
         for (Country country : countryList) {
             if (country == null)
                 continue;
-            String cty_string =
-                    String.format("%-10s %-25s %-25s %-35s %-25s %10s",
-                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
-            System.out.println(cty_string);
+            sb.append("| " + country.getCode() + " | " + country.getName() + " | " + country.getContinent() + " | " + country.getRegion() + " | " + country.getPopulation() + " | " + country.getCapital() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

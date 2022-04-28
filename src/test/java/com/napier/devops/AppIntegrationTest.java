@@ -114,7 +114,7 @@ public class AppIntegrationTest
             assertEquals(111506000, topCountryRegion.get(0).getPopulation());
             assertEquals("Abuja", topCountryRegion.get(0).getCapital());
         }
-        app.printTopCountryRegion(topCountryRegion);
+        app.printTopCountryRegion(topCountryRegion, "TopCountryRegion.md");
     }
 
     @Test
