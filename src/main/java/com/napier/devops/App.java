@@ -1149,7 +1149,7 @@ public class App
         }
         // Print header
         StringBuilder sb = new StringBuilder();
-        sb.append("# 13.  Top 10 populated cities in continent\r\n");
+        sb.append("# 15.  Top 10 populated cities in country\r\n");
         sb.append("| Name | Country | District | Population|\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all city in the list
