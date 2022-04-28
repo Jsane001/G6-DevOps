@@ -759,6 +759,7 @@ public class App
         }
         // Print header
         StringBuilder sb = new StringBuilder();
+        sb.append("# 9.  List of cities in the continent organised by largest population to smallest\r\n");
         sb.append("| Name | Country | District | Population |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all city in the list
