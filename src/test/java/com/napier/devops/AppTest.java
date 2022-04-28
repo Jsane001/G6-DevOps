@@ -373,14 +373,14 @@ public class AppTest
     @Test
     void printCityDistrictNull()
     {
-        app.printCityDistrict(null);
+        app.printCityDistrict(null, "CityDistrict.md");
     }
 
     @Test
     void printCityDistrictTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printCityDistrict(cityList);
+        app.printCityDistrict(cityList, "CityDistrict.md");
     }
 
     @Test
@@ -388,7 +388,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printCityDistrict(cityList);
+        app.printCityDistrict(cityList, "CityDistrict.md");
     }
 
     @Test
@@ -401,7 +401,7 @@ public class AppTest
         city.setDistrict("Southeast Asia");
         city.setPopulation(1000);
         cityList.add(city);
-        app.printCityDistrict(cityList);
+        app.printCityDistrict(cityList, "CityDistrict.md");
     }
     //PopulationWorld
     @Test

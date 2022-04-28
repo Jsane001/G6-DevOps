@@ -184,7 +184,7 @@ public class AppIntegrationTest
             assertEquals("Bahia", cityDistrict.get(0).getDistrict());
             assertEquals(2302832, cityDistrict.get(0).getPopulation());
         }
-        app.printCityDistrict(cityDistrict);
+        app.printCityDistrict(cityDistrict, "CityDistrict.md");
     }
 
     @Test

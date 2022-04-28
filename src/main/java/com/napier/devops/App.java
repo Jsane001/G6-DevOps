@@ -76,7 +76,7 @@ public class App
         ArrayList<City> cityDistrict = a.getCityDistrict();
         //Cities in the district organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 11.  List of cities in the district organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printCityDistrict(cityDistrict);
+        a.printCityDistrict(cityDistrict, "CityDistrict.md");
 
         ArrayList<City> cityTopWorld = a.getTopCityWorld();
         //Cities in the continent organised by largest population to smallest
@@ -878,7 +878,7 @@ public class App
      * @param cityList
      * Show list of city in the district organised by largest population to smallest
      */
-    public void printCityDistrict(ArrayList<City> cityList) {
+    public void printCityDistrict(ArrayList<City> cityList, String filename) {
         // Check countryList is not null
         if (cityList == null)
         {
@@ -886,15 +886,22 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-30s %-10s %-20s %10s%n", "Name", "Country", "District", "Population");
+        StringBuilder sb = new StringBuilder();
+        sb.append("| Name | Country | District | Population|\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all city in the list
         for (City city : cityList) {
             if (city == null)
                 continue;
-            String cty_string =
-                    String.format("%-30s %-10s %-20s %10s",
-                            city.getName(), city.getCountryCode(), city.getDistrict(), city.getPopulation());
-            System.out.println(cty_string);
+            sb.append("| "+ city.getName() +" | | "+ city.getCountryCode() + " | | "+ city.getDistrict() + " | | "+ city.getPopulation() + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
