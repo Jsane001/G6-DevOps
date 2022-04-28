@@ -954,14 +954,14 @@ public class AppTest
     @Test
     void printCountryPopulationNull()
     {
-        app.printCountryPopulation(null);
+        app.printCountryPopulation(null, "CountryTotalPopulation.md");
     }
 
     @Test
     void printCountryPopulationTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printCountryPopulation(populationList);
+        app.printCountryPopulation(populationList, "CountryTotalPopulation.md");
     }
 
     @Test
@@ -969,7 +969,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printCountryPopulation(populationList);
+        app.printCountryPopulation(populationList, "CountryTotalPopulation.md");
     }
 
     @Test
@@ -980,7 +980,7 @@ public class AppTest
         populations.setName("Pitcairn");
         populations.setWorldPopulation(553573);
         populationList.add(populations);
-        app.printCountryPopulation(populationList);
+        app.printCountryPopulation(populationList, "CountryTotalPopulation.md");
     }
 
     //All City Population
@@ -1013,7 +1013,7 @@ public class AppTest
         populations.setPopulationOfCityName("Shanghai");
         populations.setPopulationOfCity(9696300);
         populationList.add(populations);
-        app.printCountryPopulation(populationList);
+        app.printCountryPopulation(populationList, "CountryTotalPopulation.md");
     }
 
 

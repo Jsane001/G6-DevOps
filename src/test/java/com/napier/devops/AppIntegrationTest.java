@@ -303,7 +303,7 @@ public class AppIntegrationTest
     void testGetCountryPopulation()
     {
         ArrayList<Population> populationList = app.getCountryPopulation();
-        app.printCountryPopulation(populationList);
+        app.printCountryPopulation(populationList, "CountryTotalPopulation.md");
     }
 
     @Test
