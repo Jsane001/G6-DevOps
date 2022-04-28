@@ -146,7 +146,7 @@ public class App
         // Country City
         ArrayList<Population> countryPopulation = a.getPopulationCountry();
         System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
-        a.printPopulationCountry(countryPopulation);
+        a.printPopulationCountry(countryPopulation, "CountryPopulation.md");
 
         ArrayList<Population> worldPopulation = a.getWorldPopulation();
         System.out.println(" \n ++++++++++++++++ 26. The population of the world  ++++++++++++++++ \n ");
@@ -1695,7 +1695,7 @@ public class App
      * Print list the population of people living in cities and people not living in cities in each country
      */
     private static final DecimalFormat df = new DecimalFormat("0.00");
-    public void printPopulationCountry(ArrayList<Population> populationList) {
+    public void printPopulationCountry(ArrayList<Population> populationList, String filename) {
         // Check PopulationList is not null
         if (populationList == null)
         {
@@ -1703,16 +1703,24 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-50s %-30s %-30s %-30s%n ", "Country Name", "Country Population", "Living population","Not Living population");
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 25.  Population of cities in the country with percentage\r\n");
+        sb.append("| Country Name | Country Population | Living population | Not Living population |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all city in the list
         for (Population population : populationList) {
             if (population == null)
                 continue;
             df.setRoundingMode(RoundingMode.UP);
-            String cty_string =
-                    String.format("%-50s %-30s %-30s %-30s ",
-                            population.getName(), population.getPopulation(), population.getCountryPopulation()+" ("+df.format(population.getLivingPer())+"%)",population.getCityPopulation() + " (" + df.format(population.getNotLivingPer())+ "%)");
-            System.out.println(cty_string);
+            sb.append("| "+ population.getName() + " | " + population.getPopulation() + " | " + population.getCountryPopulation() + " ("+df.format(population.getLivingPer())+"%)" + " | " + population.getCityPopulation() + " (" + df.format(population.getNotLivingPer())+ "%)" + "|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

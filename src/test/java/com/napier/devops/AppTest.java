@@ -820,14 +820,14 @@ public class AppTest
     @Test
     void printPopulationCountryNull()
     {
-        app.printPopulationCountry(null);
+        app.printPopulationCountry(null, "CountryPopulation.md");
     }
 
     @Test
     void printPopulationCountryTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printPopulationCountry(populationList);
+        app.printPopulationCountry(populationList, "CountryPopulation.md");
     }
 
     @Test
@@ -835,7 +835,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printPopulationCountry(populationList);
+        app.printPopulationCountry(populationList, "CountryPopulation.md");
     }
 
     @Test
@@ -849,7 +849,7 @@ public class AppTest
         populations.setCityPopulation(8);
         populations.setNotLivingPer(16);
         populationList.add(populations);
-        app.printPopulationCountry(populationList);
+        app.printPopulationCountry(populationList, "CountryPopulation.md");
     }
 
     //World Population
@@ -881,7 +881,7 @@ public class AppTest
         Population populations = new Population();
         populations.setWorldPopulation(553573);
         populationList.add(populations);
-        app.printPopulationCountry(populationList);
+        app.printPopulationCountry(populationList, "CountryPopulation.md");
     }
 
     //All Continent Population

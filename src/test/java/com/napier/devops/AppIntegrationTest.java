@@ -275,7 +275,7 @@ public class AppIntegrationTest
     void testGetPopulationCountry()
     {
         ArrayList<Population> populationCountry = app.getPopulationCountry();
-        app.printPopulationCountry(populationCountry);
+        app.printPopulationCountry(populationCountry, "CountryPopulation.md");
     }
 
     @Test
