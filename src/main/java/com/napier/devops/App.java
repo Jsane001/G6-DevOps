@@ -177,7 +177,7 @@ public class App
         ArrayList<Population> allDistrictPopulation = a.getAllDistrictPopulation();
         System.out.println(" \n ++++++++++++++++ 31. The population of a district  ++++++++++++++++ \n ");
         //Print the population of a district
-        a.printAllDistrictPopulation(allDistrictPopulation);
+        a.printAllDistrictPopulation(allDistrictPopulation, "AllDistrictPopulation.md");
 
         // language
         System.out.println(" \n ++++++++++++++++ 32. Using languages of the world  ++++++++++++++++ \n ");
@@ -2079,7 +2079,7 @@ public class App
      * @param populationList
      * Print list the population of a district
      */
-    public void printAllDistrictPopulation(ArrayList<Population> populationList) {
+    public void printAllDistrictPopulation(ArrayList<Population> populationList, String filename) {
         // Check PopulationList is not null
         if (populationList == null)
         {
@@ -2087,15 +2087,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 31. The population of a district\r\n");
+        sb.append("| Name | Total Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all population of a district
         for (Population population : populationList) {
             if (population == null)
                 continue;
-            String cty_string =
-                    String.format("%-35s %-25s",
-                            population.getName() , population.getWorldPopulation());
-            System.out.println(cty_string);
+            sb.append("| " + population.getName() + " | " + population.getWorldPopulation() +"|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

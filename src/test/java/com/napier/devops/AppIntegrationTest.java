@@ -317,7 +317,7 @@ public class AppIntegrationTest
     void testGetAllDistrictPopulation()
     {
         ArrayList<Population> populationList = app.getAllDistrictPopulation();
-        app.printAllDistrictPopulation(populationList);
+        app.printAllDistrictPopulation(populationList, "AllDistrictPopulation.md");
     }
 
     @Test

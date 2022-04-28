@@ -1022,14 +1022,14 @@ public class AppTest
     @Test
     void printAllDistrictPopulationNull()
     {
-        app.printAllDistrictPopulation(null);
+        app.printAllDistrictPopulation(null, "AllDistrictPopulation.md");
     }
 
     @Test
     void printAllDistrictPopulationTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printAllDistrictPopulation(populationList);
+        app.printAllDistrictPopulation(populationList, "AllDistrictPopulation.md");
     }
 
     @Test
@@ -1037,7 +1037,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printAllDistrictPopulation(populationList);
+        app.printAllDistrictPopulation(populationList, "AllDistrictPopulation.md");
     }
 
     @Test
@@ -1048,7 +1048,7 @@ public class AppTest
         populations.setName("Abidjan");
         populations.setWorldPopulation(2500000);
         populationList.add(populations);
-        app.printAllDistrictPopulation(populationList);
+        app.printAllDistrictPopulation(populationList, "AllDistrictPopulation.md");
     }
 
     //All language over the world with percentage
