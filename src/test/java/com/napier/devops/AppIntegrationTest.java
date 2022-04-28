@@ -48,7 +48,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, countryContinent.get(0).getPopulation());
             assertEquals("Peking", countryContinent.get(0).getCapital());
         }
-        app.printCountryContinent(countryContinent);
+        app.printCountryContinent(countryContinent, "CountryContinent.md");
     }
 
     @Test

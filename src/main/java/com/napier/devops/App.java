@@ -31,7 +31,7 @@ public class App
         ArrayList<Country> countryContinent = a.getCountryContinent();
         System.out.println(" \n ++++++++++++++++ 2. Countries organized by largest to smallest population in Continent  ++++++++++++++++ \n ");
         //Print list of Countries by largest population to smallest in continent
-        a.printCountryContinent(countryContinent);
+        a.printCountryContinent(countryContinent, "CountryContinent.md");
 
         ArrayList<Country> countryRegion = a.getCountryRegion();
         System.out.println(" \n ++++++++++++++++ 3. Countries organized by largest to smallest population in Region  ++++++++++++++++ \n ");
@@ -286,6 +286,7 @@ public class App
         }
         // Print header
         StringBuilder sb = new StringBuilder();
+        sb.append("# 1. Countries organized by largest to smallest population in World\r\n");
         sb.append("| Code | Name | Continent | Region | Population | Capital |\r\n");
         sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
@@ -343,7 +344,7 @@ public class App
      * @param countryList
      * Print list of Countries in continent by largest population to smallest
      */
-    public void printCountryContinent(ArrayList<Country> countryList) {
+    public void printCountryContinent(ArrayList<Country> countryList, String filename) {
         // Check countryList is not null
         if (countryList == null)
         {
@@ -351,15 +352,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-10s %-25s %-10s %-35s %-15s %20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 2. Countries organized by largest to smallest population in Continent\r\n");
+        sb.append("| Code | Name | Continent | Region | Population | Capital |\r\n");
+        sb.append("| --- | --- | --- | --- | --- | --- |\r\n");
         // Loop over all countries in the list
         for (Country country : countryList) {
             if (country == null)
                 continue;
-            String cty_string =
-                    String.format("%-10s %-25s %-10s %-35s %-15s %20s",
-                            country.getCode(), country.getName(), country.getContinent(), country.getRegion(), country.getPopulation(), country.getCapital());
-            System.out.println(cty_string);
+            sb.append("| "+ country.getCode() + " | " + country.getName() + " | " + country.getContinent() + " | " + country.getRegion() + " | " + country.getPopulation() + " | " + country.getCapital() + " |\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

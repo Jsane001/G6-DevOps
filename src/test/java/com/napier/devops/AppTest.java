@@ -57,14 +57,14 @@ public class AppTest
     @Test
     void printCountryContinentNull()
     {
-        app.printCountryContinent(null);
+        app.printCountryContinent(null, "CountryContinent.md");
     }
 
     @Test
     void printCountryContinentTestEmpty()
     {
         ArrayList<Country> countryWorld = new ArrayList<>();
-        app.printCountryContinent(countryWorld);
+        app.printCountryContinent(countryWorld, "CountryContinent.md");
     }
 
     @Test
@@ -72,7 +72,7 @@ public class AppTest
     {
         ArrayList<Country> countryWorld = new ArrayList<>();
         countryWorld.add(null);
-        app.printCountryContinent(countryWorld);
+        app.printCountryContinent(countryWorld, "CountryContinent.md");
     }
 
     @Test
