@@ -205,7 +205,7 @@ public class AppIntegrationTest
     void testGetTopCityRegion()
     {
         ArrayList<City> cityTopRegion = app.getTopCityRegion();
-        app.printTopCityRegion(cityTopRegion);
+        app.printTopCityRegion(cityTopRegion, "TopCityRegion.md");
     }
 
     @Test
