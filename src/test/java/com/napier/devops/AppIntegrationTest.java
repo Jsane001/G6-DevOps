@@ -191,7 +191,7 @@ public class AppIntegrationTest
     void testGetTopCityWorld()
     {
         ArrayList<City> cityTopWorld = app.getTopCityWorld();
-        app.printTopCityWorld(cityTopWorld);
+        app.printTopCityWorld(cityTopWorld, "TopCityWorld.md");
     }
 
     @Test

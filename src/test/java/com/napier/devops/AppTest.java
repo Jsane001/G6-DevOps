@@ -407,14 +407,14 @@ public class AppTest
     @Test
     void printTopCityWorldNull()
     {
-        app.printTopCityWorld(null);
+        app.printTopCityWorld(null, "TopCityWorld.md");
     }
 
     @Test
     void printTopCityWorldTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityWorld(cityList);
+        app.printTopCityWorld(cityList, "TopCityWorld.md");
     }
 
     @Test
@@ -422,7 +422,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityWorld(cityList);
+        app.printTopCityWorld(cityList, "TopCityWorld.md");
     }
 
     @Test
@@ -435,7 +435,7 @@ public class AppTest
         city.setDistrict("New York");
         city.setPopulation(8008278);
         cityList.add(city);
-        app.printTopCityWorld(cityList);
+        app.printTopCityWorld(cityList, "TopCityWorld.md");
     }
 
     //PopulationContinent
