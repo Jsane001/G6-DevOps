@@ -889,6 +889,7 @@ public class App
         }
         // Print header
         StringBuilder sb = new StringBuilder();
+        sb.append("# 11.  List of cities in the district organised by largest population to smallest\r\n");
         sb.append("| Name | Country | District | Population|\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all city in the list
