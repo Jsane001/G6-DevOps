@@ -921,14 +921,14 @@ public class AppTest
     @Test
     void printAllRegionPopulationNull()
     {
-        app.printAllRegionPopulation(null);
+        app.printAllRegionPopulation(null, "AllRegionPopulation.md");
     }
 
     @Test
     void printAllRegionPopulationTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printAllRegionPopulation(populationList);
+        app.printAllRegionPopulation(populationList, "AllRegionPopulation.md");
     }
 
     @Test
@@ -936,7 +936,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printAllRegionPopulation(populationList);
+        app.printAllRegionPopulation(populationList, "AllRegionPopulation.md");
     }
 
     @Test
@@ -947,7 +947,7 @@ public class AppTest
         populations.setName("Western Europe");
         populations.setWorldPopulation(183247600);
         populationList.add(populations);
-        app.printAllRegionPopulation(populationList);
+        app.printAllRegionPopulation(populationList, "AllRegionPopulation.md");
     }
 
     //All Country Population

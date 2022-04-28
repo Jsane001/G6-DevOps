@@ -162,7 +162,7 @@ public class App
         ArrayList<Population> allRegionPopulation = a.getAllRegionPopulation();
         System.out.println(" \n ++++++++++++++++ 28. The population of a region  ++++++++++++++++ \n ");
         //Print the population of a region
-        a.printAllRegionPopulation(allRegionPopulation);
+        a.printAllRegionPopulation(allRegionPopulation, "AllRegionPopulation.md");
 
         // Country Population
         ArrayList<Population> countryTotalPopulation = a.getCountryPopulation();
@@ -1882,7 +1882,7 @@ public class App
      * @param allRegionPopulation
      * Print list the population of a region
      */
-    public void printAllRegionPopulation(ArrayList<Population> allRegionPopulation) {
+    public void printAllRegionPopulation(ArrayList<Population> allRegionPopulation, String filename) {
         // Check PopulationList is not null
         if (allRegionPopulation == null)
         {
@@ -1890,15 +1890,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 28. The population of a region\r\n");
+        sb.append("| Name | Total Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all population of a region
         for (Population population : allRegionPopulation) {
             if (population == null)
                 continue;
-            String cty_string =
-                    String.format("%-35s %-25s",
-                            population.getName() , population.getWorldPopulation());
-            System.out.println(cty_string);
+            sb.append("| " + population.getName() + " | " + population.getWorldPopulation() +"|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
