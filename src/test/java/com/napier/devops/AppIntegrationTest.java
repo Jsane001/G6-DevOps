@@ -170,7 +170,7 @@ public class AppIntegrationTest
             assertEquals("Rangoon [Yangon]", cityCountry.get(0).getDistrict());
             assertEquals(3361700, cityCountry.get(0).getPopulation());
         }
-        app.printCityCountry(cityCountry);
+        app.printCityCountry(cityCountry, "CityCountry.md");
     }
 
     @Test
