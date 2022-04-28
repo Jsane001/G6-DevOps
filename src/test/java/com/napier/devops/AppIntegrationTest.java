@@ -198,7 +198,7 @@ public class AppIntegrationTest
     void testGetTopCityContinent()
     {
         ArrayList<City> cityTopContinent = app.getTopCityContinent();
-        app.printTopCityContinent(cityTopContinent);
+        app.printTopCityContinent(cityTopContinent, "TopCityContinent.md");
     }
 
     @Test

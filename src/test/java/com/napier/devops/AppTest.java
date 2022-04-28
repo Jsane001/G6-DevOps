@@ -442,14 +442,14 @@ public class AppTest
     @Test
     void printTopCityContinentNull()
     {
-        app.printTopCityContinent(null);
+        app.printTopCityContinent(null, "TopCityContinent.md");
     }
 
     @Test
     void printTopCityContinentTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityContinent(cityList);
+        app.printTopCityContinent(cityList, "TopCityContinent.md");
     }
 
     @Test
@@ -457,7 +457,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityContinent(cityList);
+        app.printTopCityContinent(cityList, "TopCityContinent.md");
     }
 
     @Test
@@ -470,7 +470,7 @@ public class AppTest
         city.setDistrict("Teheran");
         city.setPopulation(6758845);
         cityList.add(city);
-        app.printTopCityContinent(cityList);
+        app.printTopCityContinent(cityList, "TopCityContinent.md");
     }
 
     //PopulationRegion
