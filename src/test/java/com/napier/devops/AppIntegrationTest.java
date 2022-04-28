@@ -128,7 +128,7 @@ public class AppIntegrationTest
             assertEquals("Maharashtra", cityWorld.get(0).getDistrict());
             assertEquals(10500000, cityWorld.get(0).getPopulation());
         }
-        app.printCityWorld(cityWorld);
+        app.printCityWorld(cityWorld, "CityWorld.md");
     }
 
     @Test
