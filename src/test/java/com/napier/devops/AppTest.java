@@ -512,14 +512,14 @@ public class AppTest
     @Test
     void printTopCityCountryNull()
     {
-        app.printTopCityCountry(null);
+        app.printTopCityCountry(null, "TopCityCountry.md");
     }
 
     @Test
     void printTopCityCountryTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityCountry(cityList);
+        app.printTopCityCountry(cityList, "TopCityCountry.md");
     }
 
     @Test
@@ -527,7 +527,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityCountry(cityList);
+        app.printTopCityCountry(cityList, "TopCityCountry.md");
     }
 
     @Test
@@ -540,7 +540,7 @@ public class AppTest
         city.setDistrict("Tenasserim [Tanintha");
         city.setPopulation(122700);
         cityList.add(city);
-        app.printTopCityCountry(cityList);
+        app.printTopCityCountry(cityList, "TopCityCountry.md");
     }
 
     //PopulationDistrict

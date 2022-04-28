@@ -212,7 +212,7 @@ public class AppIntegrationTest
     void testGetTopCityCountry()
     {
         ArrayList<City> cityTopCountry = app.getTopCityCountry();
-        app.printTopCityCountry(cityTopCountry);
+        app.printTopCityCountry(cityTopCountry, "TopCityCountry.md");
     }
 
     @Test
