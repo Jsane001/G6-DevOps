@@ -282,7 +282,7 @@ public class AppIntegrationTest
     void testGetWorldPopulation()
     {
         ArrayList<Population> populationList = app.getWorldPopulation();
-        app.printWorldPopulation(populationList);
+        app.printWorldPopulation(populationList, "WorldPopulation.md");
     }
 
     @Test

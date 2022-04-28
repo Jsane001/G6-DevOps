@@ -856,14 +856,14 @@ public class AppTest
     @Test
     void printWorldPopulationNull()
     {
-        app.printWorldPopulation(null);
+        app.printWorldPopulation(null, "WorldPopulation.md");
     }
 
     @Test
     void printWorldPopulationTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printWorldPopulation(populationList);
+        app.printWorldPopulation(populationList, "WorldPopulation.md");
     }
 
     @Test
@@ -871,7 +871,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printWorldPopulation(populationList);
+        app.printWorldPopulation(populationList, "WorldPopulation.md");
     }
 
     @Test

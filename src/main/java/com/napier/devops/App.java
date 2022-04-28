@@ -146,12 +146,13 @@ public class App
         // Country City
         ArrayList<Population> countryPopulation = a.getPopulationCountry();
         System.out.println(" \n ++++++++++++++++ 25.  Population of cities in the country with percentage  ++++++++++++++++ \n ");
+        //Print the population of Country
         a.printPopulationCountry(countryPopulation, "CountryPopulation.md");
 
         ArrayList<Population> worldPopulation = a.getWorldPopulation();
         System.out.println(" \n ++++++++++++++++ 26. The population of the world  ++++++++++++++++ \n ");
         //Print the population of the world
-        a.printWorldPopulation(worldPopulation);
+        a.printWorldPopulation(worldPopulation, "WorldPopulation.md");
 
         ArrayList<Population> allContinentPopulation = a.getAllContinentPopulation();
         System.out.println(" \n ++++++++++++++++ 27. The population of a continent  ++++++++++++++++ \n ");
@@ -1757,7 +1758,7 @@ public class App
      * @param populationList
      * Print list the population of the world
      */
-    public void printWorldPopulation(ArrayList<Population> populationList) {
+    public void printWorldPopulation(ArrayList<Population> populationList, String filename) {
         // Check PopulationList is not null
         if (populationList == null)
         {
@@ -1765,15 +1766,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 26. The population of the world\r\n");
+        sb.append("| Name | Total Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all population of the world
         for (Population population : populationList) {
             if (population == null)
                 continue;
-            String cty_string =
-                    String.format("%-35s %-25s",
-                            "World" , population.getWorldPopulation());
-            System.out.println(cty_string);
+            sb.append("| " + "World" + " | " + population.getWorldPopulation() +"|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
