@@ -888,14 +888,14 @@ public class AppTest
     @Test
     void printAllContinentPopulationNull()
     {
-        app.printAllContinentPopulation(null);
+        app.printAllContinentPopulation(null, "AllContinentPopulation.md");
     }
 
     @Test
     void printAllContinentPopulationTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printAllContinentPopulation(populationList);
+        app.printAllContinentPopulation(populationList, "AllContinentPopulation.md");
     }
 
     @Test
@@ -903,7 +903,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printAllContinentPopulation(populationList);
+        app.printAllContinentPopulation(populationList, "AllContinentPopulation.md");
     }
 
     @Test
@@ -914,7 +914,7 @@ public class AppTest
         populations.setName("Antarctica");
         populations.setWorldPopulation(0);
         populationList.add(populations);
-        app.printAllContinentPopulation(populationList);
+        app.printAllContinentPopulation(populationList, "AllContinentPopulation.md");
     }
 
     //All Region Population

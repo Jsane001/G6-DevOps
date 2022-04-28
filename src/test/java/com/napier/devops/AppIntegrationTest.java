@@ -289,7 +289,7 @@ public class AppIntegrationTest
     void testGetAllContinentPopulation()
     {
         ArrayList<Population> populationList = app.getAllContinentPopulation();
-        app.printAllContinentPopulation(populationList);
+        app.printAllContinentPopulation(populationList, "AllContinentPopulation.md");
     }
 
     @Test

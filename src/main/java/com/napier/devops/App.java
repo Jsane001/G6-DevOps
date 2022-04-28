@@ -157,7 +157,7 @@ public class App
         ArrayList<Population> allContinentPopulation = a.getAllContinentPopulation();
         System.out.println(" \n ++++++++++++++++ 27. The population of a continent  ++++++++++++++++ \n ");
         //Print the population of a continent
-        a.printAllContinentPopulation(allContinentPopulation);
+        a.printAllContinentPopulation(allContinentPopulation, "AllContinentPopulation.md");
 
         ArrayList<Population> allRegionPopulation = a.getAllRegionPopulation();
         System.out.println(" \n ++++++++++++++++ 28. The population of a region  ++++++++++++++++ \n ");
@@ -1820,7 +1820,7 @@ public class App
      * @param allContinentPopulation
      * Print list the population of a continent
      */
-    public void printAllContinentPopulation(ArrayList<Population> allContinentPopulation) {
+    public void printAllContinentPopulation(ArrayList<Population> allContinentPopulation, String filename) {
         // Check PopulationList is not null
         if (allContinentPopulation == null)
         {
@@ -1828,15 +1828,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-35s %-25s%n", "Name", "Total Population");
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 27. The population of a continent\r\n");
+        sb.append("| Name | Total Population |\r\n");
+        sb.append("| --- | --- |\r\n");
         // Loop over all population of a continent
         for (Population population : allContinentPopulation) {
             if (population == null)
                 continue;
-            String cty_string =
-                    String.format("%-35s %-25s",
-                            population.getName() , population.getWorldPopulation());
-            System.out.println(cty_string);
+            sb.append("| " + population.getName() + " | " + population.getWorldPopulation() +"|\r\n");
+        }
+        try {
+            new File("./reports/").mkdir();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+            writer.write(sb.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
