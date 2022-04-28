@@ -1223,7 +1223,7 @@ public class App
         for (City city : cityList) {
             if (city == null)
                 continue;
-            sb.append("| "+ city.getName() +" | | "+ city.getCountryCode() + " | | "+ city.getDistrict() + " | | "+ city.getPopulation() + " |\r\n");
+            sb.append("| "+ city.getName() +" | "+ city.getCountryCode() + " | "+ city.getDistrict() + " | "+ city.getPopulation() + " |\r\n");
             try {
                 new File("./reports/").mkdir();
                 BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
