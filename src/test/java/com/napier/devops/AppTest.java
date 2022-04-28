@@ -271,14 +271,14 @@ public class AppTest
     @Test
     void printCityRegionNull()
     {
-        app.printCityRegion(null);
+        app.printCityRegion(null, "CityRegion.md");
     }
 
     @Test
     void printCityRegionTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printCityRegion(cityList);
+        app.printCityRegion(cityList, "CityRegion.md");
     }
 
     @Test
@@ -286,7 +286,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printCityRegion(cityList);
+        app.printCityRegion(cityList, "CityRegion.md");
     }
 
     @Test
@@ -299,7 +299,7 @@ public class AppTest
         city.setDistrict("Southeast Asia");
         city.setPopulation(1000);
         cityList.add(city);
-        app.printCityRegion(cityList);
+        app.printCityRegion(cityList, "CityRegion.md");
     }
 
     @Test

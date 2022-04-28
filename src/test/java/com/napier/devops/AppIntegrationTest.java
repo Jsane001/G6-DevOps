@@ -156,7 +156,7 @@ public class AppIntegrationTest
             assertEquals("La Habana", cityRegion.get(0).getDistrict());
             assertEquals(2256000, cityRegion.get(0).getPopulation());
         }
-        app.printCityRegion(cityRegion);
+        app.printCityRegion(cityRegion, "CityRegion.md");
     }
 
     @Test
