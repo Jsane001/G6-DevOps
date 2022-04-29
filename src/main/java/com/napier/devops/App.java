@@ -106,42 +106,42 @@ public class App
         ArrayList<Capital_City> capitalWorld = a.getCapitalWorld();
         //Capital cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 17.  List of capital city in the world organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printCapitalWorld(capitalWorld);
+        a.printCapitalWorld(capitalWorld,"capitalWorld.md");
 
         ArrayList<Capital_City> capitalContinent = a.getCapitalContinent();
         //Capital cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 18.  List of capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printCapitalContinent(capitalContinent);
+        a.printCapitalContinent(capitalContinent,"capitalContinent.md");
 
         ArrayList<Capital_City> capitalRegion = a.getCapitalRegion();
         //Capital cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 19.  List of capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printCapitalRegion(capitalRegion);
+        a.printCapitalRegion(capitalRegion,"capitalRegion.md");
 
         ArrayList<Capital_City> capitalTopWorld = a.getTopCapitalWorld();
         //Top 10 Capital cities in the world organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 20.  Top 10 capital city in the world organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printTopCapitalWorld(capitalTopWorld);
+        a.printTopCapitalWorld(capitalTopWorld,"capitalTopWorld.md");
 
         ArrayList<Capital_City> capitalTopContinent = a.getTopCapitalContinent();
         //Top 10 Capital cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 21.  Top 10 capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printTopCapitalContinent(capitalTopContinent);
+        a.printTopCapitalContinent(capitalTopContinent,"capitalTopContinent.md");
 
         ArrayList<Capital_City> capitalTopRegion = a.getTopCapitalRegion();
         //Top 10 Capital cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 22.  Top 10 capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printTopCapitalRegion(capitalTopRegion);
+        a.printTopCapitalRegion(capitalTopRegion,"capitalTopRegion.md");
 
         ArrayList<Population> populationContinent = a.getPopulationContinent();
         System.out.println(" \n ++++++++++++++++ 23. The population of people living in cities and people not living in cities in each continent  ++++++++++++++++ \n ");
         //Print the population of people living in cities and people not living in cities in each continent
-        a.printPopulationContinent(populationContinent);
+        a.printPopulationContinent(populationContinent,"populationContinent.md");
 
         ArrayList<Population> populationRegion = a.getPopulationRegion();
         System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");
         //Print the population of people living in cities and people not living in cities in each region
-        a.printPopulationRegion(populationRegion);
+        a.printPopulationRegion(populationRegion,"populationRegion.md");
 
         // Country City
         ArrayList<Population> countryPopulation = a.getPopulationCountry();
@@ -1272,23 +1272,32 @@ public class App
      * @param capitalList
      * Print list of capital city in world by largest population to smallest
      */
-    public void printCapitalWorld(ArrayList<Capital_City> capitalList) {
+    public void printCapitalWorld(ArrayList<Capital_City> capitalList, String filename) {
         // Check capitalList is not null
         if (capitalList == null)
         {
             System.out.println("No Population capital");
             return;
         }
+
         // Print header
-        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
-        // Loop over all countries in the list
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 17.  List of capital city in the world organised by largest population to smallest\r\n");
+        sb.append("| Capital | Country Name | Population|\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all capital city in the list
         for (Capital_City capital : capitalList) {
             if (capital == null)
                 continue;
-            String cty_string =
-                    String.format("%-30s %-25s %-10s",
-                            capital.getName(), capital.getCountry(), capital.getPopulation());
-            System.out.println(cty_string);
+            sb.append("| "+ capital.getName() +" | "+ capital.getCountry() + " | "+ capital.getPopulation() + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1328,23 +1337,32 @@ public class App
      * @param capitalList
      * Print list of capital city in continent by largest population to smallest
      */
-    public void printCapitalContinent(ArrayList<Capital_City> capitalList) {
+    public void printCapitalContinent(ArrayList<Capital_City> capitalList,String filename) {
         // Check capitalList is not null
         if (capitalList == null)
         {
             System.out.println("No Population capital");
             return;
         }
+
         // Print header
-        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
-        // Loop over all countries in the list
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 18.  List of capital city in the continent organised by largest population to smallest\r\n");
+        sb.append("| Capital | Country Name | Population|\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all capital city in the list
         for (Capital_City capital : capitalList) {
             if (capital == null)
                 continue;
-            String cty_string =
-                    String.format("%-30s %-25s %-10s",
-                            capital.getName(), capital.getCountry(), capital.getPopulation());
-            System.out.println(cty_string);
+            sb.append("| "+ capital.getName() +" | "+ capital.getCountry() + " | "+ capital.getPopulation() + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1384,23 +1402,32 @@ public class App
      * @param capitalList
      * Print list of capital city in region by largest population to smallest
      */
-    public void printCapitalRegion(ArrayList<Capital_City> capitalList) {
+    public void printCapitalRegion(ArrayList<Capital_City> capitalList,String filename) {
         // Check capitalList is not null
         if (capitalList == null)
         {
             System.out.println("No Population capital");
             return;
         }
+
         // Print header
-        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
-        // Loop over all countries in the list
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 19.  List of capital city in the region organised by largest population to smallest\r\n");
+        sb.append("| Capital | Country Name | Population|\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all countries city in the list
         for (Capital_City capital : capitalList) {
             if (capital == null)
                 continue;
-            String cty_string =
-                    String.format("%-30s %-25s %-10s",
-                            capital.getName(), capital.getCountry(), capital.getPopulation());
-            System.out.println(cty_string);
+            sb.append("| "+ capital.getName() +" | "+ capital.getCountry() + " | "+ capital.getPopulation() + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1440,7 +1467,7 @@ public class App
      * @param capitalList
      * Print top 10 capital city in world by largest population to smallest
      */
-    public void printTopCapitalWorld(ArrayList<Capital_City> capitalList) {
+    public void printTopCapitalWorld(ArrayList<Capital_City> capitalList,String filename) {
         // Check capitalList is not null
         if (capitalList == null)
         {
@@ -1448,15 +1475,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
-        // Loop over all countries in the list
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 20. Get top 10 capital city in the world organised by largest population to smallest\r\n");
+        sb.append("| Capital | Country Name | Population|\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all countries city in the list
         for (Capital_City capital : capitalList) {
             if (capital == null)
                 continue;
-            String cty_string =
-                    String.format("%-30s %-25s %-10s",
-                            capital.getName(), capital.getCountry(), capital.getPopulation());
-            System.out.println(cty_string);
+            sb.append("| "+ capital.getName() +" | "+ capital.getCountry() + " | "+ capital.getPopulation() + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1496,7 +1531,7 @@ public class App
      * @param capitalList
      * Print top 10 capital city in continent by largest population to smallest
      */
-    public void printTopCapitalContinent(ArrayList<Capital_City> capitalList) {
+    public void printTopCapitalContinent(ArrayList<Capital_City> capitalList,String filename) {
         // Check capitalList is not null
         if (capitalList == null)
         {
@@ -1504,15 +1539,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
-        // Loop over all countries in the list
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 21. Get top 10 capital city in the continent organised by largest population to smallest\r\n");
+        sb.append("| Capital | Country Name | Population|\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all countries city in the list
         for (Capital_City capital : capitalList) {
             if (capital == null)
                 continue;
-            String cty_string =
-                    String.format("%-30s %-25s %-10s",
-                            capital.getName(), capital.getCountry(), capital.getPopulation());
-            System.out.println(cty_string);
+            sb.append("| "+ capital.getName() +" | "+ capital.getCountry() + " | "+ capital.getPopulation() + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1552,7 +1595,7 @@ public class App
      * @param capitalList
      * Print top 10 capital city in region by largest population to smallest
      */
-    public void printTopCapitalRegion(ArrayList<Capital_City> capitalList) {
+    public void printTopCapitalRegion(ArrayList<Capital_City> capitalList,String filename) {
         // Check capitalList is not null
         if (capitalList == null)
         {
@@ -1560,15 +1603,23 @@ public class App
             return;
         }
         // Print header
-        System.out.printf("%-30s %-25s %-10s%n", "Capital", "Name", "Population");
-        // Loop over all countries in the list
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 22. Get top 10 capital city in the region organised by largest population to smallest\r\n");
+        sb.append("| Capital | Country Name | Population|\r\n");
+        sb.append("| --- | --- | --- |\r\n");
+        // Loop over all countries city in the list
         for (Capital_City capital : capitalList) {
             if (capital == null)
                 continue;
-            String cty_string =
-                    String.format("%-30s %-25s %-10s",
-                            capital.getName(), capital.getCountry(), capital.getPopulation());
-          System.out.println(cty_string);
+            sb.append("| "+ capital.getName() +" | "+ capital.getCountry() + " | "+ capital.getPopulation() + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1609,13 +1660,17 @@ public class App
      * @param populationList
      * Print list the population of people living in cities and people not living in cities in each continent
      */
-    public void printPopulationContinent(ArrayList<Population> populationList) {
-        // Print header
-        System.out.printf("%-35s %-25s %-25s %-25s%n", "Continent", "Total Population", "Living on City", "Non-living on City");
-
+    public void printPopulationContinent(ArrayList<Population> populationList, String filename) {
         // Loop over all population of people living in cities and people not living in cities in each continent
         double living, nonLivingPer;
         long nonLiving;
+
+        // Print header
+        StringBuilder sb = new StringBuilder();
+        sb.append("# 23. Get list the population of people living in cities and people not living in cities in each continent\r\n");
+        sb.append("| Continent | Total Population | Living on City | Non-Living on City |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all countries city in the list
         for (Population population : populationList) {
             if (population == null)
                 continue;
@@ -1624,11 +1679,15 @@ public class App
             living = (city * 100) / country;
             nonLiving = population.getWorldPopulation() - population.getCityPopulation();
             nonLivingPer = 100 - living;
-            DecimalFormat df = new DecimalFormat("#.##");
-            String cty_string =
-                    String.format("%-35s %-25s %-25s %-25s",
-                            population.getName(), population.getWorldPopulation(), population.getCityPopulation() + " (" + df.format(living) + "%)", nonLiving + " (" + df.format(nonLivingPer) + "%)");
-            System.out.println(cty_string);
+            sb.append("| "+ population.getName() +" | "+ population.getWorldPopulation() + " | "+ population.getCityPopulation() + " | "+ nonLiving + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -1669,31 +1728,34 @@ public class App
      * @param populationList
      * Print list the population of people living in cities and people not living in cities in each region
      */
-    public void printPopulationRegion(ArrayList<Population> populationList) {
-        // Check PopulationList is not null
-        if (populationList == null)
-        {
-            System.out.println("No Population Country in Region");
-            return;
-        }
-        // Print header
-        System.out.printf("%-35s %-25s %-25s %-25s%n", "Region", "Total Population", "Living on City", "Non-living on City");
-        // Loop over all population of people living in cities and people not living in cities in each region
+    public void printPopulationRegion(ArrayList<Population> populationList,String filename) {
+        // Loop over all population of people living in cities and people not living in cities in each continent
         double living, nonLivingPer;
-        int nonLiving;
+        long nonLiving;
+
+        // Print header
+        StringBuilder sb = new StringBuilder();
+        sb.append("# Get list the population of people living in cities and people not living in cities in each region\r\n");
+        sb.append("| Continent | Total Population | Living on City | Non-Living on City |\r\n");
+        sb.append("| --- | --- | --- | --- |\r\n");
+        // Loop over all countries city in the list
         for (Population population : populationList) {
             if (population == null)
                 continue;
             double city = population.getCityPopulation();
-            double country = population.getCountryPopulation();
+            double country = population.getWorldPopulation();
             living = (city * 100) / country;
-            nonLiving = population.getCountryPopulation() - population.getCityPopulation();
+            nonLiving = population.getWorldPopulation() - population.getCityPopulation();
             nonLivingPer = 100 - living;
-            DecimalFormat df = new DecimalFormat("#.##");
-            String cty_string =
-                    String.format("%-35s %-25s %-25s %-25s",
-                            population.getName(), population.getCountryPopulation(), population.getCityPopulation()+" ("+df.format(living)+"%)", nonLiving+" ("+df.format(nonLivingPer)+"%)");
-            System.out.println(cty_string);
+            sb.append("| "+ population.getName() +" | "+ population.getWorldPopulation() + " | "+ population.getCityPopulation() + " | "+ nonLiving + " |\r\n");
+            try {
+                new File("./reports/").mkdir();
+                BufferedWriter writer = new BufferedWriter(new FileWriter(new File("./reports/" + filename)));
+                writer.write(sb.toString());
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
