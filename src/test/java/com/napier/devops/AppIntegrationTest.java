@@ -142,7 +142,7 @@ public class AppIntegrationTest
             assertEquals("Maharashtra", cityContinent.get(0).getDistrict());
             assertEquals(10500000, cityContinent.get(0).getPopulation());
         }
-        app.printCityContinent(cityContinent);
+        app.printCityContinent(cityContinent, "CityContinent.md");
     }
 
     @Test
@@ -170,7 +170,7 @@ public class AppIntegrationTest
             assertEquals("Rangoon [Yangon]", cityCountry.get(0).getDistrict());
             assertEquals(3361700, cityCountry.get(0).getPopulation());
         }
-        app.printCityCountry(cityCountry);
+        app.printCityCountry(cityCountry, "CityCountry.md");
     }
 
     @Test
@@ -184,91 +184,91 @@ public class AppIntegrationTest
             assertEquals("Bahia", cityDistrict.get(0).getDistrict());
             assertEquals(2302832, cityDistrict.get(0).getPopulation());
         }
-        app.printCityDistrict(cityDistrict);
+        app.printCityDistrict(cityDistrict, "CityDistrict.md");
     }
 
     @Test
     void testGetTopCityWorld()
     {
         ArrayList<City> cityTopWorld = app.getTopCityWorld();
-        app.printTopCityWorld(cityTopWorld);
+        app.printTopCityWorld(cityTopWorld, "TopCityWorld.md");
     }
 
     @Test
     void testGetTopCityContinent()
     {
         ArrayList<City> cityTopContinent = app.getTopCityContinent();
-        app.printTopCityContinent(cityTopContinent);
+        app.printTopCityContinent(cityTopContinent, "TopCityContinent.md");
     }
 
     @Test
     void testGetTopCityRegion()
     {
         ArrayList<City> cityTopRegion = app.getTopCityRegion();
-        app.printTopCityRegion(cityTopRegion);
+        app.printTopCityRegion(cityTopRegion, "TopCityRegion.md");
     }
 
     @Test
     void testGetTopCityCountry()
     {
         ArrayList<City> cityTopCountry = app.getTopCityCountry();
-        app.printTopCityCountry(cityTopCountry);
+        app.printTopCityCountry(cityTopCountry, "TopCityCountry.md");
     }
 
     @Test
     void testGetTopCityDistrict()
     {
         ArrayList<City> cityTopDistrict = app.getTopCityDistrict();
-        app.printTopCityDistrict(cityTopDistrict);
+        app.printTopCityDistrict(cityTopDistrict, "TopCityDistrict.md");
     }
 
     @Test
     void testGetCapitalWorld()
     {
         ArrayList<Capital_City> capitalWorld = app.getCapitalWorld();
-        app.printCapitalWorld(capitalWorld);
+        app.printCapitalWorld(capitalWorld,"capitalWorld.md");
     }
 
     @Test
     void testGetCapitalContinent()
     {
         ArrayList<Capital_City> capitalContinent = app.getCapitalContinent();
-        app.printCapitalContinent(capitalContinent);
+        app.printCapitalContinent(capitalContinent,"capitalContinent.md");
     }
 
     @Test
     void testGetCapitalRegion()
     {
         ArrayList<Capital_City> capitalRegion = app.getCapitalRegion();
-        app.printCapitalRegion(capitalRegion);
+        app.printCapitalRegion(capitalRegion,"capitalRegion.md");
     }
 
     @Test
     void testGetTopCapitalWorld()
     {
         ArrayList<Capital_City> capitalTopWorld = app.getTopCapitalWorld();
-        app.printTopCapitalWorld(capitalTopWorld);
+        app.printTopCapitalWorld(capitalTopWorld,"capitalTopWorld.md");
     }
 
     @Test
     void testGetTopCapitalContinent()
     {
         ArrayList<Capital_City> capitalTopContinent = app.getTopCapitalContinent();
-        app.printTopCapitalContinent(capitalTopContinent);
+        app.printTopCapitalContinent(capitalTopContinent,"capitalTopContinent.md");
     }
 
     @Test
     void testGetTopCapitalRegion()
     {
         ArrayList<Capital_City> capitalTopRegion = app.getTopCapitalRegion();
-        app.printTopCapitalRegion(capitalTopRegion);
+        app.printTopCapitalRegion(capitalTopRegion,"capitalTopRegion.md");
     }
 
     @Test
     void testGetPopulationRegion()
     {
         ArrayList<Population> populationRegion = app.getPopulationRegion();
-        app.printPopulationRegion(populationRegion);
+        app.printPopulationRegion(populationRegion,"populationRegion.md");
     }
 
     @Test

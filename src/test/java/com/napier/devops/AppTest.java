@@ -2,11 +2,8 @@ package com.napier.devops;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.util.ArrayList;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class AppTest
 {
@@ -305,14 +302,14 @@ public class AppTest
     @Test
     void printCityContinentNull()
     {
-        app.printCityContinent(null);
+        app.printCityContinent(null, "CityContinent.md");
     }
 
     @Test
     void printCityContinentTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printCityContinent(cityList);
+        app.printCityContinent(cityList, "CityContinent.md");
     }
 
     @Test
@@ -320,7 +317,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printCityContinent(cityList);
+        app.printCityContinent(cityList, "CityContinent.md");
     }
 
     @Test
@@ -333,20 +330,20 @@ public class AppTest
         city.setDistrict("Southeast Asia");
         city.setPopulation(1000);
         cityList.add(city);
-        app.printCityContinent(cityList);
+        app.printCityContinent(cityList, "CityContinent.md");
     }
 
     @Test
     void printCityCountryNull()
     {
-        app.printCityCountry(null);
+        app.printCityCountry(null , "CityCountry.md");
     }
 
     @Test
     void printCityCountryTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printCityCountry(cityList);
+        app.printCityCountry(cityList, "CityCountry.md");
     }
 
     @Test
@@ -354,7 +351,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printCityCountry(cityList);
+        app.printCityCountry(cityList, "CityCountry.md");
     }
 
     @Test
@@ -367,20 +364,20 @@ public class AppTest
         city.setDistrict("Southeast Asia");
         city.setPopulation(1000);
         cityList.add(city);
-        app.printCityCountry(cityList);
+        app.printCityCountry(cityList, "CityCountry.md");
     }
 
     @Test
     void printCityDistrictNull()
     {
-        app.printCityDistrict(null);
+        app.printCityDistrict(null, "CityDistrict.md");
     }
 
     @Test
     void printCityDistrictTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printCityDistrict(cityList);
+        app.printCityDistrict(cityList, "CityDistrict.md");
     }
 
     @Test
@@ -388,7 +385,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printCityDistrict(cityList);
+        app.printCityDistrict(cityList, "CityDistrict.md");
     }
 
     @Test
@@ -401,20 +398,20 @@ public class AppTest
         city.setDistrict("Southeast Asia");
         city.setPopulation(1000);
         cityList.add(city);
-        app.printCityDistrict(cityList);
+        app.printCityDistrict(cityList, "CityDistrict.md");
     }
     //PopulationWorld
     @Test
     void printTopCityWorldNull()
     {
-        app.printTopCityWorld(null);
+        app.printTopCityWorld(null, "TopCityWorld.md");
     }
 
     @Test
     void printTopCityWorldTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityWorld(cityList);
+        app.printTopCityWorld(cityList, "TopCityWorld.md");
     }
 
     @Test
@@ -422,7 +419,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityWorld(cityList);
+        app.printTopCityWorld(cityList, "TopCityWorld.md");
     }
 
     @Test
@@ -435,21 +432,21 @@ public class AppTest
         city.setDistrict("New York");
         city.setPopulation(8008278);
         cityList.add(city);
-        app.printTopCityWorld(cityList);
+        app.printTopCityWorld(cityList, "TopCityWorld.md");
     }
 
     //PopulationContinent
     @Test
     void printTopCityContinentNull()
     {
-        app.printTopCityContinent(null);
+        app.printTopCityContinent(null, "TopCityContinent.md");
     }
 
     @Test
     void printTopCityContinentTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityContinent(cityList);
+        app.printTopCityContinent(cityList, "TopCityContinent.md");
     }
 
     @Test
@@ -457,7 +454,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityContinent(cityList);
+        app.printTopCityContinent(cityList, "TopCityContinent.md");
     }
 
     @Test
@@ -470,21 +467,21 @@ public class AppTest
         city.setDistrict("Teheran");
         city.setPopulation(6758845);
         cityList.add(city);
-        app.printTopCityContinent(cityList);
+        app.printTopCityContinent(cityList, "TopCityContinent.md");
     }
 
     //PopulationRegion
     @Test
     void printTopCityRegionNull()
     {
-        app.printTopCityRegion(null);
+        app.printTopCityRegion(null, "TopCityRegion.md");
     }
 
     @Test
     void printTopCityRegionTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityRegion(cityList);
+        app.printTopCityRegion(cityList, "TopCityRegion.md");
     }
 
     @Test
@@ -492,7 +489,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityRegion(cityList);
+        app.printTopCityRegion(cityList, "TopCityRegion.md");
     }
 
     @Test
@@ -505,21 +502,21 @@ public class AppTest
         city.setDistrict("Gujarat");
         city.setPopulation(2876710);
         cityList.add(city);
-        app.printTopCityRegion(cityList);
+        app.printTopCityRegion(cityList, "TopCityRegion.md");
     }
 
     //PopulationCountry
     @Test
     void printTopCityCountryNull()
     {
-        app.printTopCityCountry(null);
+        app.printTopCityCountry(null, "TopCityCountry.md");
     }
 
     @Test
     void printTopCityCountryTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityCountry(cityList);
+        app.printTopCityCountry(cityList, "TopCityCountry.md");
     }
 
     @Test
@@ -527,7 +524,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityCountry(cityList);
+        app.printTopCityCountry(cityList, "TopCityCountry.md");
     }
 
     @Test
@@ -540,21 +537,21 @@ public class AppTest
         city.setDistrict("Tenasserim [Tanintha");
         city.setPopulation(122700);
         cityList.add(city);
-        app.printTopCityCountry(cityList);
+        app.printTopCityCountry(cityList, "TopCityCountry.md");
     }
 
     //PopulationDistrict
     @Test
     void printTopCityDistrictNull()
     {
-        app.printTopCityDistrict(null);
+        app.printTopCityDistrict(null, "TopCityDistrict.md");
     }
 
     @Test
     void printTopCityDistrictTestEmpty()
     {
         ArrayList<City> cityList = new ArrayList<>();
-        app.printTopCityDistrict(cityList);
+        app.printTopCityDistrict(cityList, "TopCityDistrict.md");
     }
 
     @Test
@@ -562,7 +559,7 @@ public class AppTest
     {
         ArrayList<City> cityList = new ArrayList<>();
         cityList.add(null);
-        app.printTopCityDistrict(cityList);
+        app.printTopCityDistrict(cityList, "TopCityDistrict.md");
     }
 
     @Test
@@ -575,21 +572,21 @@ public class AppTest
         city.setDistrict("Bahia");
         city.setPopulation(126820);
         cityList.add(city);
-        app.printTopCityDistrict(cityList);
+        app.printTopCityDistrict(cityList, "TopCityDistrict.md");
     }
 
     //PopulationCapital
     @Test
     void printCapitalWorldNull()
     {
-        app.printCapitalWorld(null);
+        app.printCapitalWorld(null,null);
     }
 
     @Test
     void printCapitalWorldTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printCapitalWorld(capitalList);
+        app.printCapitalWorld(capitalList,"capitalWorld.md");
     }
 
     @Test
@@ -597,7 +594,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printCapitalWorld(capitalList);
+        app.printCapitalWorld(capitalList,"capitalWorld.md");
     }
 
     @Test
@@ -609,21 +606,21 @@ public class AppTest
         capital.setCountry("Pitcairn");
         capital.setPopulation(42);
         capitalList.add(capital);
-        app.printCapitalWorld(capitalList);
+        app.printCapitalWorld(capitalList,"capitalWorld.md");
     }
 
     //PopulationContinent
     @Test
     void printCapitalContinentNull()
     {
-        app.printCapitalContinent(null);
+        app.printCapitalContinent(null,null);
     }
 
     @Test
     void printCapitalContinentTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printCapitalContinent(capitalList);
+        app.printCapitalContinent(capitalList,"capitalContinent.md");
     }
 
     @Test
@@ -631,7 +628,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printCapitalContinent(capitalList);
+        app.printCapitalContinent(capitalList,"capitalContinent.md");
     }
 
     @Test
@@ -643,21 +640,21 @@ public class AppTest
         capital.setCountry("Brunei");
         capital.setPopulation(21484);
         capitalList.add(capital);
-        app.printCapitalContinent(capitalList);
+        app.printCapitalContinent(capitalList,"capitalContinent.md");
     }
 
     //PopulationRegion
     @Test
     void printCapitalRegionNull()
     {
-        app.printCapitalRegion(null);
+        app.printCapitalRegion(null,null);
     }
 
     @Test
     void printCapitalRegionTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printCapitalRegion(capitalList);
+        app.printCapitalRegion(capitalList,"capitalRegion.md");
     }
 
     @Test
@@ -665,7 +662,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printCapitalRegion(capitalList);
+        app.printCapitalRegion(capitalList,"capitalRegion.md");
     }
 
     @Test
@@ -677,21 +674,21 @@ public class AppTest
         capital.setCountry("Anguilla");
         capital.setPopulation(595);
         capitalList.add(capital);
-        app.printCapitalRegion(capitalList);
+        app.printCapitalRegion(capitalList,"capitalRegion.md");
     }
 
     //PopulationWorld
     @Test
     void printTopCapitalWorldNull()
     {
-        app.printTopCapitalWorld(null);
+        app.printTopCapitalWorld(null,null);
     }
 
     @Test
     void printTopCapitalWorldTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printTopCapitalWorld(capitalList);
+        app.printTopCapitalWorld(capitalList,"capitalTopWorld.md");
     }
 
     @Test
@@ -699,7 +696,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printTopCapitalWorld(capitalList);
+        app.printTopCapitalWorld(capitalList,"capitalTopWorld.md");
     }
 
     @Test
@@ -711,21 +708,21 @@ public class AppTest
         capital.setCountry("Peru");
         capital.setPopulation(6464693);
         capitalList.add(capital);
-        app.printTopCapitalWorld(capitalList);
+        app.printTopCapitalWorld(capitalList,"capitalTopWorld.md");
     }
 
     //Population Continent
     @Test
     void printTopCapitalContinentNull()
     {
-        app.printTopCapitalContinent(null);
+        app.printTopCapitalContinent(null,null);
     }
 
     @Test
     void printTopCapitalContinentTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printTopCapitalContinent(capitalList);
+        app.printTopCapitalContinent(capitalList,"capitalTopContinent.md");
     }
 
     @Test
@@ -733,7 +730,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printTopCapitalContinent(capitalList);
+        app.printTopCapitalContinent(capitalList,"capitalTopContinent.md");
     }
 
     @Test
@@ -745,21 +742,21 @@ public class AppTest
         capital.setCountry("Peru");
         capital.setPopulation(6464693);
         capitalList.add(capital);
-        app.printTopCapitalContinent(capitalList);
+        app.printTopCapitalContinent(capitalList,"capitalTopContinent.md");
     }
 
     //Population Capital
     @Test
     void printTopCapitalRegionNull()
     {
-        app.printTopCapitalRegion(null);
+        app.printTopCapitalRegion(null,null);
     }
 
     @Test
     void printTopCapitalRegionTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printTopCapitalRegion(capitalList);
+        app.printTopCapitalRegion(capitalList,"capitalTopRegion.md");
     }
 
     @Test
@@ -767,7 +764,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printTopCapitalRegion(capitalList);
+        app.printTopCapitalRegion(capitalList,"capitalTopRegion.md");
     }
 
     @Test
@@ -779,21 +776,21 @@ public class AppTest
         capital.setCountry("Antigua and Barbuda ");
         capital.setPopulation(24000 );
         capitalList.add(capital);
-        app.printTopCapitalRegion(capitalList);
+        app.printTopCapitalRegion(capitalList,"capitalTopRegion.md");
     }
 
     //Population Region
     @Test
     void printPopulationRegionNull()
     {
-        app.printPopulationRegion(null);
+        app.printPopulationRegion(null,null);
     }
 
     @Test
     void printPopulationRegionTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printPopulationRegion(populationList);
+        app.printPopulationRegion(populationList,"populationRegion.md");
     }
 
     @Test
@@ -801,7 +798,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printPopulationRegion(populationList);
+        app.printPopulationRegion(populationList,"populationRegion.md");
     }
 
     @Test
@@ -813,7 +810,7 @@ public class AppTest
         population.setCountryPopulation(183247600);
         population.setCityPopulation(45683298);
         populationList.add(population);
-        app.printPopulationRegion(populationList);
+        app.printPopulationRegion(populationList,"populationRegion.md");
     }
 
     //Population Country
