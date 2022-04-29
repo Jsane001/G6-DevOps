@@ -32,37 +32,37 @@ Nyein Chan Soe
 | 40478648   | 25            | 25            | 22            | 25            | 25                |
 | **Total**  | **100**       | **100**       | **100**       | **100**       | **100**           |
 
-| ID  | Name                             | Met | Screenshot |
-|-----|----------------------------------|-----|------------|
-| 1   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 2   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 3   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 4   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 5   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 6   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 7   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 8   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 9   | All the countries in the world organised by largest population to smallest | Yes |  |
-| 10  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 11  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 12  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 13  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 14  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 15  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 16  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 17  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 18  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 19  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 20  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 21  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 22  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 23  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 24  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 25  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 26  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 27  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 28  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 29  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 30  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 31  | All the countries in the world organised by largest population to smallest | Yes |  |
-| 32  | All the countries in the world organised by largest population to smallest | Yes |  |
+| ID  | Name                             | Met | Screenshot  |
+|-----|----------------------------------|-----|-------------|
+| 1   | All the countries in the world organised by largest population to smallest | Yes | /img/1.PNG  |
+| 2   | All the countries in the world organised by largest population to smallest | Yes | /img/2.PNG  |
+| 3   | All the countries in the world organised by largest population to smallest | Yes | /img/3.PNG  |
+| 4   | All the countries in the world organised by largest population to smallest | Yes | /img/4.PNG  |
+| 5   | All the countries in the world organised by largest population to smallest | Yes | /img/5.PNG  |
+| 6   | All the countries in the world organised by largest population to smallest | Yes | /img/6.PNG  |
+| 7   | All the countries in the world organised by largest population to smallest | Yes | /img/7.PNG  |
+| 8   | All the countries in the world organised by largest population to smallest | Yes | /img/8.PNG  |
+| 9   | All the countries in the world organised by largest population to smallest | Yes | /img/9.PNG  |
+| 10  | All the countries in the world organised by largest population to smallest | Yes | /img/10.PNG |
+| 11  | All the countries in the world organised by largest population to smallest | Yes | /img/11.PNG |
+| 12  | All the countries in the world organised by largest population to smallest | Yes | /img/12.PNG |
+| 13  | All the countries in the world organised by largest population to smallest | Yes | /img/13.PNG |
+| 14  | All the countries in the world organised by largest population to smallest | Yes | /img/14.PNG |
+| 15  | All the countries in the world organised by largest population to smallest | Yes | /img/15.PNG |
+| 16  | All the countries in the world organised by largest population to smallest | Yes | /img/16.PNG |
+| 17  | All the countries in the world organised by largest population to smallest | Yes | /img/17.PNG |
+| 18  | All the countries in the world organised by largest population to smallest | Yes | /img/18.PNG |
+| 19  | All the countries in the world organised by largest population to smallest | Yes | /img/19.PNG |
+| 20  | All the countries in the world organised by largest population to smallest | Yes | /img/20.PNG |
+| 21  | All the countries in the world organised by largest population to smallest | Yes | /img/21.PNG |
+| 22  | All the countries in the world organised by largest population to smallest | Yes | /img/22.PNG |
+| 23  | All the countries in the world organised by largest population to smallest | Yes | /img/23.PNG |
+| 24  | All the countries in the world organised by largest population to smallest | Yes | /img/24.PNG |
+| 25  | All the countries in the world organised by largest population to smallest | Yes | /img/25.PNG |
+| 26  | All the countries in the world organised by largest population to smallest | Yes | /img/26.PNG |
+| 27  | All the countries in the world organised by largest population to smallest | Yes | /img/27.PNG |
+| 28  | All the countries in the world organised by largest population to smallest | Yes | /img/28.PNG |
+| 29  | All the countries in the world organised by largest population to smallest | Yes | /img/29.PNG |
+| 30  | All the countries in the world organised by largest population to smallest | Yes | /img/30.PNG |
+| 31  | All the countries in the world organised by largest population to smallest | Yes | /img/31.PNG |
+| 32  | All the countries in the world organised by largest population to smallest | Yes | /img/32.PNG |
