@@ -48,7 +48,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, countryContinent.get(0).getPopulation());
             assertEquals("Peking", countryContinent.get(0).getCapital());
         }
-        app.printCountryContinent(countryContinent);
+        app.printCountryContinent(countryContinent, "CountryContinent.md");
     }
 
     @Test
@@ -64,7 +64,7 @@ public class AppIntegrationTest
             assertEquals(1013662000, countryRegion.get(0).getPopulation());
             assertEquals("New Delhi", countryRegion.get(0).getCapital());
         }
-        app.printCountryRegion(countryRegion);
+        app.printCountryRegion(countryRegion, "CountryRegion.md");
     }
 
     @Test
@@ -81,7 +81,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, topCountryWorld.get(0).getPopulation());
             assertEquals("Peking", topCountryWorld.get(0).getCapital());
         }
-        app.printTopCountryWorld(topCountryWorld);
+        app.printTopCountryWorld(topCountryWorld, "TopCountryWorld.md");
     }
 
     @Test
@@ -98,7 +98,7 @@ public class AppIntegrationTest
             assertEquals(1277558000, topCountryContinent.get(0).getPopulation());
             assertEquals("Peking", topCountryContinent.get(0).getCapital());
         }
-        app.printTopCountryContinent(topCountryContinent);
+        app.printTopCountryContinent(topCountryContinent, "TopCountryContinent.md");
     }
 
     @Test
@@ -114,7 +114,7 @@ public class AppIntegrationTest
             assertEquals(111506000, topCountryRegion.get(0).getPopulation());
             assertEquals("Abuja", topCountryRegion.get(0).getCapital());
         }
-        app.printTopCountryRegion(topCountryRegion);
+        app.printTopCountryRegion(topCountryRegion, "TopCountryRegion.md");
     }
 
     @Test
@@ -128,7 +128,7 @@ public class AppIntegrationTest
             assertEquals("Maharashtra", cityWorld.get(0).getDistrict());
             assertEquals(10500000, cityWorld.get(0).getPopulation());
         }
-        app.printCityWorld(cityWorld);
+        app.printCityWorld(cityWorld, "CityWorld.md");
     }
 
     @Test
@@ -156,7 +156,7 @@ public class AppIntegrationTest
             assertEquals("La Habana", cityRegion.get(0).getDistrict());
             assertEquals(2256000, cityRegion.get(0).getPopulation());
         }
-        app.printCityRegion(cityRegion);
+        app.printCityRegion(cityRegion, "CityRegion.md");
     }
 
     @Test
@@ -226,49 +226,49 @@ public class AppIntegrationTest
     void testGetCapitalWorld()
     {
         ArrayList<Capital_City> capitalWorld = app.getCapitalWorld();
-        app.printCapitalWorld(capitalWorld,"capitalWorld.md");
+        app.printCapitalWorld(capitalWorld,"CapitalWorld.md");
     }
 
     @Test
     void testGetCapitalContinent()
     {
         ArrayList<Capital_City> capitalContinent = app.getCapitalContinent();
-        app.printCapitalContinent(capitalContinent,"capitalContinent.md");
+        app.printCapitalContinent(capitalContinent,"CapitalContinent.md");
     }
 
     @Test
     void testGetCapitalRegion()
     {
         ArrayList<Capital_City> capitalRegion = app.getCapitalRegion();
-        app.printCapitalRegion(capitalRegion,"capitalRegion.md");
+        app.printCapitalRegion(capitalRegion,"CapitalRegion.md");
     }
 
     @Test
     void testGetTopCapitalWorld()
     {
         ArrayList<Capital_City> capitalTopWorld = app.getTopCapitalWorld();
-        app.printTopCapitalWorld(capitalTopWorld,"capitalTopWorld.md");
+        app.printTopCapitalWorld(capitalTopWorld,"CapitalTopWorld.md");
     }
 
     @Test
     void testGetTopCapitalContinent()
     {
         ArrayList<Capital_City> capitalTopContinent = app.getTopCapitalContinent();
-        app.printTopCapitalContinent(capitalTopContinent,"capitalTopContinent.md");
+        app.printTopCapitalContinent(capitalTopContinent,"CapitalTopContinent.md");
     }
 
     @Test
     void testGetTopCapitalRegion()
     {
         ArrayList<Capital_City> capitalTopRegion = app.getTopCapitalRegion();
-        app.printTopCapitalRegion(capitalTopRegion,"capitalTopRegion.md");
+        app.printTopCapitalRegion(capitalTopRegion,"CapitalTopRegion.md");
     }
 
     @Test
     void testGetPopulationRegion()
     {
         ArrayList<Population> populationRegion = app.getPopulationRegion();
-        app.printPopulationRegion(populationRegion,"populationRegion.md");
+        app.printPopulationRegion(populationRegion,"PopulationRegion.md");
     }
 
     @Test
