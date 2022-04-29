@@ -1,4 +1,4 @@
-# 11.  List of cities in the district organised by largest population to smallest
+# 16.  Top 10 populated cities in district
 | Name | Country | District | Population|
 | --- | --- | --- | --- |
 | Salvador | Brazil | Bahia | 2302832 |
@@ -11,8 +11,3 @@
 | Camaçari | Brazil | Bahia | 149146 |
 | Barreiras | Brazil | Bahia | 127801 |
 | Alagoinhas | Brazil | Bahia | 126820 |
-| Lauro de Freitas | Brazil | Bahia | 109236 |
-| Teixeira de Freitas | Brazil | Bahia | 108441 |
-| Paulo Afonso | Brazil | Bahia | 97291 |
-| Eunápolis | Brazil | Bahia | 96610 |
-| Jacobina | Brazil | Bahia | 96131 |
