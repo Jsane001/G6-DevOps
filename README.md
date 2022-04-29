@@ -34,7 +34,7 @@ Nyein Chan Soe
 
 | ID  | Name                             | Met | Screenshot                                                   |
 |-----|----------------------------------|-----|--------------------------------------------------------------|
-| 1   | Countries organized by largest to smallest population in World | Yes | G6-DevOps/img/1.PNG |
+| 1   | Countries organized by largest to smallest population in World | Yes | https://github.com/Jsane001/G6-DevOps/blob/develop//img/1.PNG |
 | 2   | Countries organized by largest to smallest population in Continent | Yes | img/2.PNG                                                    |
 | 3   | Countries organized by largest to smallest population in Region | Yes | /img/3.PNG                                                   |
 | 4   | Top 10 Populated Countries in World | Yes | /img/4.PNG                                                   |
