@@ -75,7 +75,7 @@ jobs:
             ./target/*.jar
       - name: Copy Output
         run: docker container cp g6-devops_app_1:./tmp/reports ./
-          - name: Deploy
+        - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: reports # The branch the action should deploy to.
