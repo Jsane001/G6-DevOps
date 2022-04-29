@@ -783,7 +783,7 @@ public class AppTest
     @Test
     void printPopulationRegionNull()
     {
-        app.printPopulationRegion(null,null);
+        app.printPopulationRegion(null, null);
     }
 
     @Test

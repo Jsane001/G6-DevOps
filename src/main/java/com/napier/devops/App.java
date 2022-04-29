@@ -1790,7 +1790,12 @@ public class App
         // Loop over all population of people living in cities and people not living in cities in each continent
         double living, nonLivingPer;
         long nonLiving;
-
+        // Check PopulationList is not null
+        if (populationList == null)
+        {
+            System.out.println("No Population cities in Country");
+            return;
+        }
         // Print header
         StringBuilder sb = new StringBuilder();
         sb.append("# 24. Get list the population of people living in cities and people not living in cities in each region\r\n");
