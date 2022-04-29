@@ -1735,7 +1735,7 @@ public class App
 
         // Print header
         StringBuilder sb = new StringBuilder();
-        sb.append("# Get list the population of people living in cities and people not living in cities in each region\r\n");
+        sb.append("# 24. Get list the population of people living in cities and people not living in cities in each region\r\n");
         sb.append("| Continent | Total Population | Living on City | Non-Living on City |\r\n");
         sb.append("| --- | --- | --- | --- |\r\n");
         // Loop over all countries city in the list
