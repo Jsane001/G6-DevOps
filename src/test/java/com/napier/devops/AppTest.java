@@ -586,7 +586,7 @@ public class AppTest
     void printCapitalWorldTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printCapitalWorld(capitalList,"capitalWorld.md");
+        app.printCapitalWorld(capitalList,"CapitalWorld.md");
     }
 
     @Test
@@ -594,7 +594,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printCapitalWorld(capitalList,"capitalWorld.md");
+        app.printCapitalWorld(capitalList,"CapitalWorld.md");
     }
 
     @Test
@@ -606,7 +606,7 @@ public class AppTest
         capital.setCountry("Pitcairn");
         capital.setPopulation(42);
         capitalList.add(capital);
-        app.printCapitalWorld(capitalList,"capitalWorld.md");
+        app.printCapitalWorld(capitalList,"CapitalWorld.md");
     }
 
     //PopulationContinent
@@ -620,7 +620,7 @@ public class AppTest
     void printCapitalContinentTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printCapitalContinent(capitalList,"capitalContinent.md");
+        app.printCapitalContinent(capitalList,"CapitalContinent.md");
     }
 
     @Test
@@ -628,7 +628,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printCapitalContinent(capitalList,"capitalContinent.md");
+        app.printCapitalContinent(capitalList,"CapitalContinent.md");
     }
 
     @Test
@@ -640,7 +640,7 @@ public class AppTest
         capital.setCountry("Brunei");
         capital.setPopulation(21484);
         capitalList.add(capital);
-        app.printCapitalContinent(capitalList,"capitalContinent.md");
+        app.printCapitalContinent(capitalList,"CapitalContinent.md");
     }
 
     //PopulationRegion
@@ -654,7 +654,7 @@ public class AppTest
     void printCapitalRegionTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printCapitalRegion(capitalList,"capitalRegion.md");
+        app.printCapitalRegion(capitalList,"CapitalRegion.md");
     }
 
     @Test
@@ -662,7 +662,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printCapitalRegion(capitalList,"capitalRegion.md");
+        app.printCapitalRegion(capitalList,"CapitalRegion.md");
     }
 
     @Test
@@ -674,7 +674,7 @@ public class AppTest
         capital.setCountry("Anguilla");
         capital.setPopulation(595);
         capitalList.add(capital);
-        app.printCapitalRegion(capitalList,"capitalRegion.md");
+        app.printCapitalRegion(capitalList,"CapitalRegion.md");
     }
 
     //PopulationWorld
@@ -688,7 +688,7 @@ public class AppTest
     void printTopCapitalWorldTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printTopCapitalWorld(capitalList,"capitalTopWorld.md");
+        app.printTopCapitalWorld(capitalList,"CapitalTopWorld.md");
     }
 
     @Test
@@ -696,7 +696,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printTopCapitalWorld(capitalList,"capitalTopWorld.md");
+        app.printTopCapitalWorld(capitalList,"CapitalTopWorld.md");
     }
 
     @Test
@@ -708,7 +708,7 @@ public class AppTest
         capital.setCountry("Peru");
         capital.setPopulation(6464693);
         capitalList.add(capital);
-        app.printTopCapitalWorld(capitalList,"capitalTopWorld.md");
+        app.printTopCapitalWorld(capitalList,"CapitalTopWorld.md");
     }
 
     //Population Continent
@@ -722,7 +722,7 @@ public class AppTest
     void printTopCapitalContinentTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printTopCapitalContinent(capitalList,"capitalTopContinent.md");
+        app.printTopCapitalContinent(capitalList,"CapitalTopContinent.md");
     }
 
     @Test
@@ -730,7 +730,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printTopCapitalContinent(capitalList,"capitalTopContinent.md");
+        app.printTopCapitalContinent(capitalList,"CapitalTopContinent.md");
     }
 
     @Test
@@ -742,7 +742,7 @@ public class AppTest
         capital.setCountry("Peru");
         capital.setPopulation(6464693);
         capitalList.add(capital);
-        app.printTopCapitalContinent(capitalList,"capitalTopContinent.md");
+        app.printTopCapitalContinent(capitalList,"CapitalTopContinent.md");
     }
 
     //Population Capital
@@ -756,7 +756,7 @@ public class AppTest
     void printTopCapitalRegionTestEmpty()
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
-        app.printTopCapitalRegion(capitalList,"capitalTopRegion.md");
+        app.printTopCapitalRegion(capitalList,"CapitalTopRegion.md");
     }
 
     @Test
@@ -764,7 +764,7 @@ public class AppTest
     {
         ArrayList<Capital_City> capitalList = new ArrayList<>();
         capitalList.add(null);
-        app.printTopCapitalRegion(capitalList,"capitalTopRegion.md");
+        app.printTopCapitalRegion(capitalList,"CapitalTopRegion.md");
     }
 
     @Test
@@ -776,7 +776,7 @@ public class AppTest
         capital.setCountry("Antigua and Barbuda ");
         capital.setPopulation(24000 );
         capitalList.add(capital);
-        app.printTopCapitalRegion(capitalList,"capitalTopRegion.md");
+        app.printTopCapitalRegion(capitalList,"CapitalTopRegion.md");
     }
 
     //Population Region
@@ -790,7 +790,7 @@ public class AppTest
     void printPopulationRegionTestEmpty()
     {
         ArrayList<Population> populationList = new ArrayList<>();
-        app.printPopulationRegion(populationList,"populationRegion.md");
+        app.printPopulationRegion(populationList,"PopulationRegion.md");
     }
 
     @Test
@@ -798,7 +798,7 @@ public class AppTest
     {
         ArrayList<Population> populationList = new ArrayList<>();
         populationList.add(null);
-        app.printPopulationRegion(populationList,"populationRegion.md");
+        app.printPopulationRegion(populationList,"PopulationRegion.md");
     }
 
     @Test
@@ -810,7 +810,7 @@ public class AppTest
         population.setCountryPopulation(183247600);
         population.setCityPopulation(45683298);
         populationList.add(population);
-        app.printPopulationRegion(populationList,"populationRegion.md");
+        app.printPopulationRegion(populationList,"PopulationRegion.md");
     }
 
     //Population Country

@@ -106,37 +106,37 @@ public class App
         ArrayList<Capital_City> capitalWorld = a.getCapitalWorld();
         //Capital cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 17.  List of capital city in the world organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printCapitalWorld(capitalWorld,"capitalWorld.md");
+        a.printCapitalWorld(capitalWorld,"CapitalWorld.md");
 
         ArrayList<Capital_City> capitalContinent = a.getCapitalContinent();
         //Capital cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 18.  List of capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printCapitalContinent(capitalContinent,"capitalContinent.md");
+        a.printCapitalContinent(capitalContinent,"CapitalContinent.md");
 
         ArrayList<Capital_City> capitalRegion = a.getCapitalRegion();
         //Capital cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 19.  List of capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printCapitalRegion(capitalRegion,"capitalRegion.md");
+        a.printCapitalRegion(capitalRegion,"CapitalRegion.md");
 
         ArrayList<Capital_City> capitalTopWorld = a.getTopCapitalWorld();
         //Top 10 Capital cities in the world organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 20.  Top 10 capital city in the world organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printTopCapitalWorld(capitalTopWorld,"capitalTopWorld.md");
+        a.printTopCapitalWorld(capitalTopWorld,"CapitalTopWorld.md");
 
         ArrayList<Capital_City> capitalTopContinent = a.getTopCapitalContinent();
         //Top 10 Capital cities in the continent organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 21.  Top 10 capital city in the continent organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printTopCapitalContinent(capitalTopContinent,"capitalTopContinent.md");
+        a.printTopCapitalContinent(capitalTopContinent,"CapitalTopContinent.md");
 
         ArrayList<Capital_City> capitalTopRegion = a.getTopCapitalRegion();
         //Top 10 Capital cities in the region organised by largest population to smallest
         System.out.println(" \n ++++++++++++++++ 22.  Top 10 capital city in the region organised by largest population to smallest  ++++++++++++++++ \n ");
-        a.printTopCapitalRegion(capitalTopRegion,"capitalTopRegion.md");
+        a.printTopCapitalRegion(capitalTopRegion,"CapitalTopRegion.md");
 
         ArrayList<Population> populationContinent = a.getPopulationContinent();
         System.out.println(" \n ++++++++++++++++ 23. The population of people living in cities and people not living in cities in each continent  ++++++++++++++++ \n ");
         //Print the population of people living in cities and people not living in cities in each continent
-        a.printPopulationContinent(populationContinent,"populationContinent.md");
+        a.printPopulationContinent(populationContinent,"PopulationContinent.md");
 
         ArrayList<Population> populationRegion = a.getPopulationRegion();
         System.out.println(" \n ++++++++++++++++ 24. The population of people living in cities and people not living in cities in each region  ++++++++++++++++ \n ");

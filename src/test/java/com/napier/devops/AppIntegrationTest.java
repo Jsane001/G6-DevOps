@@ -226,49 +226,49 @@ public class AppIntegrationTest
     void testGetCapitalWorld()
     {
         ArrayList<Capital_City> capitalWorld = app.getCapitalWorld();
-        app.printCapitalWorld(capitalWorld,"capitalWorld.md");
+        app.printCapitalWorld(capitalWorld,"CapitalWorld.md");
     }
 
     @Test
     void testGetCapitalContinent()
     {
         ArrayList<Capital_City> capitalContinent = app.getCapitalContinent();
-        app.printCapitalContinent(capitalContinent,"capitalContinent.md");
+        app.printCapitalContinent(capitalContinent,"CapitalContinent.md");
     }
 
     @Test
     void testGetCapitalRegion()
     {
         ArrayList<Capital_City> capitalRegion = app.getCapitalRegion();
-        app.printCapitalRegion(capitalRegion,"capitalRegion.md");
+        app.printCapitalRegion(capitalRegion,"CapitalRegion.md");
     }
 
     @Test
     void testGetTopCapitalWorld()
     {
         ArrayList<Capital_City> capitalTopWorld = app.getTopCapitalWorld();
-        app.printTopCapitalWorld(capitalTopWorld,"capitalTopWorld.md");
+        app.printTopCapitalWorld(capitalTopWorld,"CapitalTopWorld.md");
     }
 
     @Test
     void testGetTopCapitalContinent()
     {
         ArrayList<Capital_City> capitalTopContinent = app.getTopCapitalContinent();
-        app.printTopCapitalContinent(capitalTopContinent,"capitalTopContinent.md");
+        app.printTopCapitalContinent(capitalTopContinent,"CapitalTopContinent.md");
     }
 
     @Test
     void testGetTopCapitalRegion()
     {
         ArrayList<Capital_City> capitalTopRegion = app.getTopCapitalRegion();
-        app.printTopCapitalRegion(capitalTopRegion,"capitalTopRegion.md");
+        app.printTopCapitalRegion(capitalTopRegion,"CapitalTopRegion.md");
     }
 
     @Test
     void testGetPopulationRegion()
     {
         ArrayList<Population> populationRegion = app.getPopulationRegion();
-        app.printPopulationRegion(populationRegion,"populationRegion.md");
+        app.printPopulationRegion(populationRegion,"PopulationRegion.md");
     }
 
     @Test
